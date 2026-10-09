@@ -1,23 +1,2378 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ru" data-theme="light">
 <head>
-    <title>Японские иероглифы</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Профориентация: интересы, мышление, характер и подходящие профессии. Семь коротких тестов.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-size='18' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23fafafa'%3E%D0%9F%3C/text%3E%3C/svg%3E">
+<title>Профориентация — диагностический комплекс</title>
+<style>
+/* ============================================================
+   ТОКЕНЫ (shadcn/ui, нейтральная тема)
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --radius:.625rem;
+  --bg:#ffffff; --fg:#09090b;
+  --card:#ffffff; --card-fg:#09090b;
+  --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --input:#e4e4e7;
+  --primary:#18181b; --primary-fg:#fafafa;
+  --secondary:#f4f4f5; --secondary-fg:#18181b;
+  --accent:#f4f4f5; --accent-fg:#18181b;
+  --destructive:#ef4444; --destructive-fg:#fafafa;
+  --ring:#a1a1aa;
+  --success:#16a34a; --warning:#d97706;
+  --chart-1:#2563eb; --chart-2:#7c3aed; --chart-3:#db2777; --chart-4:#ea580c;
+  --chart-5:#0891b2; --chart-6:#16a34a; --chart-7:#ca8a04; --chart-8:#64748b;
+  --chart-9:#dc2626; --chart-10:#4f46e5;
+  --shadow:0 1px 2px 0 rgb(0 0 0 / .05);
+}
+[data-theme="dark"]{
+  --bg:#09090b; --fg:#fafafa;
+  --card:#0f0f11; --card-fg:#fafafa;
+  --muted:#1c1c1f; --muted-fg:#a1a1aa;
+  --border:#27272a; --input:#27272a;
+  --primary:#fafafa; --primary-fg:#18181b;
+  --secondary:#27272a; --secondary-fg:#fafafa;
+  --accent:#27272a; --accent-fg:#fafafa;
+  --destructive:#991b1b; --destructive-fg:#fafafa;
+  --ring:#52525b;
+  --success:#22c55e; --warning:#f59e0b;
+  --chart-1:#60a5fa; --chart-2:#a78bfa; --chart-3:#f472b6; --chart-4:#fb923c;
+  --chart-5:#22d3ee; --chart-6:#4ade80; --chart-7:#facc15; --chart-8:#94a3b8;
+  --chart-9:#f87171; --chart-10:#818cf8;
+  --shadow:0 1px 2px 0 rgb(0 0 0 / .4);
+}
+[hidden]{display:none !important}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  transition:background .2s,color .2s;
+}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+p{margin:0 0 .75em}
+a{color:inherit}
+::selection{background:var(--primary);color:var(--primary-fg)}
+
+/* ============================================================
+   ЛЭЙАУТ
+   ============================================================ */
+.container{max-width:920px;margin:0 auto;padding:0 20px}
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;text-decoration:none;cursor:pointer;background:none;border:0;color:inherit;font-family:inherit}
+.brand-mark{
+  width:26px;height:26px;border-radius:7px;background:var(--primary);color:var(--primary-fg);
+  display:grid;place-items:center;font-size:13px;font-weight:700;
+}
+.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-link{
+  background:none;border:0;font:inherit;font-size:13.5px;color:var(--muted-fg);
+  padding:6px 10px;border-radius:calc(var(--radius) - 3px);cursor:pointer;transition:.15s;
+}
+.nav-link:hover{background:var(--accent);color:var(--accent-fg)}
+.nav-link.active{color:var(--fg);background:var(--muted);font-weight:500}
+main{padding:32px 0 80px}
+.footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted-fg);font-size:12.5px}
+.footer .container{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+
+/* ============================================================
+   КНОПКИ
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  white-space:nowrap;border-radius:calc(var(--radius) - 2px);
+  font-family:inherit;font-size:.875rem;font-weight:500;height:2.25rem;padding:0 1rem;
+  border:1px solid transparent;background:transparent;color:inherit;cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s,opacity .15s;
+  user-select:none;
+}
+.btn:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn-primary{background:var(--primary);color:var(--primary-fg)}
+.btn-primary:hover{background:color-mix(in srgb,var(--primary) 88%,transparent)}
+.btn-outline{border-color:var(--border);background:var(--bg)}
+.btn-outline:hover{background:var(--accent);color:var(--accent-fg)}
+.btn-ghost:hover{background:var(--accent);color:var(--accent-fg)}
+.btn-destructive{background:var(--destructive);color:var(--destructive-fg)}
+.btn-destructive:hover{opacity:.9}
+.btn-sm{height:2rem;padding:0 .7rem;font-size:.8125rem;border-radius:calc(var(--radius) - 4px)}
+.btn-lg{height:2.75rem;padding:0 1.5rem;font-size:.95rem}
+.btn-icon{height:2.25rem;width:2.25rem;padding:0}
+.btn-block{width:100%}
+
+/* ============================================================
+   КАРТОЧКИ / ПРОЧЕЕ
+   ============================================================ */
+.card{background:var(--card);color:var(--card-fg);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card-header{padding:20px 20px 0}
+.card-title{font-size:1rem;font-weight:600}
+.card-desc{font-size:.85rem;color:var(--muted-fg);margin-top:4px}
+.card-content{padding:20px}
+.card-footer{padding:0 20px 20px;display:flex;gap:8px;flex-wrap:wrap}
+.separator{height:1px;background:var(--border);margin:20px 0}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;border-radius:999px;
+  border:1px solid var(--border);background:var(--muted);color:var(--muted-fg);
+  padding:2px 9px;font-size:11.5px;font-weight:500;line-height:1.5;white-space:nowrap;
+}
+.badge-primary{background:var(--primary);color:var(--primary-fg);border-color:transparent}
+.badge-success{background:color-mix(in srgb,var(--success) 15%,transparent);color:var(--success);border-color:color-mix(in srgb,var(--success) 30%,transparent)}
+.badge-warning{background:color-mix(in srgb,var(--warning) 15%,transparent);color:var(--warning);border-color:color-mix(in srgb,var(--warning) 30%,transparent)}
+.badge-muted{background:var(--muted);color:var(--muted-fg)}
+.muted{color:var(--muted-fg)}
+.small{font-size:.8125rem}
+.tiny{font-size:.75rem}
+.mono{font-variant-numeric:tabular-nums}
+.progress{height:6px;width:100%;background:var(--muted);border-radius:999px;overflow:hidden}
+.progress-bar{height:100%;background:var(--primary);border-radius:999px;transition:width .3s ease}
+.kbd{
+  display:inline-grid;place-items:center;width:22px;height:22px;flex:0 0 22px;
+  border-radius:6px;background:var(--muted);color:var(--muted-fg);
+  font-size:11px;font-weight:600;
+}
+.row{display:flex;align-items:center;gap:10px}
+.row-between{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.stack{display:flex;flex-direction:column;gap:10px}
+.wrap{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ============================================================
+   ГЛАВНАЯ
+   ============================================================ */
+.hero{padding:8px 0 28px}
+.hero h1{font-size:30px;line-height:1.15;letter-spacing:-.03em}
+.hero p{color:var(--muted-fg);max-width:640px;margin-top:10px;font-size:15px}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px}
+.test-card{display:flex;flex-direction:column;gap:14px;padding:18px;transition:border-color .15s,transform .15s}
+.test-card:hover{border-color:color-mix(in srgb,var(--fg) 25%,var(--border))}
+.test-card .tc-icon{font-size:22px;line-height:1}
+.test-card h3{font-size:15px}
+.test-card .tc-meta{font-size:12px;color:var(--muted-fg);margin-top:4px}
+.test-card .tc-body{font-size:13px;color:var(--muted-fg);flex:1}
+
+/* ============================================================
+   ВОПРОСЫ
+   ============================================================ */
+.test-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.test-head h1{font-size:20px;flex:1;min-width:min(200px,100%)}
+.q-progress{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.q-progress .progress{flex:1}
+.q-counter{font-size:12.5px;color:var(--muted-fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.question-card{padding:26px}
+.q-num{font-size:12px;color:var(--muted-fg);letter-spacing:.02em;font-weight:500}
+.q-text{font-size:19px;line-height:1.45;margin-top:12px;font-weight:500;letter-spacing:-.01em}
+.options{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.options-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.options-2{grid-template-columns:1fr}}
+.option{
+  display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;
+  padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);color:inherit;font:inherit;cursor:pointer;
+  transition:background .15s,border-color .15s,box-shadow .15s;
+}
+.option:hover{background:var(--accent)}
+.option[aria-pressed="true"]{
+  border-color:var(--fg);
+  box-shadow:0 0 0 1px var(--fg);
+  background:var(--accent);
+}
+.option .kbd{transition:.15s}
+.option[aria-pressed="true"] .kbd{background:var(--primary);color:var(--primary-fg)}
+.option-text{flex:1;font-size:14.5px;line-height:1.45}
+.option .opt-code{margin-left:auto;flex:0 0 auto}
+.q-nav{display:flex;align-items:center;gap:10px;margin-top:20px}
+.q-nav .spacer{flex:1}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:14px}
+.qbtn{
+  height:36px;border-radius:calc(var(--radius) - 4px);border:1px solid var(--border);
+  background:var(--card);color:var(--muted-fg);font:inherit;font-size:12.5px;
+  cursor:pointer;transition:.15s;font-variant-numeric:tabular-nums;
+}
+.qbtn:hover{background:var(--accent)}
+.qbtn.answered{background:var(--primary);color:var(--primary-fg);border-color:transparent}
+.qbtn.current{outline:2px solid var(--ring);outline-offset:1px}
+.hint{margin-top:16px;font-size:12.5px;color:var(--muted-fg)}
+
+/* ============================================================
+   РЕЗУЛЬТАТЫ
+   ============================================================ */
+.scale-row{margin-bottom:16px}
+.scale-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+.scale-name{font-size:13.5px;font-weight:500}
+.scale-val{font-size:12.5px;color:var(--muted-fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:8px;background:var(--muted);border-radius:999px;overflow:hidden}
+.bar > i{display:block;height:100%;border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.lead-box{
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;background:var(--muted);
+}
+.lead-box h3{font-size:17px}
+.prof-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.prof{
+  font-size:12.5px;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--border);background:var(--card);
+}
+.result-block + .result-block{margin-top:22px}
+.result-block > h3{font-size:13px;margin-bottom:10px;color:var(--fg);font-weight:600}
+
+/* ============================================================
+   МАТРИЦА
+   ============================================================ */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  border:1px solid var(--border);background:var(--card);color:inherit;
+  font:inherit;font-size:13.5px;padding:9px 14px;border-radius:999px;cursor:pointer;
+  transition:.15s;
+}
+.chip:hover{background:var(--accent)}
+.chip.sel{background:var(--primary);color:var(--primary-fg);border-color:transparent;font-weight:500}
+.matrix-result{
+  margin-top:20px;padding:20px;border:1px solid var(--border);
+  border-radius:var(--radius);background:var(--muted);
+}
+.matrix-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:12px}
+.matrix-table th,.matrix-table td{border:1px solid var(--border);padding:8px;vertical-align:top;text-align:left}
+.matrix-table th{background:var(--muted);font-weight:600;font-size:11.5px;position:sticky;top:0}
+.matrix-table td{min-width:120px}
+.table-scroll{overflow:auto;max-height:70vh;border:1px solid var(--border);border-radius:var(--radius)}
+
+/* ============================================================
+   ИСТОРИЯ / НАСТРОЙКИ
+   ============================================================ */
+.hist-item{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
+.hist-item + .hist-item{margin-top:10px}
+.hist-main{flex:1;min-width:0}
+.hist-title{font-size:14px;font-weight:600}
+.hist-meta{font-size:12px;color:var(--muted-fg);margin-top:2px}
+textarea{
+  width:100%;min-height:130px;resize:vertical;padding:12px 14px;
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);color:inherit;font:inherit;font-size:14px;line-height:1.5;
+}
+textarea:focus{outline:2px solid var(--ring);outline-offset:1px;border-color:transparent}
+input[type=text]{
+  padding:8px 12px;border:1px solid var(--border);border-radius:calc(var(--radius) - 2px);
+  background:var(--card);color:inherit;font:inherit;font-size:14px;
+}
+input[type=text]:focus{outline:2px solid var(--ring);outline-offset:1px}
+.empty{text-align:center;padding:56px 20px;color:var(--muted-fg)}
+.empty .big{font-size:34px;margin-bottom:12px;opacity:.5}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fade{animation:none}
+#app.enter .fade{animation:fadeUp .22s ease both}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+/* ============================================================
+   ДОПОЛНЕНИЯ: доступность, адаптив, печать, диалоги
+   ============================================================ */
+html{color-scheme:light;scroll-behavior:auto}
+[data-theme="dark"]{color-scheme:dark}
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+main:focus,#q-card:focus{outline:none}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:100;background:var(--primary);color:var(--primary-fg);padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px;transition:top .15s}
+.skip-link:focus{top:8px}
+
+.eyebrow{font-size:12px;color:var(--muted-fg);font-weight:500}
+
+/* шапка на узких экранах */
+.nav{min-width:0}
+@media(max-width:620px){
+  .header-inner{gap:8px}
+  .container{padding:0 14px}
+  .question-card{padding:18px}
+  .q-text{font-size:17px}
+  .hero h1{font-size:25px}
+}
+
+/* баннер, тосты, диалог */
+.banner{display:flex;gap:10px;align-items:flex-start;border:1px solid color-mix(in srgb,var(--warning) 40%,var(--border));background:color-mix(in srgb,var(--warning) 10%,var(--card));color:var(--fg);border-radius:var(--radius);padding:12px 14px;font-size:13px;margin-bottom:18px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--primary);color:var(--primary-fg);padding:10px 16px;border-radius:10px;font-size:13.5px;box-shadow:0 8px 24px rgb(0 0 0/.25);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:200;max-width:calc(100vw - 32px)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+dialog{border:1px solid var(--border);border-radius:var(--radius);background:var(--card);color:var(--card-fg);padding:0;max-width:min(420px,calc(100vw - 32px));box-shadow:0 20px 50px rgb(0 0 0/.3)}
+dialog::backdrop{background:rgb(0 0 0/.45)}
+dialog form{padding:20px}
+dialog p{margin:0 0 18px;font-size:14.5px}
+.dlg-actions{display:flex;justify-content:flex-end;gap:8px}
+
+/* переключатель */
+.switch-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.switch{position:relative;width:40px;height:22px;flex:0 0 40px}
+.switch input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer;z-index:1}
+.switch i{position:absolute;inset:0;border-radius:999px;background:var(--input);border:1px solid var(--border);transition:.15s}
+.switch i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--bg);box-shadow:0 1px 2px rgb(0 0 0/.3);transition:.15s}
+.switch input:checked + i{background:var(--primary);border-color:transparent}
+.switch input:checked + i::after{transform:translateX(18px);background:var(--primary-fg)}
+.switch input:focus-visible + i{outline:2px solid var(--ring);outline-offset:2px}
+
+/* матрица: закреплённый первый столбец и подсветка */
+.matrix-table th:first-child{position:sticky;left:0;z-index:1;background:var(--muted);min-width:130px}
+.matrix-table thead th:first-child{z-index:2}
+.matrix-table td.hit{background:color-mix(in srgb,var(--chart-1) 14%,var(--card));outline:2px solid var(--chart-1);outline-offset:-2px}
+.chip[aria-pressed="true"]{background:var(--primary);color:var(--primary-fg);border-color:transparent;font-weight:500}
+
+.profile-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--border)}
+.profile-row:first-child{border-top:0}
+.profile-row .pr-main{flex:1;min-width:0}
+.accent-block{padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);margin-top:10px}
+.accent-block p{margin:.3em 0 0}
+
+/* печать */
+/* ---- Окно «Поделиться» ---- */
+#share-dlg{max-width:min(460px,calc(100vw - 32px));width:100%;max-height:calc(100vh - 32px);overflow:auto}
+.share-box{padding:18px 20px 20px}
+.share-box h2{font-size:16px}
+.share-canvas{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);margin:14px 0 10px;background:#fff}
+.share-note{font-size:12px;color:var(--muted-fg);margin:0 0 14px}
+.share-box .stack .btn{width:100%}
+@media print{
+  .site-header,.footer,.no-print,#toast,.skip-link{display:none !important}
+  body{background:#fff;color:#000}
+  main{padding:0}
+  .card,.lead-box{box-shadow:none;break-inside:avoid}
+  .bar,.progress{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .bar > i{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+
+/* даты и время не выходят за границы контейнера */
+.test-card .row,.hist-item .row{flex-wrap:wrap}
+.test-card .row > .tiny,.hist-meta,.test-head .badge{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.test-head .badge{white-space:normal;flex:0 1 auto}
+.test-card .row > .tiny{flex:1 1 auto}
+.hist-main,.hist-item{min-width:0}
+.hist-meta{font-variant-numeric:tabular-nums}
+
+/* иконки (Lucide) */
+.ico{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em}
+.btn .ico{width:1.1em;height:1.1em}
+.btn-icon .ico{width:1.2rem;height:1.2rem}
+.test-card .tc-icon{width:40px;height:40px;border-radius:10px;background:var(--muted);border:1px solid var(--border);display:grid;place-items:center;font-size:20px;color:var(--fg)}
+.test-card .tc-icon .ico{width:21px;height:21px}
+.hist-item > .hi-icon,.profile-row > .pr-icon{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:var(--muted);border:1px solid var(--border);display:grid;place-items:center;font-size:18px}
+.empty .big .ico{width:36px;height:36px}
+.banner .ico{width:18px;height:18px;margin-top:1px;color:var(--warning)}
+
+/* навигация в шапке: текст + иконка, на мобилке только иконки */
+.nav-link{display:inline-flex;align-items:center;gap:7px}
+.nav-link .ico{width:16px;height:16px;flex:0 0 16px}
+.nav-count{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--primary);color:var(--primary-fg);font-size:11px;font-weight:600;display:inline-grid;place-items:center;line-height:1}
+@media(max-width:620px){
+  .nav-link{width:2.25rem;height:2.25rem;padding:0;justify-content:center;position:relative}
+  .nav-link .ico{width:20px;height:20px;flex-basis:20px}
+  .nav-label{display:none}
+  .nav-count{position:absolute;top:1px;right:0;min-width:16px;height:16px;font-size:10px;padding:0 4px}
+}
+
+/* навигация внутри методики */
+.back-row{margin-bottom:14px;display:flex;justify-content:flex-start;align-items:center}
+.back-row .btn{margin-left:-.5rem}
+
+/* сворачивающиеся кнопки: иконка справа от текста, на мобилке — только иконка */
+.btn-collapse .ico{margin-left:0}
+@media(max-width:620px){
+  .btn-collapse .btn-label{display:none}
+  .btn-collapse{width:2rem;padding:0}
+}
+
+/* тач-устройства: без hover и без подсказок про клавиши */
+.option{-webkit-tap-highlight-color:transparent}
+@media(hover:none),(max-width:620px){
+  .kbd-hint,.option .kbd{display:none !important}
+  .option:hover{background:var(--card)}
+  .option[aria-pressed="true"],.option[aria-pressed="true"]:hover{background:var(--accent)}
+}
+</style>
 </head>
-<body text="000000" bgcolor="CCCCCC" link="0000FF" vlink="FF0000" alink="000088">
-    <p>Читать также: <a href="index2.html">Каллиграфия</a></p>
-    <h1>Укие Э</h1>
-    <p><b>(«картины изменчивого (повседневного) мира»)</b> получила развитие в японской культуре благодаря дзен-буддизму и сказалась, почти, на всех видах японского традиционного искусства.</p>
-    <img src="/imgs/1.jpg">
-    <p>Согласно дзенской эстетике, в жизни нет ничего постоянного – всё течет, меняется и, в конечном счёте, умирает. Поэтому умение оценить красоту этого ускользающего бытия, желание насладится этим «бренным» миром, стало характерной чертой японского менталитета и темой японского искусства.</p>
-    <h1>Кацусики Хокусая</h1>
-    <h2>Большая волна в Канагаве</h2>
-    <p>Большая волна в Канагаве - это самая известная работа Хокусая, она была создана в рамках серии "Тридцать шесть видов Фудзи". Гигантская волна нависает над двумя судами, а через брызги морской пены видно Фудзи. Гравюра была прекрасно известна в Западной Европе, где работы Хокусая оказали влияние на таких импрессионистов, как <a href="https://dzen.ru/a/W30UMUNaKQCo1Ign">Клод Моне</a>, <a href="https://dzen.ru/a/W30YT7WglgCp-aO6">Пьер Огюст Ренуар</a> и Эдгар Дега.</p>
-    <img src="/imgs/3.jpg" alt="">
-    <h2>Победный ветер. Ясный день</h2>
-    <p>Описывая гору Фудзи в одном из "Тридцати шести видов Фудзи", "Победный ветер. Ясное утро" художник написал вулкан в глубоких красных тонах. Маленькие деревья усеивают склон горы, словно указывая зрителю на масштаб горы, в то время как облака с плоским дном проплывают мимо ее снежного пика. Гравюра написана Хокусаем в разгар его карьеры.</p>
-    <img src="/imgs/4.jpg" alt="">
-    <hr>
-    <h3>Авторы: Левенко Дарья, Панкратова Валерия, Целоусов Михаил</h3>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Иконки: Lucide (ISC) https://lucide.dev --><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /> <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /> <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /> <path d="M18 18a4 4 0 0 0 2-7.464" /> <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /> <path d="M6 18a4 4 0 0 1-2-7.464" /> <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-drama" viewBox="0 0 24 24"><path d="M10 11h.01" /> <path d="M14 6h.01" /> <path d="M18 6h.01" /> <path d="M6.5 13.1h.01" /> <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" /> <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" /> <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" /> <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol><symbol id="i-hexagon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12" /> <path d="m17 8-5-5-5 5" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol><symbol id="i-trash-2" viewBox="0 0 24 24"><path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2" /> <line x1="8" x2="16" y1="21" y2="21" /> <line x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18" /> <rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /> <path d="M7 3v4a1 1 0 0 0 1 1h7" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /></symbol><symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol></svg>
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="app"></div>
+<dialog id="dlg" aria-labelledby="dlg-msg">
+  <form method="dialog">
+    <p id="dlg-msg"></p>
+    <div class="dlg-actions">
+      <button class="btn btn-outline" value="cancel">Отмена</button>
+      <button class="btn btn-primary" id="dlg-ok" value="ok">OK</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="share-dlg" aria-labelledby="share-title">
+  <div class="share-box">
+    <div class="row-between">
+      <h2 id="share-title">Поделиться результатом</h2>
+      <button class="btn btn-ghost btn-sm" data-action="share-close">Закрыть</button>
+    </div>
+    <canvas id="share-canvas" class="share-canvas" role="img" aria-label="Карточка с результатом"></canvas>
+    <p class="share-note">Картинка собирается прямо на вашем устройстве, ничего не отправляется на сервер.</p>
+    <div class="stack">
+      <button class="btn btn-primary" id="share-send" data-action="share-send"></button>
+      <button class="btn btn-outline" id="share-copy-img" data-action="share-copy-img" hidden></button>
+      <button class="btn btn-outline" id="share-copy-text" data-action="share-copy-text"></button>
+    </div>
+  </div>
+</dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:20px">Для работы комплекса нужен включённый JavaScript.</p></noscript>
+
+<script>
+/* ============================================================
+   0. УТИЛИТЫ
+   ============================================================ */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
+const fmtDate = iso => {
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleString('ru-RU', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'});
+};
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lblBtn = (cls, attrs, label, icon) => `<button class="btn ${cls} btn-sm btn-collapse" ${attrs} aria-label="${esc(label)}" title="${esc(label)}"><span class="btn-label">${esc(label)}</span>${ico(icon)}</button>`;
+const ico = (n, c = '') => `<svg class="ico ${c}" aria-hidden="true" focusable="false"><use href="#i-${n}"/></svg>`;
+const pct = (v, max) => max <= 0 ? 0 : clamp(Math.round(v / max * 100), 0, 100);
+
+/* ============================================================
+   2. ДАННЫЕ МЕТОДИК
+   ============================================================ */
+
+/* ---------- 2.1 Тип мышления ---------- */
+const THINKING_SCALES = [
+  {key:'PD', name:'Предметно-действенное', short:'П-Д', color:'var(--chart-1)'},
+  {key:'AS', name:'Абстрактно-символическое', short:'А-С', color:'var(--chart-2)'},
+  {key:'SL', name:'Словесно-логическое', short:'С-Л', color:'var(--chart-3)'},
+  {key:'NO', name:'Наглядно-образное', short:'Н-О', color:'var(--chart-4)'},
+  {key:'K',  name:'Креативность', short:'К', color:'var(--chart-5)'}
+];
+const THINKING_DESC = {
+  PD:'Вам проще понять через действие: потрогать, сделать, попробовать. Хорошая координация. Подойдёт работа руками, за рулём, спорт, танцы, сцена.',
+  AS:'Формулы, коды, схемы — всё, что нельзя потрогать, — даётся легко. Так мыслят математики, программисты, аналитики, экономисты.',
+  SL:'Умеете точно сформулировать мысль и донести её до людей. Сильная сторона преподавателей, переводчиков, журналистов, писателей.',
+  NO:'Богатое воображение: легко представляете то, чего ещё нет. На этом держится работа художников, дизайнеров, архитекторов, режиссёров.',
+  K:'Ищете нестандартные решения и не боитесь пробовать по-новому. Редкое качество — и заменить его нечем.'
+};
+const THINKING_Q = [
+  ['Мне легче что-либо сделать самому, чем объяснить другому.','PD'],
+  ['Мне интересно составлять компьютерные программы.','AS'],
+  ['Я люблю читать книги.','SL'],
+  ['Мне нравится живопись, скульптура, архитектура.','NO'],
+  ['Даже в отлаженном деле я стараюсь что-то улучшить.','K'],
+  ['Я лучше понимаю, если мне объясняют на предметах или рисунках.','PD'],
+  ['Я люблю играть в шахматы.','AS'],
+  ['Я легко излагаю свои мысли как в устной, так и в письменной форме.','SL'],
+  ['Когда я читаю книгу, я чётко вижу её героев и описываемые события.','NO'],
+  ['Я предпочитаю самостоятельно планировать свою работу.','K'],
+  ['Мне нравится всё делать своими руками.','PD'],
+  ['В детстве я создавал(а) свой шифр для переписки с друзьями.','AS'],
+  ['Я придаю большое значение сказанному слову.','SL'],
+  ['Знакомые мелодии вызывают у меня в голове определённые картины.','NO'],
+  ['Разнообразные увлечения делают жизнь человека богаче и ярче.','K'],
+  ['При решении задачи мне легче идти методом проб и ошибок.','PD'],
+  ['Мне интересно разбираться в природе физических явлений.','AS'],
+  ['Мне интересна работа ведущего теле-радиопрограмм, журналиста.','SL'],
+  ['Мне легко представить предмет или животное, которых нет в природе.','NO'],
+  ['Мне больше нравится процесс деятельности, чем сам результат.','K'],
+  ['Мне нравилось в детстве собирать конструктор из деталей, лего.','PD'],
+  ['Я предпочитаю точные науки (математику, физику).','AS'],
+  ['Меня восхищает точность и глубина некоторых стихов.','SL'],
+  ['Знакомый запах вызывает в моей памяти прошлые события.','NO'],
+  ['Я не хотел(а) бы подчинять свою жизнь определённой системе.','K'],
+  ['Когда я слышу музыку, мне хочется танцевать.','PD'],
+  ['Я понимаю красоту математических формул.','AS'],
+  ['Мне легко говорить перед любой аудиторией.','SL'],
+  ['Я люблю посещать выставки, спектакли, концерты.','NO'],
+  ['Я сомневаюсь даже в том, что для других очевидно.','K'],
+  ['Я люблю заниматься рукоделием, что-то мастерить.','PD'],
+  ['Мне интересно было бы расшифровать древние тексты.','AS'],
+  ['Я легко усваиваю грамматические конструкции языка.','SL'],
+  ['Красота для меня важнее, чем польза.','NO'],
+  ['Не люблю ходить одним и тем же путём.','K'],
+  ['Истинно только то, что можно потрогать руками.','PD'],
+  ['Я легко запоминаю формулы, символы, условные обозначения.','AS'],
+  ['Друзья любят слушать, когда я им что-то рассказываю.','SL'],
+  ['Я легко могу представить в образах содержание рассказа или фильма.','NO'],
+  ['Я не могу успокоиться, пока не доведу свою работу до совершенства.','K']
+];
+
+/* ---------- 2.2 Опросник профессиональных склонностей ---------- */
+const INTEREST_SCALES = [
+  {key:'I',   name:'Склонность к работе с людьми', color:'var(--chart-1)', short:'I'},
+  {key:'II',  name:'Исследовательская (интеллектуальная) работа', color:'var(--chart-2)', short:'II'},
+  {key:'III', name:'Практическая деятельность', color:'var(--chart-3)', short:'III'},
+  {key:'IV',  name:'Эстетические виды деятельности', color:'var(--chart-4)', short:'IV'},
+  {key:'V',   name:'Экстремальные виды деятельности', color:'var(--chart-5)', short:'V'},
+  {key:'VI',  name:'Планово-экономические виды деятельности', color:'var(--chart-6)', short:'VI'}
+];
+const INTEREST_DESC = {
+  I:'Интересно работать с людьми: управлять, учить, лечить, обслуживать, консультировать. Легко находите общий язык с разными людьми.',
+  II:'Нравится разбираться, как всё устроено. Рассуждаете логично, цените самостоятельность. Ваш путь — наука и исследования.',
+  III:'По душе практическое дело: собирать, чинить, настраивать, строить, водить технику, делать вещи руками.',
+  IV:'Тянет к творчеству: рисовать, писать, играть музыку, выступать. Цените оригинальность и независимость.',
+  V:'Нужны движение, риск и живая работа: спорт, путешествия, экспедиции, охрана, армия, работа в поле и с природой. Требует выносливости и силы воли.',
+  VI:'Нравятся порядок и расчёт: считать, планировать, вести документы, работать с текстами и чертежами. Подойдёт работа бухгалтера, экономиста, редактора.'
+};
+const INTEREST_Q = [
+  {t:'Мне хотелось бы в своей профессиональной деятельности', o:[
+    {text:'общаться с самыми разными людьми', m:'I'},
+    {text:'снимать фильмы, писать книги, рисовать, выступать на сцене и т.д.', m:'IV'},
+    {text:'заниматься расчётами; вести документацию', m:'VI'}]},
+  {t:'В книге или кинофильме меня больше всего привлекает', o:[
+    {text:'возможность следить за ходом мыслей автора', m:'II'},
+    {text:'художественная форма, мастерство писателя или режиссёра', m:'IV'},
+    {text:'сюжет, действия героев, приключения и погони', m:'V'}]},
+  {t:'Меня больше обрадует Нобелевская премия', o:[
+    {text:'за общественную деятельность', m:'I'},
+    {text:'в области науки', m:'II'},
+    {text:'в области искусства', m:'IV'}]},
+  {t:'Я скорее соглашусь стать', o:[
+    {text:'главным механиком', m:'III'},
+    {text:'начальником экспедиции', m:'V'},
+    {text:'главным бухгалтером', m:'VI'}]},
+  {t:'Будущее людей определяют', o:[
+    {text:'взаимопонимание между людьми', m:'I'},
+    {text:'научные открытия', m:'II'},
+    {text:'развитие производства', m:'III'}]},
+  {t:'Если я стану руководителем, то в первую очередь займусь', o:[
+    {text:'созданием дружного, сплочённого коллектива', m:'I'},
+    {text:'разработкой новых технологий обучения', m:'II'},
+    {text:'работой с документами', m:'VI'}]},
+  {t:'На технической выставке меня больше привлечёт', o:[
+    {text:'внутреннее устройство экспонатов', m:'II'},
+    {text:'их практическое применение', m:'III'},
+    {text:'внешний вид экспонатов (цвет, форма)', m:'IV'}]},
+  {t:'В людях я ценю, прежде всего', o:[
+    {text:'дружелюбие и отзывчивость', m:'I'},
+    {text:'смелость и выносливость', m:'V'},
+    {text:'обязательность и аккуратность', m:'VI'}]},
+  {t:'В свободное время мне хотелось бы', o:[
+    {text:'ставить различные опыты, эксперименты', m:'II'},
+    {text:'писать стихи, сочинять музыку или рисовать', m:'IV'},
+    {text:'тренироваться', m:'V'}]},
+  {t:'В заграничных поездках меня скорее заинтересует', o:[
+    {text:'возможность знакомства с историей и культурой другой страны', m:'IV'},
+    {text:'экстремальный туризм (альпинизм, виндсерфинг, горные лыжи)', m:'V'},
+    {text:'деловое общение', m:'VI'}]},
+  {t:'Мне интереснее беседовать о', o:[
+    {text:'человеческих взаимоотношениях', m:'I'},
+    {text:'новой научной гипотезе', m:'II'},
+    {text:'технических характеристиках новой модели машины, компьютера', m:'III'}]},
+  {t:'Если бы в моей школе было всего три кружка, я бы выбрал(а)', o:[
+    {text:'технический', m:'III'},
+    {text:'музыкальный', m:'IV'},
+    {text:'спортивный', m:'V'}]},
+  {t:'В школе следует обратить особое внимание на', o:[
+    {text:'улучшение взаимопонимания между учителями и учениками', m:'I'},
+    {text:'поддержание здоровья учащихся, занятия спортом', m:'V'},
+    {text:'укрепление дисциплины', m:'VI'}]},
+  {t:'Я с большим удовольствием смотрю', o:[
+    {text:'научно-популярные фильмы', m:'II'},
+    {text:'программы о культуре и искусстве', m:'IV'},
+    {text:'спортивные программы', m:'V'}]},
+  {t:'Мне хотелось бы работать', o:[
+    {text:'с детьми или сверстниками', m:'I'},
+    {text:'с машинами, механизмами', m:'III'},
+    {text:'с объектами природы в экспедициях в горах, пустынях', m:'V'}]},
+  {t:'Школа в первую очередь должна', o:[
+    {text:'учить общению с другими людьми', m:'I'},
+    {text:'давать знания', m:'III'},
+    {text:'обучать навыкам работы', m:'VI'}]},
+  {t:'Главное в жизни', o:[
+    {text:'иметь возможность заниматься творчеством', m:'IV'},
+    {text:'вести здоровый образ жизни', m:'V'},
+    {text:'тщательно планировать свои дела', m:'VI'}]},
+  {t:'Государство должно в первую очередь заботиться о', o:[
+    {text:'защите интересов и прав граждан', m:'I'},
+    {text:'достижениях в области науки и техники', m:'II'},
+    {text:'материальном благополучии граждан', m:'III'}]},
+  {t:'Мне больше всего нравятся уроки', o:[
+    {text:'труда', m:'III'},
+    {text:'физкультуры', m:'V'},
+    {text:'математики', m:'VI'}]},
+  {t:'Мне интереснее было бы', o:[
+    {text:'заниматься сбытом товаров', m:'I'},
+    {text:'изготавливать изделия', m:'III'},
+    {text:'планировать производство товаров', m:'VI'}]},
+  {t:'Я предпочитаю читать статьи о', o:[
+    {text:'выдающихся учёных и их открытиях', m:'II'},
+    {text:'интересных изобретениях', m:'III'},
+    {text:'жизни и творчестве писателей, художников, музыкантов', m:'IV'}]},
+  {t:'В свободное время я люблю', o:[
+    {text:'читать, думать, рассуждать', m:'II'},
+    {text:'что-нибудь мастерить, шить, ухаживать за животными, растениями', m:'III'},
+    {text:'ходить на выставки, концерты, в музеи', m:'IV'}]},
+  {t:'Больший интерес у меня вызовет сообщение о', o:[
+    {text:'научном открытии', m:'II'},
+    {text:'художественной выставке', m:'IV'},
+    {text:'экономической ситуации', m:'VI'}]},
+  {t:'Я предпочту работать', o:[
+    {text:'в помещении, где много людей', m:'I'},
+    {text:'в необычных условиях', m:'V'},
+    {text:'в обычном кабинете', m:'VI'}]}
+];
+
+/* ---------- 2.3 Тест Леонгарда ---------- */
+const LEONHARD_TYPES = [
+  {key:'demo',  name:'Демонстративная', mult:2, yes:[7,19,22,29,41,44,63,66,73,85,88], no:[51],
+   desc:'Жизнерадостны, общительны, любите быть в центре внимания. Тянетесь к лидерству, артистичны, мыслите нестандартно.',
+   stress:'Скучная рутина, где нельзя проявить себя, и отсутствие зрителей.'},
+  {key:'stuck', name:'Застревающая', mult:2, yes:[2,15,24,34,37,56,68,78,81], no:[12,46,59],
+   desc:'Основательны и принципиальны, но можете быть обидчивы и долго помнить обиды. Склонны к нравоучениям.',
+   stress:'Несправедливость, обиды и ситуации, которые идут вразрез с вашими ценностями.'},
+  {key:'pedant',name:'Педантичная', mult:2, yes:[4,14,17,26,39,48,58,61,70,80,83], no:[36],
+   desc:'Добросовестны, пунктуальны, аккуратны. Иногда уходите в формализм и перфекционизм.',
+   stress:'Высокая ответственность, перфекционизм и сомнения в своих силах.'},
+  {key:'exc',   name:'Возбудимая', mult:3, yes:[8,20,30,42,52,64,74,86], no:[],
+   desc:'Обычно реагируете неторопливо, но в сильном возбуждении можете вспылить и стать резким.',
+   stress:'Вспышки эмоций, с которыми трудно справиться. Быстро накатывают и так же быстро проходят.'},
+  {key:'hyper', name:'Гипертимическая', mult:3, yes:[1,11,23,33,45,55,67,77], no:[],
+   desc:'Оптимист: энергичны, общительны, полны инициативы и хотите вести за собой. Иногда — легкомыслие и конфликтность.',
+   stress:'Жёсткие рамки, монотонная работа, невозможность проявить инициативу и более сильный лидер рядом.'},
+  {key:'dist',  name:'Дистимическая', mult:3, yes:[9,21,43,75,87], no:[31,53,65],
+   desc:'Серьёзны и немногословны, склонны к пессимизму и замкнутости. Мыслите неспешно, самооценка часто занижена.',
+   stress:'Ситуации, где нужны быстрые решения и бурная активность, и резкие перемены в жизни.'},
+  {key:'anx',   name:'Тревожная', mult:3, yes:[16,27,38,49,60,71,82], no:[5],
+   desc:'Осторожны и неуверенны в себе, склонны тревожиться и робеть. Часто сомневаетесь в своей ценности.',
+   stress:'Общение с людьми, насмешки и сравнение себя с другими.'},
+  {key:'cycl',  name:'Циклоидная', mult:3, yes:[6,18,28,40,50,62,72,84], no:[],
+   desc:'Настроение часто меняется, иногда без причины, и от него зависит, как вы общаетесь и ведёте себя.',
+   stress:'Мелочи, которые резко меняют настроение.'},
+  {key:'exalt', name:'Экзальтированная', mult:6, yes:[10,32,54,76], no:[],
+   desc:'Мечтатель, немного живёте в своём мире. Приветливы, разговорчивы, дружелюбны, избегаете конфликтов.',
+   stress:'Расхождение между реальностью и вашими ожиданиями от мира.'},
+  {key:'emo',   name:'Эмотивная', mult:3, yes:[3,13,35,47,57,69,79], no:[25],
+   desc:'Очень чувствительны и глубоко переживаете неприятности. Комфортнее всего с близкими; умеете сопереживать.',
+   stress:'Острая реакция на чужое мнение, открытость эмоциям и чужой боли.'}
+];
+const LEONHARD_Q = [
+'У вас чаще весёлое и беззаботное настроение?',
+'Вы чувствительны к оскорблениям?',
+'Бывает ли так, что вам на глаза навертываются слёзы в кино, театре, беседе и так далее?',
+'Сделав что-то, вы сомневаетесь, всё ли сделано правильно, и не успокаиваетесь до тех пор, пока не убедитесь в том, что всё сделано правильно?',
+'Считаете ли вы себя более смелым, чем в детском возрасте?',
+'Часто ли у вас резко меняется настроение от состояния безграничного ликования до отвращения к жизни, к себе?',
+'Являетесь ли вы обычно центром внимания в обществе, компании?',
+'Бывает ли так, что вы беспричинно находитесь в таком ворчливом, угрюмом состоянии, что с вами лучше не разговаривать?',
+'Вы серьёзный человек?',
+'Способны ли вы восторгаться, восхищаться чем-нибудь?',
+'Предприимчивы ли вы?',
+'Вы быстро забываете, если вас кто-либо обидит?',
+'Мягкосердечны ли вы?',
+'Опуская письмо в почтовый ящик, проверяете ли вы, проводя рукой по щели ящика, что письмо полностью упало в него?',
+'Всегда ли вы стараетесь быть добросовестным в работе?',
+'Бывало ли вам страшно в детстве во время грозы или при встрече с незнакомой собакой?',
+'Стремитесь ли вы во всём и всюду соблюдать порядок?',
+'Зависит ли ваше настроение от внешних обстоятельств?',
+'Любят ли вас ваши знакомые?',
+'Часто ли у вас бывает чувство внутреннего беспокойства, ощущение возможной беды, неприятности?',
+'Часто ли ваше настроение бывает подавленным?',
+'Бывали ли у вас хотя бы раз истерика или нервный срыв?',
+'Трудно ли вам долго усидеть на одном месте?',
+'Если по отношению к вам несправедливо поступили, энергично ли вы отстаиваете свои интересы?',
+'Можете ли вы зарезать курицу или овцу?',
+'Раздражает ли вас, если дома занавеска или скатерть висят неровно, и вы сразу же стараетесь поправить их?',
+'Вы в детстве боялись оставаться одни в доме?',
+'Часто ли у вас бывают колебания настроения без причины?',
+'Всегда ли вы старательно относитесь к своей деятельности?',
+'Быстро ли вы начинаете сердиться и впадать в гнев?',
+'Можете ли вы быть абсолютно беззаботно весёлым?',
+'Бывает ли так, что ощущение полного счастья буквально пронизывает вас?',
+'Как вы думаете, получился бы из вас ведущий увеселительного мероприятия, тамада?',
+'Вы обычно высказываете своё мнение людям достаточно откровенно, прямо и недвусмысленно?',
+'Вам трудно переносить вид крови?',
+'Любите ли вы работу с высокой личной ответственностью?',
+'Склонны ли вы вступиться за человека, с которым поступили несправедливо?',
+'Трудно ли вам входить/спускаться в тёмный подвал?',
+'Выполняете ли вы кропотливую работу так же медленно и тщательно, как и любимое вами дело?',
+'Общительны ли вы?',
+'В школе вы охотно декламировали стихи?',
+'Убегали ли вы в детстве из дома?',
+'Кажется ли вам жизнь трудной?',
+'Бывает ли так, что после конфликта, обиды вы были до того расстроены, что идти на работу казалось просто невыносимым?',
+'Можно ли сказать, что при неудаче вы не теряете чувства юмора?',
+'Предприняли бы вы первые шаги к примирению, если бы вас кто-либо обидел?',
+'Любите ли вы животных?',
+'Уйдёте ли вы с работы или из дома, если у вас там что-то не в порядке?',
+'Преследует ли вас иногда неясная мысль, что с вами или вашими близкими может случиться что-то страшное?',
+'Считаете ли вы, что ваше настроение очень изменчиво?',
+'Трудно ли вам докладывать (выступать на сцене) перед большим количеством людей?',
+'Вы можете ударить обидчика, если он вас оскорбит?',
+'У вас велика потребность в общении с другими людьми?',
+'Если вы будете чем-либо разочарованы, то придёте в отчаяние?',
+'Вам нравится работа, требующая энергичной организаторской деятельности?',
+'Настойчиво ли вы добиваетесь намеченной цели, если на пути к ней приходится преодолевать массу препятствий?',
+'Может ли трагический фильм взволновать вас так, что на глазах выступают слёзы?',
+'Часто ли вам бывает трудно уснуть из-за того, что проблемы прожитого дня или будущего всё время крутятся в ваших мыслях?',
+'В школе вы иногда подсказывали своим товарищам или давали списывать?',
+'Трудно ли вам ночью пойти через кладбище?',
+'Следите ли вы, чтобы каждая вещь в вашей квартире была только на своём месте?',
+'Приходилось ли вам лечь спать в хорошем настроении, а проснуться в удручённом и несколько часов оставаться в нём?',
+'Легко ли вы привыкаете к новым ситуациям?',
+'Бывают ли у вас головные боли?',
+'Вы часто смеётесь?',
+'Можете ли вы быть приветливыми даже с тем, кого явно не цените, не любите, не уважаете?',
+'Вы подвижный человек?',
+'Вы очень переживаете из-за несправедливости?',
+'Можно ли вас назвать страстным любителем природы?',
+'Уходя из дома или ложась спать, проверяете ли вы, закрыт ли газ, погашен ли свет, заперты ли двери?',
+'Вы очень боязливы?',
+'Изменяется ли ваше настроение при приёме алкоголя?',
+'В вашей молодости вы охотно участвовали в кружке художественной самодеятельности?',
+'Часто ли вас тянет путешествовать?',
+'Вы расцениваете жизнь несколько пессимистически, без ожидания радости?',
+'Может ли ваше настроение измениться так резко, что ваше состояние радости вдруг сменяется угрюмым и подавленным?',
+'Легко ли вам удаётся поднять настроение друзей в компании?',
+'Долго ли вы переживаете обиду?',
+'Переживаете ли вы долгое время горести других людей?',
+'Была ли у вас в школе привычка переписывать лист в тетради, если случайно сделали помарку, ошибку?',
+'Относитесь ли вы к людям скорее с недоверием и осторожностью, чем с доверчивостью?',
+'Часто ли вы видите страшные сны?',
+'Возникали ли у вас мысли против воли броситься из окна или под приближающийся поезд?',
+'Вы обычно веселы в весёлой компании?',
+'Способны ли вы отвлечься от трудных проблем, требующих решения?',
+'Вы становитесь менее сдержанным и чувствуете себя более свободно, приняв алкоголь?',
+'В беседе вы скудны на слова, предпочитаете молчать?',
+'Если вам необходимо было бы играть на сцене, вы смогли бы войти в роль, чтобы позабыть о том, что это только игра?'
+];
+
+/* ---------- 2.4 Холланд + Климов ---------- */
+const HOLLAND_SCALES = [
+  {key:'Р', name:'Реалистический', color:'var(--chart-1)',
+   desc:'Вы человек дела: любите работу, где нужны сила, ловкость и координация. Больше делаете, чем говорите; настойчивы и уверены в себе.',
+   near:['И','О'], far:'С'},
+  {key:'И', name:'Интеллектуальный', color:'var(--chart-2)',
+   desc:'Любите анализировать и думаете самостоятельно, часто нестандартно. Вас тянет к науке и исследованиям.',
+   near:['Р','А'], far:'П'},
+  {key:'С', name:'Социальный', color:'var(--chart-3)',
+   desc:'Важно помогать людям: учить, лечить, консультировать, обслуживать. Отзывчивы и хорошо чувствуете чужие эмоции.',
+   near:['А','П'], far:'Р'},
+  {key:'О', name:'Офисный', color:'var(--chart-4)',
+   desc:'Любите наводить порядок в информации: цифрах, текстах, документах. Аккуратны, пунктуальны, цените чёткие правила.',
+   near:['Р','П'], far:'А'},
+  {key:'П', name:'Предпринимательский', color:'var(--chart-5)',
+   desc:'Находчивы, быстро ориентируетесь и готовы рисковать. Любите сами принимать решения и ставить высокие цели.',
+   near:['О','С'], far:'И'},
+  {key:'А', name:'Артистический', color:'var(--chart-6)',
+   desc:'Оригинальны, эмоциональны и гибки в мышлении. Жёсткие рамки вам не подходят, вы цените свободный график.',
+   near:['И','С'], far:'О'}
+];
+const HOLLAND_PAIRS = [
+  [{n:'Автомеханик',c:'Р'},{n:'Физиотерапевт',c:'С'}],
+  [{n:'Специалист по защите информации',c:'И'},{n:'Логистик',c:'П'}],
+  [{n:'Оператор связи',c:'О'},{n:'Кинооператор',c:'А'}],
+  [{n:'Водитель',c:'Р'},{n:'Продавец',c:'С'}],
+  [{n:'Инженер-конструктор',c:'И'},{n:'Менеджер по продажам',c:'П'}],
+  [{n:'Диспетчер',c:'О'},{n:'Дизайнер компьютерных программ',c:'А'}],
+  [{n:'Ветеринар',c:'Р'},{n:'Эколог',c:'С'}],
+  [{n:'Биолог-исследователь',c:'И'},{n:'Фермер',c:'П'}],
+  [{n:'Лаборант',c:'О'},{n:'Дрессировщик',c:'А'}],
+  [{n:'Агроном',c:'Р'},{n:'Санитарный врач',c:'С'}],
+  [{n:'Селекционер',c:'И'},{n:'Заготовитель сельхозпродуктов',c:'П'}],
+  [{n:'Микробиолог',c:'О'},{n:'Ландшафтный дизайнер',c:'А'}],
+  [{n:'Массажист',c:'Р'},{n:'Воспитатель',c:'С'}],
+  [{n:'Преподаватель',c:'И'},{n:'Предприниматель',c:'П'}],
+  [{n:'Администратор',c:'О'},{n:'Режиссёр театра и кино',c:'А'}],
+  [{n:'Официант',c:'Р'},{n:'Врач',c:'С'}],
+  [{n:'Психолог',c:'И'},{n:'Торговый агент',c:'П'}],
+  [{n:'Страховой агент',c:'О'},{n:'Хореограф',c:'А'}],
+  [{n:'Ювелир-гравёр',c:'Р'},{n:'Журналист',c:'С'}],
+  [{n:'Искусствовед',c:'И'},{n:'Продюсер',c:'П'}],
+  [{n:'Редактор',c:'О'},{n:'Музыкант',c:'А'}],
+  [{n:'Дизайнер интерьера',c:'Р'},{n:'Экскурсовод',c:'С'}],
+  [{n:'Композитор',c:'И'},{n:'Арт-директор',c:'П'}],
+  [{n:'Музейный работник',c:'О'},{n:'Актёр театра и кино',c:'А'}],
+  [{n:'Верстальщик',c:'Р'},{n:'Гид-переводчик',c:'С'}],
+  [{n:'Лингвист',c:'И'},{n:'Антикризисный управляющий',c:'П'}],
+  [{n:'Корректор',c:'О'},{n:'Художественный редактор',c:'А'}],
+  [{n:'Наборщик текстов',c:'Р'},{n:'Юрисконсульт',c:'С'}],
+  [{n:'Программист',c:'И'},{n:'Брокер',c:'П'}],
+  [{n:'Бухгалтер',c:'О'},{n:'Литературный переводчик',c:'А'}]
+];
+
+/* ---------- 2.5 Матрица выбора профессии ---------- */
+const M_OBJECTS = ['Человек','Информация','Финансы','Техника','Искусство','Животные и растения','Изделия и продукты','Природные ресурсы'];
+const M_ACTS = ['Управление','Обслуживание','Обучение и воспитание','Производство и добыча','Конструирование','Исследование','Защита','Контроль и оценка'];
+const MATRIX = {
+  'Управление':{
+    'Человек':['Администратор','Менеджер по персоналу','Секретарь'],
+    'Информация':['Системный администратор','Маркетолог','Диспетчер'],
+    'Финансы':['Консультант','Финансист','Экономист'],
+    'Техника':['Водитель','Штурман авиации','Машинист','Техник'],
+    'Искусство':['Режиссёр театра и кино','Дирижёр','Балетмейстер','Продюсер'],
+    'Животные и растения':['Зооинженер','Фермер','Дрессировщик','Почвовед'],
+    'Изделия и продукты':['Менеджер по продажам','Товаровед','Логистик','Мерчендайзер'],
+    'Природные ресурсы':['Инженер по кадастру','Геодезист','Техник-энергетик']},
+  'Обслуживание':{
+    'Человек':['Продавец','Менеджер по туризму','Социальный работник','Медицинский работник'],
+    'Информация':['Оператор связи','Информатик','Гид-переводчик','Менеджер по рекламе'],
+    'Финансы':['Инкассатор','Бухгалтер','Брокер','Кассир'],
+    'Техника':['Электромонтёр','Слесарь','Инженер','Автомеханик'],
+    'Искусство':['Дизайнер','Кино-звукооператор','Парикмахер','Экскурсовод'],
+    'Животные и растения':['Агрохимик','Зоотехник','Животновод','Растениевод'],
+    'Изделия и продукты':['Продавец','Экспедитор','Товаровед'],
+    'Природные ресурсы':['Мелиоратор','Эколог','Техник-озеленитель']},
+  'Обучение и воспитание':{
+    'Человек':['Воспитатель','Тренер','Педагог-психолог','Преподаватель'],
+    'Информация':['Филолог','Лингвист','Преподаватель информатики'],
+    'Финансы':['Преподаватель экономики','Консультант по управлению'],
+    'Техника':['Мастер производственного обучения','Инструктор по вождению автотранспорта'],
+    'Искусство':['Учитель музыки','Учитель живописи','Руководитель художественной студии'],
+    'Животные и растения':['Тренер лошадей','Жокей','Кинолог','Преподаватель биологии'],
+    'Изделия и продукты':['Преподаватель спецпредметов','Мастер производственного обучения'],
+    'Природные ресурсы':['Преподаватель географии','Эколог']},
+  'Производство и добыча':{
+    'Человек':[],
+    'Информация':['Программист','Веб-дизайнер','Верстальщик текстов','Кинооператор'],
+    'Финансы':['Финансист','Экономист','Бухгалтер','Кассир'],
+    'Техника':['Строитель','Электрик','Слесарь','Электрогазосварщик','Фрезеровщик','Токарь','Станочник'],
+    'Искусство':['Кино-звукооператор','Ювелир','Резчик по дереву','Вышивальщица'],
+    'Животные и растения':['Агроном','Зооинженер','Селекционер','Животновод','Растениевод'],
+    'Изделия и продукты':['Провизор','Инженер-технолог','Повар','Слесарь','Токарь','Швея'],
+    'Природные ресурсы':['Горный инженер','Гидролог','Гидрогеолог','Мастер леса','Горнорабочий']},
+  'Конструирование':{
+    'Человек':['Имиджмейкер','Генетик','Пластический хирург'],
+    'Информация':['Переводчик','Корреспондент','Журналист','Веб-дизайнер','Картограф','Программист'],
+    'Финансы':['Аналитик','Экономист','Финансист','Калькулятор'],
+    'Техника':['Инженер-конструктор','Инженер-рационализатор','Автомеханик','Теле-радиомастер'],
+    'Искусство':['Композитор','Режиссёр','Дизайнер','Модельер','Артист','Художник','Музыкант'],
+    'Животные и растения':['Архитектор ландшафта','Селекционер','Флорист','Семеновод','Агротехник','Зоолаборант'],
+    'Изделия и продукты':['Архитектор-градостроитель','Инженер-технолог','Модельер-конструктор','Закройщик','Монтажник'],
+    'Природные ресурсы':['Горный инженер','Архитектор ландшафта','Инженер-гидролог','Техник-озеленитель']},
+  'Исследование':{
+    'Человек':['Психолог','Физиолог','Социолог','Следователь','Лаборант'],
+    'Информация':['Социолог','Математик','Историк','Маркетолог','Статистик','Аналитик'],
+    'Финансы':['Аудитор','Экономист','Аналитик'],
+    'Техника':['Инженер-технолог','Инженер-математик','Испытатель','Хронометражист','Метролог'],
+    'Искусство':['Киновед','Искусствовед','Литературовед','Культуролог'],
+    'Животные и растения':['Биолог','Микробиолог','Зоопсихолог','Зооинженер','Агротехник','Лаборант-эколог'],
+    'Изделия и продукты':['Санитарный врач','Лаборант','Товаровед','Технолог','Дегустатор'],
+    'Природные ресурсы':['Почвовед','Метеоролог','Геолог','Техник-гидрогеолог']},
+  'Защита':{
+    'Человек':['Адвокат','Военный','Врач','Милиционер','Спасатель'],
+    'Информация':['Программист','Нотариус','Документовед','Патентовед'],
+    'Финансы':['Страховой агент','Антикризисный управляющий','Юрисконсульт','Инкассатор'],
+    'Техника':['Инспектор по ТБ','Взрывотехник','Испытатель','Пожарный','Водолаз'],
+    'Искусство':['Каскадёр','Постановщик трюков','Архитектор-реставратор','Художник-реставратор','Музейный работник'],
+    'Животные и растения':['Егерь','Лесничий','Ветеринар','Инспектор по охране природы'],
+    'Изделия и продукты':['Таможенник','Врач-эпидемиолог','Врач-диетолог','Лаборант'],
+    'Природные ресурсы':['Инспектор по охране природы','Мелиоратор','Эколог','Метеоролог']},
+  'Контроль и оценка':{
+    'Человек':['Прокурор','Врач-эпидемиолог','Ревизор автотранспорта'],
+    'Информация':['Программист','Редактор','Корректор','Оператор'],
+    'Финансы':['Аудитор','Бухгалтер-ревизор','Контролёр','Налоговый инспектор'],
+    'Техника':['Инженер-технолог','Инспектор по ТБ','Контролёр','Аппаратчик','Инспектор ГАИ'],
+    'Искусство':['Редактор','Критик','Музейный работник','Оценщик','Эксперт'],
+    'Животные и растения':['Зооинженер','Агроном','Охотовед','Агротехник','Зоолаборант'],
+    'Изделия и продукты':['Санинспектор','Контролёр','Риэлтор','Метролог','Таможенник'],
+    'Природные ресурсы':['Радиолог','Эколог','Метеоролог']}
+};
+
+/* ---------- 2.6 Мотивы деятельности ---------- */
+const MOTIVES = [
+  'Возможность получить известность, прославиться',
+  'Возможность продолжать семейные традиции',
+  'Возможность продолжать учёбу со своими товарищами',
+  'Возможность служить людям',
+  'Заработок',
+  'Значение для экономики страны, общественное и государственное значение профессии',
+  'Лёгкость поступления на работу',
+  'Перспективность работы',
+  'Позволяет проявить свои способности',
+  'Позволяет общаться с людьми',
+  'Обогащает знаниями',
+  'Разнообразная по содержанию работа',
+  'Романтичность, благородство профессии',
+  'Творческий характер труда, возможность делать открытия',
+  'Трудная, сложная профессия',
+  'Чистая, лёгкая, спокойная работа'
+];
+
+
+/* ============================================================
+   3. МЕТОДИКИ: ОПИСАНИЕ И АЛГОРИТМЫ ПОДСЧЁТА
+   ============================================================ */
+const topGroup = scales => scales.filter(s => s.value === scales[0].value);
+const lc = s => s.toLowerCase();
+
+const TESTS = [
+  {
+    id:'thinking', icon:'brain', kind:'binary',
+    title:'Тип мышления',
+    meta:'40 вопросов · по Г. Резапкиной',
+    brief:'Каким мышлением вы пользуетесь чаще всего.',
+    yesLabel:'Согласен', noLabel:'Не согласен',
+    questions: THINKING_Q.map(([t,s]) => ({text:t, scale:s})),
+    scales: THINKING_SCALES,
+    compute(a){
+      const counts = {}; this.scales.forEach(s => counts[s.key] = 0);
+      this.questions.forEach((q,i) => { if(a[i] === 'yes') counts[q.scale]++; });
+      const scales = this.scales.map(s => {
+        const v = counts[s.key];
+        return {...s, value:v, max:8,
+          level: v <= 2 ? 'низкий' : v <= 5 ? 'средний' : 'высокий',
+          levelClass: v <= 2 ? 'badge-muted' : v <= 5 ? 'badge-warning' : 'badge-success'};
+      }).sort((x,y) => y.value - x.value);
+      if(scales[0].value === 0){
+        return {scales, lead:{name:'Не определён', value:0, level:'нет данных'},
+          summary:'<p>Вы ни с чем не согласились, поэтому тип не определить. Пройдите заново и отвечайте как есть.</p>'};
+      }
+      const top = topGroup(scales);
+      const lead = {name: top.map(s => s.name).join(' + '), value: top[0].value, level: top[0].level};
+      const intro = top.length > 1
+        ? `<p>Поровну выражены несколько типов (по ${top[0].value} из 8): <b>${esc(top.map(s => lc(s.name)).join(', '))}</b>.</p>`
+        : `<p>Сильнее всего выражено: <b>${esc(lc(top[0].name))}</b> — ${top[0].value} из 8, ${esc(top[0].level)} уровень.</p>`;
+      const descs = top.map(s => `<p>${top.length > 1 ? `<b>${esc(s.name)}.</b> ` : ''}${esc(THINKING_DESC[s.key])}</p>`).join('');
+      return {
+        scales, lead,
+        summary: intro + descs +
+          `<p class="muted small">Чистых типов почти не бывает: в большинстве профессий нужен набор. Сравните результат с тем, что выбираете. Но важнее всего — интерес и способности к самому делу.</p>`
+      };
+    }
+  },
+  {
+    id:'interests', icon:'compass', kind:'choice',
+    title:'Профессиональные склонности',
+    meta:'24 вопроса · по Л. Йовайши',
+    brief:'К чему вас тянет: люди, наука, практика, творчество, риск или расчёты.',
+    questions: INTEREST_Q.map(q => ({text:q.t, options:q.o})),
+    scales: INTEREST_SCALES,
+    compute(a){
+      const counts = {}; this.scales.forEach(s => counts[s.key] = 0);
+      this.questions.forEach((q,i) => {
+        const opt = q.options[a[i]];
+        if(opt) counts[opt.m]++;
+      });
+      const scales = this.scales.map(s => {
+        const v = counts[s.key];
+        return {...s, value:v, max:12,
+          level: v >= 10 ? 'ярко выраженная' : v >= 7 ? 'выраженная' : v >= 4 ? 'слабая' : 'не выражена',
+          levelClass: v >= 10 ? 'badge-success' : v >= 7 ? 'badge-primary' : v >= 4 ? 'badge-warning' : 'badge-muted'};
+      }).sort((x,y) => y.value - x.value);
+      const top = topGroup(scales);
+      const lead = {name: top.map(s => s.name).join(' + '), value: top[0].value, level: top[0].level};
+      const rest = scales.filter(s => !top.includes(s));
+      const second = rest[0];
+      const intro = top.length > 1
+        ? `<p>Поровну выбирали несколько направлений (по ${top[0].value} из 12): <b>${esc(top.map(s => s.name).join('; '))}</b>.</p>`
+        : `<p>Чаще всего вы выбирали: <b>${esc(top[0].name)}</b> — ${top[0].value} из 12, ${esc(top[0].level)}.</p>`;
+      const descs = top.map(s => `<p>${top.length > 1 ? `<b>${esc(s.name)}.</b> ` : ''}${esc(INTEREST_DESC[s.key])}</p>`).join('');
+      return {
+        scales, lead,
+        summary: intro + descs +
+          (second && second.value >= 4 ? `<p class="muted small">Следом идёт: <b>${esc(second.name)}</b> (${second.value}).</p>` : '') +
+          `<p class="muted small">10–12 — ярко выражена; 7–9 — выражена; 4–6 — слабая; 0–3 — не выражена.</p>`
+      };
+    }
+  },
+  {
+    id:'leonhard', icon:'drama', kind:'binary',
+    title:'Тип личности (акцентуации)',
+    meta:'88 вопросов · К. Леонгард',
+    brief:'Какие черты характера у вас ярче и что выматывает.',
+    yesLabel:'Да', noLabel:'Нет',
+    questions: LEONHARD_Q.map(t => ({text:t})),
+    compute(a){
+      const palette = ['var(--chart-1)','var(--chart-2)','var(--chart-3)','var(--chart-4)','var(--chart-5)',
+                       'var(--chart-6)','var(--chart-7)','var(--chart-8)','var(--chart-9)','var(--chart-10)'];
+      const scales = LEONHARD_TYPES.map(t => {
+        let hits = 0;
+        t.yes.forEach(n => { if(a[n-1] === 'yes') hits++; });
+        t.no.forEach(n => { if(a[n-1] === 'no') hits++; });
+        const v = hits * t.mult;
+        return {key:t.key, name:t.name, value:v, max:24,
+          level: v <= 12 ? 'не выражена' : v <= 18 ? 'тенденция' : 'акцентуация',
+          levelClass: v <= 12 ? 'badge-muted' : v <= 18 ? 'badge-warning' : 'badge-success',
+          desc:t.desc, stress:t.stress};
+      }).sort((x,y) => y.value - x.value);
+      scales.forEach((s,i) => s.color = palette[i % palette.length]);
+
+      const marked = scales.filter(s => s.value >= 13).slice(0, 3);
+      const lead = marked.length
+        ? {name: marked.map(s => s.name).join(' + '), value: marked[0].value, level: marked[0].level}
+        : {name:'Выраженных акцентуаций нет', value: scales[0].value, level:'не выражена'};
+
+      const blocks = (marked.length ? marked : [scales[0]]).map(s => `
+        <div class="accent-block">
+          <b>${esc(s.name)}</b> — ${s.value} из 24, ${esc(s.level)}
+          <p>${esc(s.desc)}</p>
+          <p><b>Что выматывает:</b> ${esc(s.stress)}</p>
+        </div>`).join('');
+      const intro = marked.length
+        ? `<p>Ярче всего проявились эти типы (не больше трёх):</p>`
+        : `<p>Ни один тип не дошёл до отметки «тенденция» (13 баллов) — характер у вас довольно сбалансирован. Ниже самый высокий показатель.</p>`;
+      return {
+        scales, lead,
+        summary: intro + blocks +
+          `<p class="muted small" style="margin-top:12px">0–12 — не выражено; 13–18 — тенденция; 19–24 — акцентуация. Это яркая черта в пределах нормы, а не болезнь. Тест не заменяет консультацию психолога.</p>`
+      };
+    }
+  },
+  {
+    id:'holland', icon:'hexagon', kind:'pairs',
+    title:'Профессиональный тип личности',
+    meta:'30 пар профессий · Холланд и Климов',
+    brief:'Из каждой пары выберите профессию, которая нравится больше.',
+    questions: HOLLAND_PAIRS.map(([a,b]) => ({a, b})),
+    scales: HOLLAND_SCALES,
+    compute(a){
+      const counts = {}; this.scales.forEach(s => counts[s.key] = 0);
+      this.questions.forEach((q,i) => {
+        if(a[i] === 'a') counts[q.a.c]++;
+        else if(a[i] === 'b') counts[q.b.c]++;
+      });
+      const scales = this.scales.map(s => {
+        const v = counts[s.key];
+        return {...s, value:v, max:10,
+          level: v >= 8 ? 'ярко выражен' : v >= 5 ? 'средне выражен' : v >= 2 ? 'слабо выражен' : 'не выражен',
+          levelClass: v >= 8 ? 'badge-success' : v >= 5 ? 'badge-primary' : v >= 2 ? 'badge-warning' : 'badge-muted'};
+      }).sort((x,y) => y.value - x.value);
+      const top = topGroup(scales);
+      const lead = {name: top.map(s => s.name).join(' + '), value: top[0].value, level: top[0].level};
+      let body;
+      if(top.length === 1){
+        const t = top[0];
+        const nameOf = k => this.scales.find(s => s.key === k)?.name;
+        body = `<p>Ваш ведущий тип — <b>${esc(t.name)}</b>: ${t.value} из 10, ${esc(t.level)}.</p>
+                <p>${esc(t.desc)}</p>
+                <p class="small"><b>Близкие типы:</b> ${esc(t.near.map(nameOf).join(', '))}.<br><b>Противоположный:</b> ${esc(nameOf(t.far))} — такая работа будет даваться вам с большим напряжением.</p>`;
+      } else {
+        body = `<p>Поровну выражены несколько типов (по ${top[0].value} из 10): <b>${esc(top.map(s => s.name).join(', '))}</b>.</p>` +
+               top.map(s => `<p><b>${esc(s.name)}.</b> ${esc(s.desc)}</p>`).join('');
+      }
+      return {
+        scales, lead,
+        summary: body + `<p class="muted small">8–10 — ярко выражен; 5–7 — средне; 2–4 — слабо. Чистых типов почти не бывает, обычно есть один преобладающий.</p>`
+      };
+    }
+  },
+  {
+    id:'matrix', icon:'grid-3x3', kind:'matrix',
+    title:'Матрица выбора профессии',
+    meta:'64 сочетания · около 200 профессий',
+    brief:'Выберите, с чем и как хотите работать, — получите список профессий.'
+  },
+  {
+    id:'motives', icon:'trophy', kind:'tournament',
+    title:'Лучший мотив деятельности',
+    meta:'16 мотивов · выбор из пар',
+    brief:'Что для вас главное при выборе профессии.'
+  },
+  {
+    id:'calling', icon:'sparkles', kind:'reflection',
+    title:'Призвание',
+    meta:'упражнение на размышление',
+    brief:'Спокойно подумайте, что вас по-настоящему зовёт.'
+  }
+];
+const getTest = id => TESTS.find(t => t.id === id);
+const isQuestionTest = t => !!t && ['binary','choice','pairs'].includes(t.kind);
+const NOTE_LIMIT = 5000;
+
+/* ---- турнир мотивов ---- */
+function tournamentState(picks){
+  let cur = MOTIVES.map((_,i) => i);
+  let pi = 0, round = 1;
+  const totalRounds = Math.log2(MOTIVES.length);
+  while(cur.length > 1){
+    const pairs = [];
+    for(let i = 0; i < cur.length; i += 2) pairs.push([cur[i], cur[i+1]]);
+    const answeredInRound = picks.length - pi;
+    if(answeredInRound < pairs.length){
+      return {done:false, round, totalRounds, pairs, current: pairs[answeredInRound], index: answeredInRound};
+    }
+    cur = pairs.map((p,i) => picks[pi+i]);
+    pi += pairs.length; round++;
+  }
+  return {done:true, winner: cur[0]};
+}
+
+/* ---- подсчёты по ответам ---- */
+function countAnswers(test, a){
+  a = a || {};
+  if(test.kind === 'tournament') return (a.picks || []).length;
+  if(test.kind === 'matrix')     return (a.object && a.activity) ? 1 : 0;
+  if(test.kind === 'reflection') return (a.text || '').trim() ? 1 : 0;
+  return Object.values(a).filter(v => v !== undefined && v !== null).length;
+}
+function totalCount(test){
+  if(test.kind === 'tournament') return MOTIVES.length - 1;
+  if(isQuestionTest(test)) return test.questions.length;
+  return 1;
+}
+
+/* ---- очистка данных ---- */
+function sanitizeAnswers(test, raw){
+  raw = raw && typeof raw === 'object' ? raw : {};
+  const out = {};
+  switch(test.kind){
+    case 'binary':
+      test.questions.forEach((_,i) => { if(raw[i] === 'yes' || raw[i] === 'no') out[i] = raw[i]; });
+      return out;
+    case 'choice':
+      test.questions.forEach((q,i) => { const v = Number(raw[i]); if(raw[i] !== null && raw[i] !== undefined && raw[i] !== '' && Number.isInteger(v) && v >= 0 && v < q.options.length) out[i] = v; });
+      return out;
+    case 'pairs':
+      test.questions.forEach((_,i) => { if(raw[i] === 'a' || raw[i] === 'b') out[i] = raw[i]; });
+      return out;
+    case 'matrix':
+      if(M_OBJECTS.includes(raw.object))   out.object = raw.object;
+      if(M_ACTS.includes(raw.activity))    out.activity = raw.activity;
+      return out;
+    case 'tournament': {
+      const picks = [];
+      if(Array.isArray(raw.picks)){
+        for(const p of raw.picks){
+          const st = tournamentState(picks);
+          if(st.done || !st.current.includes(p)) break;
+          picks.push(p);
+        }
+      }
+      return {picks};
+    }
+    case 'reflection':
+      return {text: typeof raw.text === 'string' ? raw.text.trim().slice(0, NOTE_LIMIT) : ''};
+  }
+  return out;
+}
+function sanitizeResult(r){
+  if(!r || typeof r !== 'object') return null;
+  const t = getTest(r.testId);
+  if(!t) return null;
+  let src = r.answers;
+  if(t.kind === 'reflection' && !(src && typeof src.text === 'string')) src = {text: r.extra && r.extra.text};
+  const answers = sanitizeAnswers(t, src);
+  if(countAnswers(t, answers) < totalCount(t)) return null;
+  const d = new Date(r.date);
+  return {
+    id: typeof r.id === 'string' && /^[\w-]{1,40}$/.test(r.id) ? r.id : uid(),
+    testId: t.id,
+    date: isNaN(d) ? new Date().toISOString() : d.toISOString(),
+    answers
+  };
+}
+const defaultState = () => ({answers:{}, pos:{}, results:[], notes:{}, theme:'system', autoAdvance:true});
+function sanitizeState(p){
+  const s = defaultState();
+  if(!p || typeof p !== 'object') return s;
+  if(['light','dark','system'].includes(p.theme)) s.theme = p.theme;
+  if(typeof p.autoAdvance === 'boolean') s.autoAdvance = p.autoAdvance;
+  TESTS.forEach(t => {
+    if(p.answers && t.kind !== 'reflection' && p.answers[t.id]) s.answers[t.id] = sanitizeAnswers(t, p.answers[t.id]);
+    if(p.pos && Number.isInteger(p.pos[t.id]) && p.pos[t.id] >= 0) s.pos[t.id] = p.pos[t.id];
+    if(p.notes && typeof p.notes[t.id] === 'string') s.notes[t.id] = p.notes[t.id].slice(0, NOTE_LIMIT);
+  });
+  const seen = new Set();
+  (Array.isArray(p.results) ? p.results : []).slice(0, 500).forEach(r => {
+    const res = sanitizeResult(r);
+    if(res && !seen.has(res.id)){ seen.add(res.id); s.results.push(res); }
+  });
+  return s;
+}
+
+/* ============================================================
+   4. ХРАНИЛИЩЕ
+   ============================================================ */
+const STORE_KEY = 'proforient.v3';
+const OLD_KEYS = ['proforient.v2'];
+let storageOK = true;
+let S = loadState();
+
+function loadState(){
+  try{
+    let raw = localStorage.getItem(STORE_KEY);
+    if(!raw){
+      for(const k of OLD_KEYS){ raw = localStorage.getItem(k); if(raw) break; }
+    }
+    if(raw) return sanitizeState(JSON.parse(raw));
+  }catch(e){
+    storageOK = false;
+    console.warn('Не удалось прочитать сохранения', e);
+  }
+  return defaultState();
+}
+let saveTimer = null;
+function save(){
+  clearTimeout(saveTimer); saveTimer = null;
+  try{
+    localStorage.setItem(STORE_KEY, JSON.stringify(S));
+  }catch(e){
+    if(storageOK){ storageOK = false; render(); }
+    console.warn('Не удалось сохранить', e);
+  }
+}
+function saveSoon(){ clearTimeout(saveTimer); saveTimer = setTimeout(save, 300); }
+window.addEventListener('pagehide', () => { if(saveTimer) save(); });
+document.addEventListener('visibilitychange', () => { if(document.hidden && saveTimer) save(); });
+try{ localStorage.setItem('proforient.probe','1'); localStorage.removeItem('proforient.probe'); }catch(e){ storageOK = false; }
+
+const mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+const effectiveTheme = () => S.theme === 'system' ? (mq && mq.matches ? 'dark' : 'light') : S.theme;
+function applyTheme(){
+  const t = effectiveTheme();
+  document.documentElement.dataset.theme = t;
+  const m = $('meta[name="theme-color"]');
+  if(m) m.content = t === 'dark' ? '#09090b' : '#ffffff';
+}
+if(mq && mq.addEventListener) mq.addEventListener('change', () => { if(S.theme === 'system') applyTheme(); });
+
+/* ---- результаты ---- */
+const lastResult = testId => S.results.find(r => r.testId === testId);
+function stateAnswers(test){
+  if(test.kind === 'reflection') return {text: (S.notes[test.id] || '')};
+  return S.answers[test.id] || {};
+}
+const answeredCount = test => countAnswers(test, stateAnswers(test));
+const isComplete = test => answeredCount(test) >= totalCount(test);
+
+function ensureResult(test){
+  const answers = sanitizeAnswers(test, stateAnswers(test));
+  const last = lastResult(test.id);
+  if(last && JSON.stringify(last.answers) === JSON.stringify(answers)) return last;
+  const res = {id: uid(), testId: test.id, date: new Date().toISOString(), answers: JSON.parse(JSON.stringify(answers))};
+  S.results.unshift(res);
+  save();
+  return res;
+}
+function answersMatch(test, res){
+  return JSON.stringify(sanitizeAnswers(test, stateAnswers(test))) === JSON.stringify(res.answers);
+}
+function clearTestAnswers(test){
+  delete S.answers[test.id];
+  if(test.kind === 'reflection') delete S.notes[test.id];
+  S.pos[test.id] = 0;
+  save();
+}
+
+function analyze(test, answers){
+  if(test.kind === 'matrix'){
+    const profs = (MATRIX[answers.activity] && MATRIX[answers.activity][answers.object]) || [];
+    return {lead:{name:`${answers.activity} · ${answers.object}`}, professions:profs};
+  }
+  if(test.kind === 'tournament'){
+    const st = tournamentState(answers.picks || []);
+    const winner = st.done ? MOTIVES[st.winner] : '';
+    return {lead:{name:winner}, winner, picks:(answers.picks || []).map(i => MOTIVES[i])};
+  }
+  if(test.kind === 'reflection'){
+    return {lead:{name:'Рефлексивная заметка'}, text:answers.text || ''};
+  }
+  return test.compute(answers);
+}
+
+/* ============================================================
+   5. МАРШРУТИЗАЦИЯ И РЕНДЕР
+   ============================================================ */
+let route = {name:'home'};
+let pendingRoute = null;
+let advanceTimer = null;
+const clearAdvance = () => { clearTimeout(advanceTimer); advanceTimer = null; };
+
+function routeToHash(r){
+  switch(r.name){
+    case 'history':  return '#/history';
+    case 'settings': return '#/settings';
+    case 'test':     return `#/test/${r.id}`;
+    case 'result':   return `#/result/${r.id}` + (r.rid ? `/${r.rid}` : '');
+    default:         return '#/';
+  }
+}
+function hashToRoute(h){
+  const p = h.replace(/^#\/?/, '').split('/').filter(Boolean);
+  if(p[0] === 'history')  return {name:'history'};
+  if(p[0] === 'settings') return {name:'settings'};
+  if(p[0] === 'test' && getTest(p[1])) return {name:'test', id:p[1]};
+  if(p[0] === 'result' && getTest(p[1])) return {name:'result', id:p[1], rid:/^[\w-]{1,40}$/.test(p[2] || '') ? p[2] : null};
+  return {name:'home'};
+}
+function normalizeRoute(){
+  if(route.name === 'test'){
+    const t = getTest(route.id);
+    if(!t){ route = {name:'home'}; return; }
+    if(isQuestionTest(t)) route.q = clamp(route.q ?? S.pos[t.id] ?? 0, 0, t.questions.length - 1);
+  }
+  if(route.name === 'result'){
+    const t = getTest(route.id);
+    const res = t && (S.results.find(r => r.id === route.rid && r.testId === t.id) || lastResult(t.id));
+    if(!res){ route = {name:'home'}; return; }
+    route.rid = res.id;
+  }
+}
+function setRoute(r){
+  clearAdvance();
+  route = r;
+  normalizeRoute();
+  render({enter:true, focusMain:true});
+  window.scrollTo(0, 0);
+}
+function go(r){
+  clearAdvance();
+  const h = routeToHash(r);
+  const cur = location.hash || '#/';
+  if(cur === h || (h === '#/' && cur === '#')){ setRoute(r); return; }
+  pendingRoute = r;
+  try{ location.hash = h; }catch(e){ pendingRoute = null; setRoute(r); return; }
+  setTimeout(() => { if(pendingRoute){ const p = pendingRoute; pendingRoute = null; setRoute(p); } }, 60);
+}
+window.addEventListener('hashchange', () => {
+  const r = pendingRoute && routeToHash(pendingRoute) === location.hash ? pendingRoute : hashToRoute(location.hash);
+  pendingRoute = null;
+  setRoute(r);
+});
+function setQ(test, i){
+  route.q = clamp(i, 0, test.questions.length - 1);
+  S.pos[test.id] = route.q;
+  save();
+}
+
+function titleFor(){
+  const base = 'Профориентация';
+  if(route.name === 'test' || route.name === 'result'){
+    const t = getTest(route.id);
+    if(t) return `${t.title}${route.name === 'result' ? ' — результат' : ''} · ${base}`;
+  }
+  if(route.name === 'history')  return `Результаты · ${base}`;
+  if(route.name === 'settings') return `Настройки · ${base}`;
+  return `${base} — диагностический комплекс`;
+}
+
+/* ---- диалоги и уведомления ---- */
+function confirmDialog(msg, okLabel = 'Подтвердить', danger = false){
+  const d = $('#dlg');
+  if(!d || typeof d.showModal !== 'function') return Promise.resolve(window.confirm(msg));
+  $('#dlg-msg').textContent = msg;
+  const ok = $('#dlg-ok');
+  ok.textContent = okLabel;
+  ok.className = 'btn ' + (danger ? 'btn-destructive' : 'btn-primary');
+  return new Promise(res => {
+    d.returnValue = '';
+    d.addEventListener('close', () => res(d.returnValue === 'ok'), {once:true});
+    d.showModal();
+  });
+}
+let toastTimer = null;
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ---- общие блоки ---- */
+function header(){
+  const n = S.results.length;
+  const cur = name => route.name === name ? ' aria-current="page"' : '';
+  const act = name => route.name === name ? 'active' : '';
+  const link = (name, icon, label, extra = '') =>
+    `<button class="nav-link ${act(name)}" data-action="${name}"${cur(name)} title="${label}" aria-label="${label}${extra ? ', ' + extra : ''}">${ico(icon)}<span class="nav-label">${label}</span>${extra ? `<span class="nav-count" aria-hidden="true">${extra}</span>` : ''}</button>`;
+  return `<header class="site-header no-print">
+    <div class="container header-inner">
+      <button class="brand" data-action="home" aria-label="Профориентация — на главную">
+        <span class="brand-mark" aria-hidden="true">П</span><span>Профориентация</span>
+      </button>
+      <nav class="nav" aria-label="Основная навигация">
+        ${link('history', 'clipboard-list', 'Результаты', n ? String(n) : '')}
+        ${link('settings', 'settings', 'Настройки')}
+      </nav>
+    </div>
+  </header>`;
+}
+function footer(){
+  return `<footer class="footer"><div class="container">
+    <span>Данные хранятся только в вашем браузере</span>
+    <span>Результаты — ориентир, а не приговор</span>
+  </div></footer>`;
+}
+function testHeader(test, extra = ''){
+  return `<div class="back-row no-print"><button class="btn btn-ghost btn-sm" data-action="home">${ico('arrow-left')} Все методики</button></div>
+  <div class="test-head">
+    <h1>${esc(test.title)}</h1>
+    ${extra}
+  </div>`;
+}
+function progressBar(done, total){
+  const p = pct(done, total);
+  return `<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="Прогресс"><div class="progress-bar" style="width:${p}%"></div></div>`;
+}
+
+/* ---------------- Главная ---------------- */
+function resultLeadLine(test, res){
+  try{ return analyze(test, res.answers).lead.name || ''; }catch(e){ return ''; }
+}
+function viewHome(){
+  const cards = TESTS.map(t => {
+    const done = answeredCount(t), total = totalCount(t);
+    const complete = done >= total;
+    const res = lastResult(t.id);
+    const started = done > 0;
+    const badge = complete ? `<span class="badge badge-success">пройден</span>`
+                : started  ? `<span class="badge badge-warning">в процессе</span>`
+                :            `<span class="badge">не начат</span>`;
+    const btn = complete ? `<button class="btn btn-outline btn-sm" data-action="open-result" data-id="${t.id}">${ico('eye')} Результат</button>
+                            <button class="btn btn-ghost btn-sm" data-action="restart" data-id="${t.id}">${ico('rotate-ccw')} Пройти снова</button>`
+              : started  ? `<button class="btn btn-primary btn-sm" data-action="open-test" data-id="${t.id}">${ico('play')} Продолжить</button>`
+              :            `<button class="btn btn-primary btn-sm" data-action="open-test" data-id="${t.id}">${ico('play')} Начать</button>`;
+    return `<div class="card test-card fade">
+      <div class="row-between">
+        <div class="tc-icon" aria-hidden="true">${ico(t.icon)}</div>
+        ${badge}
+      </div>
+      <div>
+        <h3>${esc(t.title)}</h3>
+        <div class="tc-meta">${esc(t.meta)}</div>
+      </div>
+      <div class="tc-body">${esc(t.brief)}</div>
+      ${started && !complete ? progressBar(done, total) : ''}
+      <div class="row">
+        ${btn}
+        ${res ? `<span class="tiny muted">${fmtDate(res.date)}</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const rows = TESTS.map(t => {
+    const r = lastResult(t.id);
+    if(!r || t.kind === 'reflection') return '';
+    const line = resultLeadLine(t, r);
+    if(!line) return '';
+    return `<div class="profile-row">
+      <span class="pr-icon" aria-hidden="true">${ico(t.icon)}</span>
+      <div class="pr-main"><div class="tiny muted">${esc(t.title)}</div><div class="small"><b>${esc(line)}</b></div></div>
+      <button class="btn btn-ghost btn-sm" data-action="open-result" data-id="${t.id}" data-rid="${r.id}">${ico('eye')} Подробнее</button>
+    </div>`;
+  }).join('');
+  const profile = rows ? `<div class="card fade" style="margin-top:24px"><div class="card-content">
+      <h2 style="font-size:15px;margin-bottom:6px">Ваш профиль</h2>
+      <p class="small muted" style="margin-bottom:8px">Главное из последних результатов. Если тесты сходятся — хороший знак.</p>
+      ${rows}
+    </div></div>` : '';
+
+  return `<section class="hero">
+      <h1>Какая профессия вам подойдёт?</h1>
+      <p>Семь коротких тестов про интересы, мышление и характер. Ответы сохраняются — можно вернуться в любой момент.</p>
+    </section>
+    <div class="grid-cards">${cards}</div>
+    ${profile}
+    <div class="card" style="margin-top:24px">
+      <div class="card-content">
+        <h2 style="font-size:14px">С чего начать</h2>
+        <p class="small muted" style="margin-top:8px">Начните со «Склонностей» и «Профессионального типа» — они шире всего. Потом уточните «Матрицей профессий» и «Типом мышления». Леонгард подскажет подходящие условия работы. Правильных ответов тут нет — отвечайте честно.</p>
+      </div>
+    </div>`;
+}
+
+/* ---------------- Тест: вопросы ---------------- */
+function optBtn(value, label, active, mark){
+  return `<button class="option" data-action="answer" data-value="${esc(value)}" aria-pressed="${active}">
+    <span class="kbd" aria-hidden="true">${mark}</span>
+    <span class="option-text">${esc(label)}</span>
+  </button>`;
+}
+function firstUnanswered(test){
+  const a = S.answers[test.id] || {};
+  for(let i = 0; i < test.questions.length; i++) if(a[i] === undefined || a[i] === null) return i;
+  return -1;
+}
+function viewQuestions(test){
+  const total = test.questions.length;
+  const qi = route.q;
+  const answers = S.answers[test.id] || {};
+  const done = countAnswers(test, answers);
+  const q = test.questions[qi];
+  const cur = answers[qi];
+  const complete = done >= total;
+
+  let optionsHTML = '';
+  if(test.kind === 'binary'){
+    optionsHTML = `<div class="options options-2" role="group" aria-label="Варианты ответа">
+      ${optBtn('yes', test.yesLabel, cur === 'yes', '1')}
+      ${optBtn('no',  test.noLabel,  cur === 'no',  '2')}
+    </div>`;
+  } else if(test.kind === 'choice'){
+    optionsHTML = `<div class="options" role="group" aria-label="Варианты ответа">` +
+      q.options.map((o,i) => optBtn(String(i), o.text, cur === i, String(i+1))).join('') + `</div>`;
+  } else if(test.kind === 'pairs'){
+    optionsHTML = `<div class="options options-2" role="group" aria-label="Выберите профессию">
+      ${optBtn('a', q.a.n, cur === 'a', '1')}
+      ${optBtn('b', q.b.n, cur === 'b', '2')}
+    </div>`;
+  }
+
+  const grid = route.showGrid ? `
+    <div class="card no-print" style="margin-bottom:18px">
+      <div class="card-content" style="padding:16px">
+        <div class="row-between">
+          <span class="small muted">Отвечено ${done} из ${total}. Закрашенные — с ответом.</span>
+          <button class="btn btn-ghost btn-sm" data-action="toggle-grid">${ico('chevron-up')} Свернуть</button>
+        </div>
+        <div class="qgrid">
+          ${test.questions.map((_,i) => {
+            const has = answers[i] !== undefined && answers[i] !== null;
+            const cls = ['qbtn'];
+            if(has) cls.push('answered');
+            if(i === qi) cls.push('current');
+            return `<button class="${cls.join(' ')}" data-action="goto" data-index="${i}" aria-label="Вопрос ${i+1}${has ? ', отвечен' : ''}"${i===qi?' aria-current="true"':''}>${i+1}</button>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>` : '';
+
+  const isLast = qi === total - 1;
+  let nextBtn;
+  if(!isLast)         nextBtn = `<button class="btn btn-primary" data-action="next">Далее ${ico('arrow-right')}</button>`;
+  else if(complete)   nextBtn = `<button class="btn btn-primary btn-lg" data-action="finish" data-id="${test.id}">${ico('check')} Показать результат</button>`;
+  else                nextBtn = `<button class="btn btn-primary" data-action="goto-missing">${ico('arrow-right')} К пропущенным (${total - done})</button>`;
+
+  const keys = test.kind === 'choice' ? '1 / 2 / 3' : '1 / 2';
+  return `${testHeader(test, `
+      ${lblBtn('btn-outline', `data-action="toggle-grid" aria-expanded="${!!route.showGrid}"`, route.showGrid ? 'Скрыть сетку' : 'Сетка вопросов', 'layout-grid')}
+      ${lblBtn('btn-ghost', `data-action="reset-test" data-id="${test.id}"`, 'Сбросить', 'rotate-ccw')}
+      ${complete && !isLast ? `<button class="btn btn-primary btn-sm" data-action="finish" data-id="${test.id}">${ico('eye')} Результат</button>` : ''}
+    `)}
+    <div class="q-progress">
+      <span class="q-counter">${qi+1} / ${total}</span>
+      ${progressBar(done, total)}
+      <span class="q-counter">${pct(done,total)}%</span>
+    </div>
+    ${grid}
+    <div class="card question-card fade" id="q-card" tabindex="-1">
+      <div class="q-num">Вопрос ${qi+1} из ${total}</div>
+      <div class="q-text">${esc(test.kind === 'pairs' ? 'Какая профессия вам ближе?' : q.text)}</div>
+      ${optionsHTML}
+    </div>
+    <div class="q-nav">
+      <button class="btn btn-outline" data-action="prev" ${qi===0?'disabled':''}>${ico('arrow-left')} Назад</button>
+      <div class="spacer"></div>
+      ${nextBtn}
+    </div>
+    <p class="hint no-print">Прогресс сохраняется сам.<span class="kbd-hint"> Клавиши: <b>${keys}</b> — ответ, <b>←</b> <b>→</b> — вопросы.</span></p>`;
+}
+
+function answerQuestion(test, raw){
+  if(route.name !== 'test' || route.id !== test.id || !isQuestionTest(test)) return;
+  clearAdvance();
+  const qi = route.q;
+  const stored = test.kind === 'choice' ? Number(raw) : raw;
+  if(!S.answers[test.id]) S.answers[test.id] = {};
+  S.answers[test.id][qi] = stored;
+  save();
+  render({focus:`[data-action="answer"][data-value="${raw}"]`});
+  if(S.autoAdvance && qi < test.questions.length - 1){
+    advanceTimer = setTimeout(() => {
+      if(route.name !== 'test' || route.id !== test.id || route.q !== qi) return;
+      setQ(test, qi + 1);
+      render({enter:true, focus:'#q-card'});
+    }, 260);
+  }
+}
+function moveQ(test, i){
+  clearAdvance();
+  setQ(test, i);
+  render({enter:true, focus:'#q-card'});
+}
+
+/* ---------------- Тест: матрица ---------------- */
+function viewMatrix(test){
+  const a = S.answers[test.id] || {};
+  const obj = a.object, act = a.activity;
+  const profs = (obj && act) ? (MATRIX[act][obj] || []) : null;
+
+  const chipObj = M_OBJECTS.map(o =>
+    `<button class="chip" data-action="matrix-obj" data-value="${esc(o)}" aria-pressed="${obj===o}">${esc(o)}</button>`).join('');
+  const chipAct = M_ACTS.map(v =>
+    `<button class="chip" data-action="matrix-act" data-value="${esc(v)}" aria-pressed="${act===v}">${esc(v)}</button>`).join('');
+
+  let resultHTML = '';
+  if(profs){
+    resultHTML = `<div class="matrix-result fade" aria-live="polite">
+      <div class="row-between">
+        <div>
+          <div class="eyebrow">Ваш выбор</div>
+          <h3 style="margin-top:4px">${esc(act)} · ${esc(obj)}</h3>
+        </div>
+        ${profs.length ? `<button class="btn btn-outline btn-sm" data-action="save-matrix" data-id="${test.id}">${ico('save')} Сохранить результат</button>` : ''}
+      </div>
+      ${profs.length
+        ? `<div class="prof-list">${profs.map(p => `<span class="prof">${esc(p)}</span>`).join('')}</div>`
+        : `<p class="small muted" style="margin-top:12px">Для этого сочетания профессий нет — попробуйте другое.</p>`}
+      <p class="small muted" style="margin-top:14px">Присмотритесь: почитайте, поговорите с практиками, попробуйте сами.</p>
+    </div>`;
+  }
+
+  const tableHTML = route.showTable ? `
+    <div style="margin-top:24px">
+      <div class="row-between" style="margin-bottom:10px">
+        <h3 style="font-size:14px">Полная матрица</h3>
+        <button class="btn btn-ghost btn-sm" data-action="toggle-table">${ico('eye-off')} Скрыть таблицу</button>
+      </div>
+      <div class="table-scroll">
+        <table class="matrix-table">
+          <thead><tr><th scope="col">Вид деятельности</th>${M_OBJECTS.map(o => `<th scope="col">${esc(o)}</th>`).join('')}</tr></thead>
+          <tbody>
+            ${M_ACTS.map(v => `<tr>
+              <th scope="row">${esc(v)}</th>
+              ${M_OBJECTS.map(o => {
+                const list = MATRIX[v][o] || [];
+                const hit = v === act && o === obj;
+                return `<td${hit ? ' class="hit"' : ''}>${list.length ? list.map(esc).join('<br>') : '<span class="muted">—</span>'}</td>`;
+              }).join('')}
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : '';
+
+  return `${testHeader(test, lblBtn('btn-outline', `data-action="toggle-table" aria-expanded="${!!route.showTable}"`, route.showTable ? 'Скрыть таблицу' : 'Вся таблица', 'table'))}
+    <p class="muted small" style="margin-bottom:22px">${esc(test.brief)} Два коротких вопроса — и список готов.</p>
+
+    <div class="card"><div class="card-content">
+      <div class="card-title">1. С кем или с чем хотите работать?</div>
+      <div class="card-desc">Объект труда</div>
+      <div class="chips" style="margin-top:14px">${chipObj}</div>
+    </div></div>
+
+    <div class="card" style="margin-top:14px"><div class="card-content">
+      <div class="card-title">2. Чем хотите заниматься?</div>
+      <div class="card-desc">Вид деятельности</div>
+      <div class="chips" style="margin-top:14px">${chipAct}</div>
+    </div></div>
+
+    ${resultHTML}
+    ${tableHTML}`;
+}
+
+/* ---------------- Тест: турнир мотивов ---------------- */
+function viewTournament(test){
+  const picks = (S.answers[test.id] && S.answers[test.id].picks) || [];
+  const state = tournamentState(picks);
+  const need = MOTIVES.length - 1;
+
+  let body;
+  if(state.done){
+    body = `<div class="card fade"><div class="card-content">
+      <div class="lead-box" style="background:var(--card);border-color:var(--primary)">
+        <div class="eyebrow">Главный мотив</div>
+        <h3 style="margin-top:6px;font-size:20px">${esc(MOTIVES[state.winner])}</h3>
+      </div>
+      <div class="result-block" style="margin-top:22px">
+        <h3>Ваши выборы по порядку</h3>
+        <ol class="small muted" style="padding-left:20px;margin:0">
+          ${picks.map(p => `<li style="margin-bottom:4px">${esc(MOTIVES[p])}</li>`).join('')}
+        </ol>
+      </div>
+      <p class="small muted" style="margin-top:18px">Даёт ли ваша профессия то, что для вас главное? Если нет — присмотритесь к другим.</p>
+      <div class="row no-print" style="margin-top:18px;flex-wrap:wrap">
+        <button class="btn btn-primary" data-action="save-tournament" data-id="${test.id}">${ico('save')} Сохранить результат</button>
+        <button class="btn btn-ghost" data-action="motive-back">${ico('arrow-left')} Изменить последний выбор</button>
+      </div>
+    </div></div>`;
+  } else {
+    const [ia, ib] = state.current;
+    body = `<div class="card question-card fade" id="q-card" tabindex="-1">
+      <div class="q-num">Раунд ${state.round} из ${state.totalRounds} · пара ${state.index+1} из ${state.pairs.length}</div>
+      <div class="q-text">Какой мотив для вас важнее?</div>
+      <div class="options" role="group" aria-label="Выберите мотив">
+        ${[ia, ib].map((idx, n) => `<button class="option" data-action="motive-pick" data-value="${idx}">
+          <span class="kbd" aria-hidden="true">${n+1}</span>
+          <span class="option-text">${esc(MOTIVES[idx])}</span>
+        </button>`).join('')}
+      </div>
+      <div class="row" style="margin-top:20px">
+        <button class="btn btn-ghost btn-sm" data-action="motive-back" ${picks.length===0?'disabled':''}>${ico('arrow-left')} Назад</button>
+        <span class="tiny muted" style="margin-left:auto">Выбрано пар: ${picks.length} из ${need}</span>
+      </div>
+    </div>`;
+  }
+
+  return `${testHeader(test, lblBtn('btn-ghost', `data-action="reset-test" data-id="${test.id}"`, 'Сбросить', 'rotate-ccw'))}
+    <div class="q-progress">
+      <span class="q-counter">${picks.length} / ${need}</span>
+      ${progressBar(picks.length, need)}
+      <span class="q-counter">${pct(picks.length, need)}%</span>
+    </div>
+    ${body}
+    <p class="hint no-print">Каждый выбор сужает круг, пока не останется один главный мотив.<span class="kbd-hint"> Клавиши <b>1</b>/<b>2</b> — выбор, <b>←</b> — отмена.</span></p>`;
+}
+
+/* ---------------- Тест: рефлексия ---------------- */
+function viewReflection(test){
+  const val = S.notes[test.id] || '';
+  return `${testHeader(test)}
+    <p class="muted small" style="margin-bottom:20px">${esc(test.brief)}</p>
+    <div class="card"><div class="card-content">
+      <div class="card-title">Подумайте над понятием «призвание»</div>
+      <div class="card-desc" style="margin-bottom:14px">Что для вас значит «призвание»? Как его найти и что вас зовёт?</div>
+      <div class="stack">
+        <div class="small muted">Представьте образ того, что зовёт именно вас:</div>
+        <ul class="small muted" style="margin:0;padding-left:20px">
+          <li>Где это находится?</li>
+          <li>На что или на кого это похоже?</li>
+          <li>Какое время года и суток?</li>
+          <li>Какие звуки и запахи вокруг?</li>
+          <li>Что вы чувствуете?</li>
+        </ul>
+      </div>
+      <label for="note" class="small" style="display:block;margin-top:16px;font-weight:500">Ваш образ</label>
+      <textarea id="note" data-note="${test.id}" maxlength="${NOTE_LIMIT}" placeholder="Опишите, что видите и чувствуете…" style="margin-top:6px">${esc(val)}</textarea>
+      <div class="row-between" style="margin-top:12px">
+        <span class="tiny muted" id="note-status">${val ? 'Сохранено автоматически' : 'Сохраняется автоматически'}</span>
+        <button class="btn btn-outline btn-sm" data-action="save-note" data-id="${test.id}">${ico('save')} Сохранить в результаты</button>
+      </div>
+    </div></div>`;
+}
+
+/* ---------------- Результат ---------------- */
+function resultBody(test, info){
+  if(test.kind === 'matrix'){
+    return `<div class="card"><div class="card-content">
+      <div class="lead-box">
+        <div class="eyebrow">Выбор</div>
+        <h3 style="margin-top:6px">${esc(info.lead.name)}</h3>
+      </div>
+      <div class="result-block" style="margin-top:20px">
+        <h3>Подходящие профессии</h3>
+        <div class="prof-list">${info.professions.map(p => `<span class="prof">${esc(p)}</span>`).join('') || '<span class="muted small">Профессии не указаны</span>'}</div>
+      </div>
+      <p class="small muted" style="margin-top:18px">Присмотритесь: почитайте, поговорите с практиками, попробуйте сами.</p>
+    </div></div>`;
+  }
+  if(test.kind === 'tournament'){
+    return `<div class="card"><div class="card-content">
+      <div class="lead-box">
+        <div class="eyebrow">Главный мотив</div>
+        <h3 style="margin-top:6px">${esc(info.winner)}</h3>
+      </div>
+      <div class="result-block" style="margin-top:20px">
+        <h3>Последовательность выбора</h3>
+        <ol class="small muted" style="padding-left:20px;margin:0">
+          ${info.picks.map(p => `<li style="margin-bottom:4px">${esc(p)}</li>`).join('')}
+        </ol>
+      </div>
+    </div></div>`;
+  }
+  if(test.kind === 'reflection'){
+    return `<div class="card"><div class="card-content">
+      <div class="result-block"><h3>Ваш текст</h3>
+        <p style="white-space:pre-wrap">${esc(info.text)}</p>
+      </div>
+    </div></div>`;
+  }
+  return `<div class="card"><div class="card-content">
+    <div class="lead-box">
+      <div class="eyebrow">Главное</div>
+      <h3 style="margin-top:6px">${esc(info.lead.name)}</h3>
+      <div class="row" style="margin-top:8px;flex-wrap:wrap">
+        <span class="badge badge-primary">${info.lead.value} ${plural(info.lead.value)}</span>
+        <span class="badge">${esc(info.lead.level)}</span>
+      </div>
+    </div>
+    <div class="result-block" style="margin-top:22px">
+      <h3>Профиль</h3>
+      ${info.scales.map(s => `
+        <div class="scale-row">
+          <div class="scale-head">
+            <span class="scale-name">${esc(s.name)}</span>
+            <span class="scale-val">${s.value} / ${s.max} · ${esc(s.level)}</span>
+          </div>
+          <div class="bar" role="img" aria-label="${esc(s.name)}: ${s.value} из ${s.max}"><i style="width:${pct(s.value, s.max)}%;background:${s.color || 'var(--chart-1)'}"></i></div>
+        </div>`).join('')}
+    </div>
+    <div class="result-block">
+      <h3>Что это значит</h3>
+      <div class="small">${info.summary}</div>
+    </div>
+  </div></div>`;
+}
+function plural(n){
+  const m10 = n % 10, m100 = n % 100;
+  if(m10 === 1 && m100 !== 11) return 'балл';
+  if(m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'балла';
+  return 'баллов';
+}
+function viewResult(){
+  const test = getTest(route.id);
+  const res = S.results.find(r => r.id === route.rid);
+  const info = analyze(test, res.answers);
+  return `${testHeader(test, `<span class="badge badge-muted">${fmtDate(res.date)}</span>`)}
+    ${resultBody(test, info)}
+    <div class="row no-print" style="margin-top:24px;flex-wrap:wrap">
+      ${test.kind === 'reflection' ? '' : `<button class="btn btn-primary" data-action="share" data-id="${test.id}" data-rid="${res.id}">${ico('share')} Поделиться</button>`}
+      <button class="btn btn-outline" data-action="restart" data-id="${test.id}">${ico('rotate-ccw')} Пройти заново</button>
+    </div>`;
+}
+
+/* ---------------- История ---------------- */
+function viewHistory(){
+  if(!S.results.length){
+    return `<h1 style="font-size:22px;margin-bottom:8px">Результаты</h1>
+      <div class="card"><div class="empty">
+        <div class="big" aria-hidden="true">${ico('clipboard-list')}</div>
+        <div>Пока пусто</div>
+        <p class="small" style="margin-top:8px">Пройдите любую методику до конца — результат появится здесь сам.</p>
+        <button class="btn btn-primary" data-action="home" style="margin-top:12px">${ico('layout-grid')} К методикам</button>
+      </div></div>`;
+  }
+  const items = S.results.map(r => {
+    const t = getTest(r.testId);
+    const info = analyze(t, r.answers);
+    const badge = info.lead.level ? `<span class="badge badge-muted">${info.lead.value} · ${esc(info.lead.level)}</span>` : '';
+    return `<div class="hist-item">
+      <div class="hi-icon" aria-hidden="true">${ico(t.icon)}</div>
+      <div class="hist-main">
+        <div class="row-between">
+          <div>
+            <div class="hist-title">${esc(t.title)}</div>
+            <div class="hist-meta">${fmtDate(r.date)}</div>
+          </div>
+          <div class="wrap" style="justify-content:flex-end">${badge}</div>
+        </div>
+        <div class="small" style="margin-top:8px">${esc(info.lead.name || '—')}</div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn btn-outline btn-sm" data-action="open-result" data-id="${r.testId}" data-rid="${r.id}">${ico('eye')} Подробнее</button>
+          <button class="btn btn-ghost btn-sm" data-action="delete-result" data-rid="${r.id}">${ico('trash-2')} Удалить</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="row-between" style="margin-bottom:18px">
+      <h1 style="font-size:22px">Результаты</h1>
+      <button class="btn btn-ghost btn-sm" data-action="clear-results">${ico('trash-2')} Очистить всё</button>
+    </div>
+    ${items}`;
+}
+
+/* ---------------- Настройки ---------------- */
+function viewSettings(){
+  const bytes = new Blob([JSON.stringify(S)]).size;
+  const themeBtn = (v, label) => `<button class="btn ${S.theme===v?'btn-primary':'btn-outline'}" data-action="set-theme" data-value="${v}" aria-pressed="${S.theme===v}">${label}</button>`;
+  return `<h1 style="font-size:22px;margin-bottom:18px">Настройки</h1>
+
+    <div class="card"><div class="card-header"><div class="card-title">Тема</div>
+      <div class="card-desc">Применяется сразу.</div></div>
+      <div class="card-content"><div class="wrap">
+        ${themeBtn('system', ico('monitor')+' Как в системе')}${themeBtn('light', ico('sun')+' Светлая')}${themeBtn('dark', ico('moon')+' Тёмная')}
+      </div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px"><div class="card-header"><div class="card-title">Вопросы</div></div>
+      <div class="card-content">
+        <label class="switch-row">
+          <span><span class="small" style="font-weight:500;display:block">Автопереход к следующему вопросу</span>
+            <span class="tiny muted">После ответа сразу открывается следующий вопрос.</span></span>
+          <span class="switch"><input type="checkbox" data-setting="autoAdvance" ${S.autoAdvance?'checked':''}><i></i></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px"><div class="card-header"><div class="card-title">Данные</div>
+      <div class="card-desc">Всё хранится только в вашем браузере и никуда не отправляется.</div></div>
+      <div class="card-content">
+        <div class="stack small">
+          <div class="row-between"><span class="muted">Сохранённых результатов</span><b>${S.results.length}</b></div>
+          <div class="row-between"><span class="muted">Объём данных</span><b>${(bytes/1024).toFixed(1)} КБ</b></div>
+        </div>
+        <div class="separator"></div>
+        <div class="wrap">
+          <button class="btn btn-outline" data-action="export">${ico('download')} Экспорт JSON</button>
+          <button class="btn btn-outline" data-action="import">${ico('upload')} Импорт JSON</button>
+          <input type="file" accept="application/json,.json" id="import-file" hidden>
+          <button class="btn btn-ghost" data-action="clear-all" style="color:var(--destructive)">${ico('trash-2')} Удалить все данные</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px"><div class="card-header"><div class="card-title">О методиках</div></div>
+      <div class="card-content small muted">
+        <p><b>Матрица профессий</b> — 8 объектов труда × 8 видов деятельности, около 200 профессий.</p>
+        <p><b>Тип мышления</b> (Г. Резапкина) — пять шкал: от предметно-действенного мышления до креативности.</p>
+        <p><b>Профессиональные склонности</b> (Л. Йовайши, Г. Резапкина) — шесть видов деятельности.</p>
+        <p><b>Тест Леонгарда</b> — десять акцентуаций характера.</p>
+        <p><b>Холланд и Климов</b> — шесть профессиональных типов.</p>
+        <p style="margin-bottom:0">Это ознакомительные методики — они не заменяют консультацию психолога.</p>
+      </div>
+    </div>`;
+}
+
+/* ---------------- Общий рендер ---------------- */
+function viewBody(){
+  if(route.name === 'test'){
+    const t = getTest(route.id);
+    if(t.kind === 'matrix')     return viewMatrix(t);
+    if(t.kind === 'tournament') return viewTournament(t);
+    if(t.kind === 'reflection') return viewReflection(t);
+    return viewQuestions(t);
+  }
+  if(route.name === 'result')   return viewResult();
+  if(route.name === 'history')  return viewHistory();
+  if(route.name === 'settings') return viewSettings();
+  return viewHome();
+}
+function render(opts = {}){
+  applyTheme();
+  document.title = titleFor();
+  const app = $('#app');
+  const banner = storageOK ? '' : `<div class="banner no-print" role="alert"><span aria-hidden="true">${ico('triangle-alert')}</span><span>Браузер не даёт сохранять данные (возможно, приватный режим). Ответы пропадут при закрытии вкладки — сделайте экспорт в настройках.</span></div>`;
+  app.classList.toggle('enter', !!opts.enter);
+  app.innerHTML = header() + `<main id="main" tabindex="-1"><div class="container">${banner}${viewBody()}</div></main>` + footer();
+  if(opts.focus){
+    const el = $(opts.focus);
+    if(el){ el.focus({preventScroll:true}); return; }
+  }
+  if(opts.focusMain){ const m = $('#main'); if(m) m.focus({preventScroll:true}); }
+}
+
+/* ============================================================
+   6. СОБЫТИЯ
+   ============================================================ */
+function finishTest(test){
+  clearAdvance();
+  if(!isComplete(test)){
+    const i = firstUnanswered(test);
+    toast('Осталось ответить на ' + (totalCount(test) - answeredCount(test)));
+    if(i >= 0) moveQ(test, i);
+    return;
+  }
+  const res = ensureResult(test);
+  go({name:'result', id:test.id, rid:res.id});
+}
+async function resetTest(test){
+  if(isComplete(test)){
+    ensureResult(test);
+    clearTestAnswers(test);
+    toast('Результат в истории, ответы сброшены');
+  } else {
+    if(answeredCount(test) > 0 && !(await confirmDialog('Сбросить ответы по этой методике?', 'Сбросить', true))) return;
+    clearTestAnswers(test);
+  }
+  if(route.name === 'test'){ route.q = 0; route.showGrid = false; render({enter:true, focusMain:true}); window.scrollTo(0,0); }
+  else go({name:'test', id:test.id});
+}
+
+/* ============================================================
+   ПОДЕЛИТЬСЯ: карточка-картинка + текст в стиле Wordle (без сервера)
+   ============================================================ */
+const SHARE_COLORS = ['#2563eb','#7c3aed','#db2777','#ea580c','#0891b2','#16a34a','#ca8a04','#64748b','#dc2626','#4f46e5'];
+const SHARE_FONT = 'system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif';
+let shareCtx = null;
+function shareColor(c){ const m = /--chart-(\d+)/.exec(c || ''); return (m && SHARE_COLORS[Number(m[1]) - 1]) || SHARE_COLORS[0]; }
+function shareUrl(){ return /^https?:$/.test(location.protocol) ? location.origin + location.pathname : ''; }
+
+function buildShare(t, answers, date){
+  const info = analyze(t, answers);
+  const d = {title:t.title, date, eyebrow:'Главное', lead:(info.lead && info.lead.name) || '', badges:[], bars:[], chips:[], chipsTitle:''};
+  if(t.kind === 'matrix'){
+    d.eyebrow = 'Мой выбор';
+    d.chips = (info.professions || []).slice();
+    d.chipsTitle = 'Подходящие профессии';
+  } else if(t.kind === 'tournament'){
+    d.eyebrow = 'Главный мотив';
+    d.lead = info.winner || d.lead;
+    const picks = info.picks || [];
+    if(picks.length === 15){ d.chips = picks.slice(8, 12); d.chipsTitle = 'В четвёрке лучших'; }
+  } else {
+    if(info.lead && info.lead.value != null){
+      d.badges.push(`${info.lead.value} ${plural(info.lead.value)}`);
+      if(info.lead.level) d.badges.push(info.lead.level);
+    }
+    d.bars = (info.scales || []).map(s => ({name:s.name, value:s.value, max:s.max, color:shareColor(s.color)}));
+  }
+  return d;
+}
+
+function shareText(d){
+  const L = ['🧭 ' + d.title, ''];
+  L.push(`${d.eyebrow}: ${d.lead}` + (d.badges.length ? ` — ${d.badges.join(', ')}` : ''));
+  if(d.bars.length){
+    L.push('');
+    d.bars.forEach(b => {
+      const n = b.max ? Math.round(b.value / b.max * 8) : 0;
+      L.push(`${'█'.repeat(n)}${'░'.repeat(8 - n)} ${b.value}/${b.max} ${b.name}`);
+    });
+  }
+  if(d.chips.length) L.push('', `${d.chipsTitle}: ${d.chips.slice(0, 8).join(', ')}`);
+  const u = shareUrl(); if(u) L.push('', u);
+  return L.join('\n');
+}
+
+function wrapLines(x, text, maxW, maxLines){
+  const words = String(text).split(/\s+/).filter(Boolean);
+  const lines = []; let cur = '';
+  for(const w of words){
+    const tryLine = cur ? cur + ' ' + w : w;
+    if(!cur || x.measureText(tryLine).width <= maxW) cur = tryLine;
+    else { lines.push(cur); cur = w; }
+  }
+  if(cur) lines.push(cur);
+  if(lines.length > maxLines){
+    lines.length = maxLines;
+    let l = lines[maxLines - 1];
+    while(l.length && x.measureText(l + '…').width > maxW) l = l.slice(0, -1);
+    lines[maxLines - 1] = l + '…';
+  }
+  return lines.length ? lines : [''];
+}
+function rrect(x, px, py, w, h, r){ x.beginPath(); if(x.roundRect) x.roundRect(px, py, w, h, r); else x.rect(px, py, w, h); }
+
+function drawShareCard(d){
+  const W = 1080, H = 1350, P = 72, F = SHARE_FONT;
+  const c = document.createElement('canvas'); c.width = W; c.height = H;
+  const x = c.getContext('2d');
+  x.fillStyle = '#ffffff'; x.fillRect(0, 0, W, H);
+  x.fillStyle = '#18181b'; x.fillRect(0, 0, W, 12);
+
+  // шапка
+  x.fillStyle = '#18181b'; rrect(x, P, P, 60, 60, 16); x.fill();
+  x.fillStyle = '#fafafa'; x.font = `700 32px ${F}`; x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.fillText('П', P + 30, P + 32);
+  x.textAlign = 'left'; x.fillStyle = '#18181b'; x.font = `600 30px ${F}`;
+  x.fillText('Профориентация', P + 78, P + 32);
+  x.textAlign = 'right'; x.fillStyle = '#71717a'; x.font = `400 26px ${F}`;
+  x.fillText(d.date || '', W - P, P + 32);
+  x.textAlign = 'left'; x.textBaseline = 'alphabetic';
+
+  // название методики
+  let y = 238;
+  x.fillStyle = '#71717a'; x.font = `600 26px ${F}`;
+  x.fillText(wrapLines(x, d.title.toUpperCase(), W - 2 * P, 1)[0], P, y);
+
+  // блок «главное»
+  const by = y + 34, bw = W - 2 * P, pad = 48, innerW = bw - 2 * pad;
+  let fs = 64, lines;
+  for(;;){
+    x.font = `700 ${fs}px ${F}`;
+    lines = wrapLines(x, d.lead, innerW, 3);
+    const fits = lines.every(l => x.measureText(l).width <= innerW) && !lines[lines.length - 1].endsWith('…');
+    if(fits || fs <= 36) break;
+    fs -= 4;
+  }
+  const lh = Math.round(fs * 1.2), base = Math.round(fs * 0.88);
+  const bh = pad + 46 + lines.length * lh + (d.badges.length ? 64 : 0) + pad - 6;
+  x.fillStyle = '#f4f4f5'; rrect(x, P, by, bw, bh, 28); x.fill();
+  let cy = by + pad;
+  x.fillStyle = '#71717a'; x.font = `600 24px ${F}`; x.fillText(d.eyebrow.toUpperCase(), P + pad, cy + 22);
+  cy += 46;
+  x.fillStyle = '#09090b'; x.font = `700 ${fs}px ${F}`;
+  lines.forEach((l, i) => x.fillText(l, P + pad, cy + base + i * lh));
+  cy += lines.length * lh;
+  if(d.badges.length){
+    let bx = P + pad; const pillY = cy + 8;
+    d.badges.forEach((b, i) => {
+      x.font = `600 26px ${F}`;
+      const w = x.measureText(b).width + 40;
+      x.fillStyle = i === 0 ? '#18181b' : '#e4e4e7'; rrect(x, bx, pillY, w, 48, 24); x.fill();
+      x.fillStyle = i === 0 ? '#fafafa' : '#3f3f46'; x.fillText(b, bx + 20, pillY + 33);
+      bx += w + 12;
+    });
+  }
+
+  // содержимое
+  y = by + bh + 60;
+  const bottom = H - 150;
+  if(d.bars.length){
+    let rowH = Math.min(92, (bottom - y) / d.bars.length);
+    const compact = rowH < 76;
+    rowH = Math.max(rowH, 56);
+    const n = Math.min(d.bars.length, Math.floor((bottom - y) / rowH));
+    for(let i = 0; i < n; i++){
+      const b = d.bars[i], ry = y + i * rowH;
+      const nameY = ry + (compact ? 24 : 30), barY = ry + (compact ? 36 : 46), barH = compact ? 12 : 18;
+      x.font = `500 ${compact ? 25 : 30}px ${F}`; x.fillStyle = '#18181b'; x.textAlign = 'left';
+      x.fillText(wrapLines(x, b.name, W - 2 * P - 180, 1)[0], P, nameY);
+      x.textAlign = 'right'; x.fillStyle = '#71717a'; x.font = `500 ${compact ? 24 : 28}px ${F}`;
+      x.fillText(`${b.value} / ${b.max}`, W - P, nameY); x.textAlign = 'left';
+      x.fillStyle = '#e4e4e7'; rrect(x, P, barY, W - 2 * P, barH, barH / 2); x.fill();
+      const fw = Math.max(b.max ? (W - 2 * P) * b.value / b.max : 0, 0);
+      if(fw > 0){ x.fillStyle = b.color; rrect(x, P, barY, Math.max(fw, barH), barH, barH / 2); x.fill(); }
+    }
+  }
+  if(d.chips.length){
+    x.fillStyle = '#71717a'; x.font = `600 24px ${F}`; x.fillText(d.chipsTitle.toUpperCase(), P, y);
+    let px = P, py = y + 28; const chH = 56, gap = 14;
+    x.font = `500 28px ${F}`;
+    for(let i = 0; i < d.chips.length; i++){
+      let label = d.chips[i];
+      let w = x.measureText(label).width + 44;
+      if(w > W - 2 * P){ label = wrapLines(x, label, W - 2 * P - 44, 1)[0]; w = W - 2 * P; }
+      if(px + w > W - P){ px = P; py += chH + gap; }
+      if(py + chH > bottom){
+        const rest = `+ ещё ${d.chips.length - i}`;
+        const rw = x.measureText(rest).width + 44;
+        if(px + rw > W - P){ px = P; py += chH + gap; }
+        if(py + chH <= bottom + 20){
+          x.fillStyle = '#18181b'; rrect(x, px, py, rw, chH, chH / 2); x.fill();
+          x.fillStyle = '#fafafa'; x.fillText(rest, px + 22, py + 38);
+        }
+        break;
+      }
+      x.fillStyle = '#f4f4f5'; rrect(x, px, py, w, chH, chH / 2); x.fill();
+      x.strokeStyle = '#e4e4e7'; x.lineWidth = 2; x.stroke();
+      x.fillStyle = '#18181b'; x.fillText(label, px + 22, py + 38);
+      px += w + gap;
+    }
+  }
+
+  // подвал
+  x.fillStyle = '#e4e4e7'; x.fillRect(P, H - 110, W - 2 * P, 2);
+  x.fillStyle = '#71717a'; x.font = `400 26px ${F}`;
+  const u = shareUrl();
+  x.fillText(u ? u.replace(/^https?:\/\//, '') : 'Профориентация · семь коротких тестов', P, H - 60);
+  return c;
+}
+
+function canvasBlob(c){ return new Promise(res => c.toBlob(res, 'image/png')); }
+function downloadBlob(blob, name){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+async function openShare(t, res){
+  const dlg = $('#share-dlg');
+  const answers = res ? res.answers : S.answers[t.id];
+  const d = buildShare(t, answers, res ? fmtDate(res.date) : '');
+  const canvas = drawShareCard(d);
+  const blob = await canvasBlob(canvas);
+  const file = blob ? new File([blob], `proforient-${t.id}.png`, {type:'image/png'}) : null;
+  const text = shareText(d);
+  const canFile = !!(file && navigator.canShare && navigator.canShare({files:[file]}));
+  const canCopyImg = !!(blob && window.ClipboardItem && navigator.clipboard && navigator.clipboard.write);
+  shareCtx = {t, d, blob, file, text, canFile};
+
+  const view = $('#share-canvas');
+  view.width = canvas.width; view.height = canvas.height;
+  view.getContext('2d').drawImage(canvas, 0, 0);
+  view.setAttribute('aria-label', text.replace(/\n+/g, '. '));
+
+  $('#share-send').innerHTML = canFile ? `${ico('share')} Отправить картинку` : `${ico('download')} Скачать картинку`;
+  const ci = $('#share-copy-img'); ci.hidden = !canCopyImg; ci.innerHTML = `${ico('clipboard-list')} Скопировать картинку`;
+  $('#share-copy-text').innerHTML = `${ico('clipboard-list')} Скопировать текст`;
+  if(typeof dlg.showModal === 'function'){ if(!dlg.open) dlg.showModal(); }
+  else { try{ await navigator.clipboard.writeText(text); toast('Текст скопирован'); }catch(e){ toast('Не удалось поделиться'); } }
+}
+document.addEventListener('click', e => { const dlg = $('#share-dlg'); if(dlg && e.target === dlg) dlg.close(); });
+
+const actions = {
+  home(){ go({name:'home'}); },
+  history(){ go({name:'history'}); },
+  settings(){ go({name:'settings'}); },
+  async share(el, t){
+    if(!t) return;
+    const res = el.dataset.rid ? S.results.find(r => r.id === el.dataset.rid) : null;
+    try{ await openShare(t, res); }catch(e){ toast('Не удалось подготовить картинку'); }
+  },
+  'share-close'(){ const d = $('#share-dlg'); if(d && d.open) d.close(); },
+  async 'share-send'(){
+    if(!shareCtx) return;
+    const {t, d, blob, file, text, canFile} = shareCtx;
+    if(canFile){
+      try{ await navigator.share({files:[file], title:t.title, text}); return; }
+      catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(blob){ downloadBlob(blob, `proforient-${t.id}.png`); toast('Картинка сохранена'); }
+  },
+  async 'share-copy-img'(){
+    if(!shareCtx || !shareCtx.blob) return;
+    try{ await navigator.clipboard.write([new ClipboardItem({'image/png': shareCtx.blob})]); toast('Картинка скопирована'); }
+    catch(e){ toast('Не удалось скопировать картинку'); }
+  },
+  async 'share-copy-text'(){
+    if(!shareCtx) return;
+    try{ await navigator.clipboard.writeText(shareCtx.text); toast('Текст скопирован'); }
+    catch(e){ toast('Не удалось скопировать текст'); }
+  },
+
+  'set-theme'(el){ S.theme = el.dataset.value; save(); render(); },
+
+  'open-test'(el, t){ if(t) go({name:'test', id:t.id}); },
+  'open-result'(el, t){
+    if(!t) return;
+    let rid = el.dataset.rid;
+    if(!rid){
+      if(!isComplete(t) && !lastResult(t.id)){ go({name:'test', id:t.id}); return; }
+      rid = (isComplete(t) ? ensureResult(t) : lastResult(t.id)).id;
+    }
+    go({name:'result', id:t.id, rid});
+  },
+  async restart(el, t){
+    if(!t) return;
+    if(isComplete(t)) ensureResult(t);
+    clearTestAnswers(t);
+    go({name:'test', id:t.id});
+  },
+
+  'toggle-grid'(){ route.showGrid = !route.showGrid; render(); },
+  'toggle-table'(){ route.showTable = !route.showTable; render(); },
+
+  answer(el, t){ if(t) answerQuestion(t, el.dataset.value); },
+  prev(el, t){ if(t) moveQ(t, route.q - 1); },
+  next(el, t){ if(t) moveQ(t, route.q + 1); },
+  goto(el, t){ if(t) moveQ(t, Number(el.dataset.index)); },
+  'goto-missing'(el, t){ if(t){ const i = firstUnanswered(t); if(i >= 0) moveQ(t, i); } },
+  'reset-test'(el, t){ if(t) resetTest(t); },
+  finish(el, t){ if(t) finishTest(t); },
+
+  'matrix-obj'(el, t){ (S.answers[t.id] ||= {}).object = el.dataset.value; save(); render(); },
+  'matrix-act'(el, t){ (S.answers[t.id] ||= {}).activity = el.dataset.value; save(); render(); },
+  'save-matrix'(el, t){
+    if(!isComplete(t)) return;
+    const res = ensureResult(t);
+    toast('Результат сохранён');
+    go({name:'result', id:t.id, rid:res.id});
+  },
+
+  'motive-pick'(el, t){ motivePick(t, Number(el.dataset.value)); },
+  'motive-back'(el, t){ motiveBack(t); },
+  'save-tournament'(el, t){
+    if(!isComplete(t)) return;
+    const res = ensureResult(t);
+    toast('Результат сохранён');
+    go({name:'result', id:t.id, rid:res.id});
+  },
+
+  'save-note'(el, t){
+    if(!(S.notes[t.id] || '').trim()){ toast('Сначала что-нибудь напишите'); return; }
+    const res = ensureResult(t);
+    toast('Сохранено в результаты');
+    go({name:'result', id:t.id, rid:res.id});
+  },
+
+  async 'delete-result'(el){
+    const rid = el.dataset.rid;
+    if(!(await confirmDialog('Удалить эту запись?', 'Удалить', true))) return;
+    const res = S.results.find(r => r.id === rid);
+    S.results = S.results.filter(r => r.id !== rid);
+    const t = res && getTest(res.testId);
+    if(t && isComplete(t) && answersMatch(t, res)) clearTestAnswers(t);
+    save();
+    if(route.name === 'result') go({name:'history'}); else render();
+  },
+  async 'clear-results'(){
+    if(!(await confirmDialog('Удалить все результаты?', 'Удалить всё', true))) return;
+    S.results = [];
+    TESTS.forEach(t => { if(isComplete(t)) clearTestAnswers(t); });
+    save(); render();
+  },
+  async 'clear-all'(){
+    if(!(await confirmDialog('Удалить все данные — ответы, заметки и результаты? Вернуть их не получится.', 'Удалить всё', true))) return;
+    const theme = S.theme;
+    S = defaultState(); S.theme = theme;
+    save(); go({name:'home'}); toast('Данные удалены');
+  },
+
+  export(){
+    const data = JSON.stringify({app:'proforient', version:3, exported:new Date().toISOString(), ...S}, null, 2);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([data], {type:'application/json'}));
+    a.download = `proforient-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  },
+  import(){ const inp = $('#import-file'); inp.value = ''; inp.click(); }
+};
+
+function motivePick(test, idx){
+  if(!test || test.kind !== 'tournament') return;
+  const st = S.answers[test.id] || (S.answers[test.id] = {picks:[]});
+  st.picks = st.picks || [];
+  const state = tournamentState(st.picks);
+  if(state.done || !state.current.includes(idx)) return;
+  st.picks.push(idx);
+  save();
+  render({enter:true, focus: tournamentState(st.picks).done ? '#main' : '#q-card'});
+}
+function motiveBack(test){
+  const st = S.answers[test.id];
+  if(st && st.picks && st.picks.length){ st.picks.pop(); save(); render({enter:true, focus:'#q-card'}); }
+}
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-action]');
+  if(!el) return;
+  const fn = actions[el.dataset.action];
+  if(!fn) return;
+  const test = getTest(el.dataset.id) || (route.id ? getTest(route.id) : null);
+  fn(el, test);
+});
+
+document.addEventListener('input', e => {
+  const ta = e.target.closest && e.target.closest('textarea[data-note]');
+  if(!ta) return;
+  S.notes[ta.dataset.note] = ta.value.slice(0, NOTE_LIMIT);
+  saveSoon();
+  const st = $('#note-status');
+  if(st) st.textContent = 'Сохранено автоматически';
+});
+
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(t.matches && t.matches('input[data-setting="autoAdvance"]')){
+    S.autoAdvance = t.checked; save();
+    return;
+  }
+  if(t.id === 'import-file'){
+    const f = t.files && t.files[0];
+    if(!f) return;
+    if(f.size > 5 * 1024 * 1024){ toast('Файл слишком большой'); return; }
+    const reader = new FileReader();
+    reader.onload = async () => {
+      let next;
+      try{
+        const parsed = JSON.parse(reader.result);
+        if(!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('неверная структура');
+        next = sanitizeState(parsed);
+      }catch(err){
+        toast('Не удалось прочитать файл: ' + err.message);
+        return;
+      }
+      const ok = await confirmDialog(`Заменить текущие данные данными из файла? Результатов в файле: ${next.results.length}.`, 'Заменить');
+      if(!ok) return;
+      S = next; save(); go({name:'home'}); toast('Данные импортированы');
+    };
+    reader.onerror = () => toast('Не удалось прочитать файл');
+    reader.readAsText(f);
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if(e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+  if(e.target.matches && e.target.matches('textarea, input, select')) return;
+  const dlg = $('#dlg'); if(dlg && dlg.open) return;
+  if(route.name !== 'test') return;
+  const test = getTest(route.id);
+  if(!test) return;
+
+  if(test.kind === 'tournament'){
+    const st = tournamentState((S.answers[test.id] && S.answers[test.id].picks) || []);
+    if(!st.done && (e.key === '1' || e.key === '2')){ e.preventDefault(); motivePick(test, st.current[Number(e.key) - 1]); }
+    else if(e.key === 'ArrowLeft'){ e.preventDefault(); motiveBack(test); }
+    return;
+  }
+  if(!isQuestionTest(test)) return;
+
+  if(e.key === 'ArrowLeft'){ e.preventDefault(); moveQ(test, route.q - 1); return; }
+  if(e.key === 'ArrowRight'){ e.preventDefault(); moveQ(test, route.q + 1); return; }
+
+  const n = Number(e.key);
+  if(!Number.isInteger(n) || n < 1) return;
+  if(test.kind === 'binary' && n <= 2){ e.preventDefault(); answerQuestion(test, n === 1 ? 'yes' : 'no'); }
+  else if(test.kind === 'pairs' && n <= 2){ e.preventDefault(); answerQuestion(test, n === 1 ? 'a' : 'b'); }
+  else if(test.kind === 'choice' && n <= 3){ e.preventDefault(); answerQuestion(test, String(n - 1)); }
+});
+
+/* ============================================================
+   7. СТАРТ
+   ============================================================ */
+route = hashToRoute(location.hash);
+normalizeRoute();
+render({enter:true});
+</script>
 </body>
 </html>
