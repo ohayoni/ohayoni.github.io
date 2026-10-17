@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Профориентация: интересы, мышление, характер и подходящие профессии. Семь коротких тестов.">
+<meta name="description" content="Профориентация: интересы, мышление, характер и подходящие профессии. Восемь коротких тестов.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-size='18' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23fafafa'%3E%D0%9F%3C/text%3E%3C/svg%3E">
 <title>Профориентация — диагностический комплекс</title>
@@ -391,10 +391,46 @@ dialog p{margin:0 0 18px;font-size:14.5px}
   .option:hover{background:var(--card)}
   .option[aria-pressed="true"],.option[aria-pressed="true"]:hover{background:var(--accent)}
 }
+
+/* ---- Новинка ---- */
+.test-card.is-new{
+  border:1.5px solid transparent;
+  background:linear-gradient(var(--card),var(--card)) padding-box,
+             linear-gradient(135deg,var(--chart-1),var(--chart-2),var(--chart-3)) border-box;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-2) 10%,transparent),
+             0 10px 30px -10px color-mix(in srgb,var(--chart-2) 60%,transparent);
+  animation:newGlow 3.2s ease-in-out infinite;
+}
+.test-card.is-new:hover{border-color:transparent;transform:translateY(-2px)}
+.test-card.is-new .tc-icon{
+  background:linear-gradient(135deg,color-mix(in srgb,var(--chart-2) 22%,var(--card)),color-mix(in srgb,var(--chart-3) 22%,var(--card)));
+  border-color:color-mix(in srgb,var(--chart-2) 40%,var(--border));
+}
+.badge-new{background:linear-gradient(135deg,var(--chart-2),var(--chart-3));color:#fff;border-color:transparent;font-weight:600}
+.badge-new .ico{width:12px;height:12px}
+@keyframes newGlow{
+  0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-2) 8%,transparent),0 8px 24px -10px color-mix(in srgb,var(--chart-2) 45%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--chart-3) 14%,transparent),0 12px 34px -8px color-mix(in srgb,var(--chart-3) 65%,transparent)}
+}
+
+/* ---- Белбин ---- */
+.bel-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);transition:.15s}
+.bel-row + .bel-row{margin-top:10px}
+.bel-row.has{border-color:var(--fg);background:var(--accent)}
+.bel-letter{display:inline-grid;place-items:center;width:24px;height:24px;flex:0 0 24px;border-radius:6px;background:var(--muted);color:var(--muted-fg);font-size:12px;font-weight:600}
+.bel-text{flex:1;font-size:14.5px;line-height:1.45}
+.bel-step{display:flex;align-items:center;gap:8px;flex:none}
+.bel-step .btn{width:2rem;height:2rem;padding:0;font-size:18px;line-height:1}
+.bel-val{min-width:2ch;text-align:center;font-size:16px}
+.bel-left{display:flex;align-items:center;gap:12px;margin:14px 0 4px;flex-wrap:wrap}
+.bel-left .progress{flex:1;min-width:120px}
+@media(prefers-reduced-motion:reduce){
+  .test-card.is-new{animation:none}
+}
 </style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Иконки: Lucide (ISC) https://lucide.dev --><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /> <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /> <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /> <path d="M18 18a4 4 0 0 0 2-7.464" /> <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /> <path d="M6 18a4 4 0 0 1-2-7.464" /> <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-drama" viewBox="0 0 24 24"><path d="M10 11h.01" /> <path d="M14 6h.01" /> <path d="M18 6h.01" /> <path d="M6.5 13.1h.01" /> <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" /> <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" /> <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" /> <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol><symbol id="i-hexagon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12" /> <path d="m17 8-5-5-5 5" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol><symbol id="i-trash-2" viewBox="0 0 24 24"><path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2" /> <line x1="8" x2="16" y1="21" y2="21" /> <line x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18" /> <rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /> <path d="M7 3v4a1 1 0 0 0 1 1h7" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /></symbol><symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Иконки: Lucide (ISC) https://lucide.dev --><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /> <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /> <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /> <path d="M18 18a4 4 0 0 0 2-7.464" /> <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /> <path d="M6 18a4 4 0 0 1-2-7.464" /> <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-drama" viewBox="0 0 24 24"><path d="M10 11h.01" /> <path d="M14 6h.01" /> <path d="M18 6h.01" /> <path d="M6.5 13.1h.01" /> <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" /> <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" /> <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" /> <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol><symbol id="i-hexagon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12" /> <path d="m17 8-5-5-5 5" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol><symbol id="i-trash-2" viewBox="0 0 24 24"><path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2" /> <line x1="8" x2="16" y1="21" y2="21" /> <line x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18" /> <rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /> <path d="M7 3v4a1 1 0 0 0 1 1h7" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /></symbol><symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol></svg>
 <a class="skip-link" href="#main">К содержимому</a>
 <div id="app"></div>
 <dialog id="dlg" aria-labelledby="dlg-msg">
@@ -896,6 +932,108 @@ const MOTIVES = [
 ];
 
 
+/* ---------- 2.7 Командные роли Белбина ---------- */
+const LETTERS = 'АБВГДЕЖЗ';
+const BELBIN_SECTIONS = [
+  'Что я могу внести в работу команды',
+  'Мои возможные недостатки в командной работе',
+  'Когда я участвую в проекте вместе с другими',
+  'Мой характерный подход к групповой работе',
+  'Что мне нравится в работе',
+  'Если мне дали трудную задачу и мало времени',
+  'Мои трудности при работе в группе'
+];
+/* code — буквы-ключи по 7 блокам; s — по одному утверждению на блок.
+   Ключи ролей 5–8 взяты из книги; 1–4 и тексты — СВЕРИТЬ с изданием. */
+const BELBIN_ROLES = [
+  {key:'CH', name:'Председатель', sub:'координатор', code:'ВГВДГЖБ', color:'var(--chart-1)',
+   desc:'Уверенный и зрелый лидер: ставит цели, распределяет роли и раскрывает сильные стороны каждого.',
+   weak:'Может перекладывать свою работу на других.',
+   s:['Я умею раскрывать в людях то ценное, что они могут дать общему делу.',
+      'Мне трудно настоять на своём: я иногда перекладываю на других то, что мог(ла) бы сделать сам(а).',
+      'Я умею влиять на людей, не давя на них.',
+      'Я стараюсь, чтобы высказались все, и подвожу общий итог.',
+      'Мне нравится направлять людей к общей цели.',
+      'Я распределю роли и поручу каждому то, что у него получится лучше.',
+      'Мне нелегко давать жёсткие указания, если я не уверен(а), что люди к этому готовы.']},
+  {key:'SH', name:'Творец', sub:'формирователь', code:'ЗЖЖБАДЖ', color:'var(--chart-2)',
+   desc:'Энергичный и напористый: задаёт темп, любит вызовы и не даёт группе застояться.',
+   weak:'Бывает нетерпелив и резок, может провоцировать конфликты.',
+   s:['Я готов(а) к временной непопулярности, если это приведёт к стоящему результату.',
+      'Я нетерпелив(а) и резок(а), когда дело движется слишком медленно.',
+      'Я подтолкну остальных к действию, чтобы не терять время.',
+      'Я заряжаю группу энергией и держу её в тонусе.',
+      'Мне нравится влиять на решения и преодолевать препятствия.',
+      'Я возьму инициативу на себя и буду подгонять остальных.',
+      'Я могу раздражаться и задевать людей, когда они мешают делу.']},
+  {key:'PL', name:'Генератор идей', sub:'творец идей', code:'ГБАЗЕАА', color:'var(--chart-3)',
+   desc:'Креативный человек с нестандартным взглядом: находит решения там, где другие упираются в стену.',
+   weak:'Бывает рассеян и болезненно воспринимает критику.',
+   s:['Генерировать идеи — моя сильная сторона.',
+      'Я так увлекаюсь собственными идеями, что забываю о происходящем вокруг.',
+      'Я часто предлагаю неожиданные решения.',
+      'Я смотрю на вещи под необычным углом.',
+      'Мне нравится искать оригинальные решения проблем.',
+      'Я придумаю нестандартный способ справиться с задачей.',
+      'Мне трудно общаться с теми, кто не разделяет мои идеи.']},
+  {key:'ME', name:'Эксперт', sub:'аналитик', code:'ЕДГВЗВЕ', color:'var(--chart-4)',
+   desc:'Трезвый и стратегичный: видит все варианты и точно оценивает их, не поддаваясь эмоциям.',
+   weak:'Может быть слишком критичным и не умеет вдохновлять.',
+   s:['Я могу взвешенно обосновать разные варианты действий без предвзятости.',
+      'Я слишком осторожен(на) и критичен(на): боюсь пропустить риск и теряю темп.',
+      'Я замечаю слабые места в планах и ошибки в рассуждениях.',
+      'Я спокойно и трезво оцениваю идеи, прежде чем принять решение.',
+      'Мне нравится анализировать ситуацию и выбирать лучший вариант.',
+      'Я сначала всё обдумаю и оценю риски, а потом приму решение.',
+      'Мне трудно вдохновлять других: я чаще критикую, чем зажигаю.']},
+  {key:'IMP', name:'Исполнитель', sub:'практик-организатор', code:'ЖАЗГБЕД', color:'var(--chart-5)',
+   desc:'Дисциплинированный и надёжный: превращает идеи и планы в конкретные действия и работающие системы.',
+   weak:'Негибок и неохотно принимает перемены.',
+   s:['Я обычно чувствую, что реалистично и что сработает.',
+      'Мне трудно перестраиваться, если дело не вписывается в чёткую схему.',
+      'Я охотно берусь за дело и довожу общий план до рабочего состояния.',
+      'Я превращаю идеи в конкретные практические шаги.',
+      'Мне нравится превращать планы в работающую систему.',
+      'Я составлю чёткий рабочий план и сразу начну его выполнять.',
+      'Я не люблю менять привычные способы работы.']},
+  {key:'TW', name:'Душа команды', sub:'командный игрок', code:'БЕДАВБЗ', color:'var(--chart-6)',
+   desc:'Мягкий и чуткий дипломат: сглаживает трения, поддерживает людей и держит атмосферу в группе.',
+   weak:'Нерешителен в острых ситуациях и избегает конфликтов.',
+   s:['Я хорошо работаю с самыми разными людьми.',
+      'Я не обостряю и иногда избегаю неприятных, но нужных разговоров.',
+      'Я слежу, чтобы в группе сохранялись хорошие отношения.',
+      'Я легко подстраиваюсь под разных людей и поддерживаю их.',
+      'Мне нравится создавать тёплую атмосферу в коллективе.',
+      'Я поддержу команду и постараюсь снять напряжение.',
+      'Мне трудно настаивать на своём, если это грозит конфликтом.']},
+  {key:'RI', name:'Исследователь ресурсов', sub:'разведчик', code:'АВЕЖДЗГ', color:'var(--chart-7)',
+   desc:'Общительный и любознательный: приносит в группу идеи, контакты и возможности извне.',
+   weak:'Быстро остывает и бывает чрезмерно оптимистичен.',
+   s:['Я быстро замечаю новые возможности и умею ими воспользоваться.',
+      'Я быстро теряю интерес, когда новизна проходит.',
+      'Я охотно ищу контакты и ресурсы за пределами группы.',
+      'Я люблю знакомиться и находить полезные связи.',
+      'Мне нравится исследовать новое и налаживать контакты.',
+      'Я быстро найду нужных людей и недостающие ресурсы.',
+      'Я многое начинаю, но не всё довожу до конца.']},
+  {key:'CF', name:'Финишер', sub:'доводящий дело до конца', code:'ДЗБЕЖГВ', color:'var(--chart-8)',
+   desc:'Скрупулёзный и ответственный: ловит ошибки, следит за сроками и не пропускает мелочей.',
+   weak:'Склонен тревожиться и с трудом делегирует.',
+   s:['Моя результативность держится на умении доводить дело до конца.',
+      'Я не отпускаю дело, пока всё не проверено, и мне трудно передавать работу другим.',
+      'Я проверяю, чтобы ничего не было упущено и сроки были соблюдены.',
+      'Я аккуратен(на) в деталях и ценю точность.',
+      'Мне нравится доводить работу до совершенства.',
+      'Я прослежу, чтобы всё было сделано в срок и без ошибок.',
+      'Мне трудно доверять другим и делегировать мелочи.']}
+];
+/* BELBIN_STMT[блок][индекс буквы] = {text, role} */
+const BELBIN_STMT = BELBIN_SECTIONS.map((_, si) => {
+  const row = new Array(8);
+  BELBIN_ROLES.forEach(r => { row[LETTERS.indexOf(r.code[si])] = {text:r.s[si], role:r.key}; });
+  return row;
+});
+
 /* ============================================================
    3. МЕТОДИКИ: ОПИСАНИЕ И АЛГОРИТМЫ ПОДСЧЁТА
    ============================================================ */
@@ -1054,6 +1192,40 @@ const TESTS = [
     }
   },
   {
+    id:'belbin', icon:'users', kind:'points', isNew:true, pointsPer:10,
+    title:'Командные роли',
+    meta:'7 блоков по 10 баллов · Р. М. Белбин',
+    brief:'Какую роль вы играете в команде и что можете ей дать.',
+    sections: BELBIN_SECTIONS, roles: BELBIN_ROLES, stmts: BELBIN_STMT,
+    compute(a){
+      const sums = {}; this.roles.forEach(r => sums[r.key] = 0);
+      this.sections.forEach((_, si) => (a[si] || []).forEach((v, li) => {
+        const st = this.stmts[si][li]; if(st) sums[st.role] += v || 0;
+      }));
+      const scales = this.roles.map(r => {
+        const v = sums[r.key];
+        return {key:r.key, name:`${r.name} (${r.sub})`, value:v, max:30, color:r.color,
+          level: v >= 18 ? 'ведущая роль' : v >= 11 ? 'вспомогательная' : 'слабая',
+          levelClass: v >= 18 ? 'badge-success' : v >= 11 ? 'badge-primary' : 'badge-muted'};
+      }).sort((x, y) => y.value - x.value);
+      const thr = Math.min(Math.max(11, scales[0].value - 3), scales[0].value);
+      const top = scales.filter(s => s.value >= thr).slice(0, 3);
+      const lead = {name: top.map(s => s.name).join(' + '), value: top[0].value, level: top[0].level};
+      const blocks = top.map(s => {
+        const r = this.roles.find(x => x.key === s.key);
+        return `<div class="accent-block"><b>${esc(s.name)}</b> — ${s.value} ${plural(s.value)}
+          <p>${esc(r.desc)}</p><p><b>Допустимая слабость:</b> ${esc(r.weak)}</p></div>`;
+      }).join('');
+      const low = scales.filter(s => s.value <= 5).map(s => s.name);
+      return {
+        scales, lead,
+        summary: `<p>Больше всего баллов набрали роли (до трёх):</p>${blocks}` +
+          (low.length ? `<p class="small" style="margin-top:12px"><b>Мало баллов:</b> ${esc(low.join(', '))}. Эти функции в команде лучше закрыть партнёрами.</p>` : '') +
+          `<p class="muted small">Всего распределено 70 баллов. 18 и больше — ведущая роль, 11–17 — вспомогательная, до 10 — слабая. Шкала на графике условная (до 30).</p>`
+      };
+    }
+  },
+  {
     id:'matrix', icon:'grid-3x3', kind:'matrix',
     title:'Матрица выбора профессии',
     meta:'64 сочетания · около 200 профессий',
@@ -1095,15 +1267,18 @@ function tournamentState(picks){
 }
 
 /* ---- подсчёты по ответам ---- */
+const sectionSum = arr => Array.isArray(arr) ? arr.reduce((s, v) => s + (Number(v) || 0), 0) : 0;
 function countAnswers(test, a){
   a = a || {};
   if(test.kind === 'tournament') return (a.picks || []).length;
   if(test.kind === 'matrix')     return (a.object && a.activity) ? 1 : 0;
   if(test.kind === 'reflection') return (a.text || '').trim() ? 1 : 0;
+  if(test.kind === 'points')     return test.sections.filter((_, i) => sectionSum(a[i]) === test.pointsPer).length;
   return Object.values(a).filter(v => v !== undefined && v !== null).length;
 }
 function totalCount(test){
   if(test.kind === 'tournament') return MOTIVES.length - 1;
+  if(test.kind === 'points') return test.sections.length;
   if(isQuestionTest(test)) return test.questions.length;
   return 1;
 }
@@ -1121,6 +1296,14 @@ function sanitizeAnswers(test, raw){
       return out;
     case 'pairs':
       test.questions.forEach((_,i) => { if(raw[i] === 'a' || raw[i] === 'b') out[i] = raw[i]; });
+      return out;
+    case 'points':
+      test.sections.forEach((_, i) => {
+        const arr = raw[i];
+        if(!Array.isArray(arr) || arr.length !== 8) return;
+        const nums = arr.map(v => { v = Number(v); return Number.isInteger(v) ? clamp(v, 0, test.pointsPer) : 0; });
+        if(sectionSum(nums) <= test.pointsPer) out[i] = nums;
+      });
       return out;
     case 'matrix':
       if(M_OBJECTS.includes(raw.object))   out.object = raw.object;
@@ -1297,6 +1480,7 @@ function normalizeRoute(){
     const t = getTest(route.id);
     if(!t){ route = {name:'home'}; return; }
     if(isQuestionTest(t)) route.q = clamp(route.q ?? S.pos[t.id] ?? 0, 0, t.questions.length - 1);
+    if(t.kind === 'points') route.q = clamp(route.q ?? S.pos[t.id] ?? 0, 0, t.sections.length - 1);
   }
   if(route.name === 'result'){
     const t = getTest(route.id);
@@ -1420,10 +1604,12 @@ function viewHome(){
                             <button class="btn btn-ghost btn-sm" data-action="restart" data-id="${t.id}">${ico('rotate-ccw')} Пройти снова</button>`
               : started  ? `<button class="btn btn-primary btn-sm" data-action="open-test" data-id="${t.id}">${ico('play')} Продолжить</button>`
               :            `<button class="btn btn-primary btn-sm" data-action="open-test" data-id="${t.id}">${ico('play')} Начать</button>`;
-    return `<div class="card test-card fade">
+    return `<div class="card test-card fade${t.isNew ? ' is-new' : ''}">
       <div class="row-between">
         <div class="tc-icon" aria-hidden="true">${ico(t.icon)}</div>
-        ${badge}
+        <span class="wrap" style="flex-wrap:nowrap;gap:6px;justify-content:flex-end">
+          ${t.isNew ? `<span class="badge badge-new">Новинка</span>` : ''}${badge}
+        </span>
       </div>
       <div>
         <h3>${esc(t.title)}</h3>
@@ -1457,7 +1643,7 @@ function viewHome(){
 
   return `<section class="hero">
       <h1>Какая профессия вам подойдёт?</h1>
-      <p>Семь коротких тестов про интересы, мышление и характер. Ответы сохраняются — можно вернуться в любой момент.</p>
+      <p>Восемь коротких тестов про интересы, мышление и характер. Ответы сохраняются — можно вернуться в любой момент.</p>
     </section>
     <div class="grid-cards">${cards}</div>
     ${profile}
@@ -1577,6 +1763,86 @@ function moveQ(test, i){
   clearAdvance();
   setQ(test, i);
   render({enter:true, focus:'#q-card'});
+}
+
+/* ---------------- Тест: Белбин (распределение баллов) ---------------- */
+function setBelSec(test, i){
+  route.q = clamp(i, 0, test.sections.length - 1);
+  S.pos[test.id] = route.q;
+  save();
+}
+function viewBelbin(test){
+  const total = test.sections.length, si = route.q;
+  const answers = S.answers[test.id] || {};
+  const arr = (answers[si] && answers[si].length === 8) ? answers[si] : new Array(8).fill(0);
+  const used = sectionSum(arr), left = test.pointsPer - used;
+  const done = countAnswers(test, answers);
+  const complete = done >= total, isLast = si === total - 1;
+
+  const rows = test.stmts[si].map((st, i) => `
+    <div class="bel-row ${arr[i] > 0 ? 'has' : ''}">
+      <span class="bel-letter" aria-hidden="true">${LETTERS[i]}</span>
+      <span class="bel-text">${esc(st.text)}</span>
+      <span class="bel-step">
+        <button class="btn btn-outline" data-action="bel-dec" data-i="${i}" aria-label="Убрать балл: ${esc(st.text)}" ${arr[i] <= 0 ? 'disabled' : ''}>−</button>
+        <b class="bel-val mono" aria-label="Баллов: ${arr[i]}">${arr[i]}</b>
+        <button class="btn btn-outline" data-action="bel-inc" data-i="${i}" aria-label="Добавить балл: ${esc(st.text)}" ${left <= 0 ? 'disabled' : ''}>+</button>
+      </span>
+    </div>`).join('');
+
+  const grid = `<div class="qgrid" style="margin:0 0 16px">${test.sections.map((_, i) => {
+    const ok = sectionSum(answers[i]) === test.pointsPer;
+    return `<button class="qbtn${ok ? ' answered' : ''}${i === si ? ' current' : ''}" data-action="bel-goto" data-index="${i}" aria-label="Блок ${i+1}${ok ? ', готов' : ''}">${i+1}</button>`;
+  }).join('')}</div>`;
+
+  let nextBtn;
+  if(!isLast) nextBtn = `<button class="btn btn-primary" data-action="bel-next" ${left ? 'disabled' : ''}>Далее ${ico('arrow-right')}</button>`;
+  else if(complete) nextBtn = `<button class="btn btn-primary btn-lg" data-action="finish" data-id="${test.id}">${ico('check')} Показать результат</button>`;
+  else nextBtn = `<button class="btn btn-primary" disabled>Распределите все баллы</button>`;
+
+  return `${testHeader(test, lblBtn('btn-ghost', `data-action="reset-test" data-id="${test.id}"`, 'Сбросить', 'rotate-ccw'))}
+    <div class="q-progress">
+      <span class="q-counter">Блок ${si+1} / ${total}</span>
+      ${progressBar(done, total)}
+      <span class="q-counter">${pct(done, total)}%</span>
+    </div>
+    ${grid}
+    <div class="card question-card fade" id="q-card" tabindex="-1">
+      <div class="q-num">Блок ${si+1} из ${total}</div>
+      <div class="q-text">${esc(test.sections[si])}</div>
+      <p class="small muted" style="margin:10px 0 0">Распределите <b>10 баллов</b> между утверждениями. Больше баллов — то, что подходит вам сильнее. Можно отдать все 10 одному или разделить на несколько.</p>
+      <div class="bel-left">
+        <span class="badge ${left === 0 ? 'badge-success' : 'badge-warning'}" aria-live="polite">Осталось: ${left} из ${test.pointsPer}</span>
+        ${progressBar(used, test.pointsPer)}
+      </div>
+      <div style="margin-top:14px">${rows}</div>
+      <div class="row" style="margin-top:16px">
+        <button class="btn btn-ghost btn-sm" data-action="bel-clear" ${used ? '' : 'disabled'}>${ico('rotate-ccw')} Очистить блок</button>
+      </div>
+    </div>
+    <div class="q-nav">
+      <button class="btn btn-outline" data-action="bel-prev" ${si === 0 ? 'disabled' : ''}>${ico('arrow-left')} Назад</button>
+      <div class="spacer"></div>
+      ${nextBtn}
+    </div>
+    <p class="hint no-print">Прогресс сохраняется сам. Блок засчитывается, когда распределены все 10 баллов.</p>`;
+}
+function belChange(test, i, d){
+  if(route.name !== 'test' || route.id !== test.id || test.kind !== 'points') return;
+  clearAdvance();
+  const si = route.q;
+  const st = S.answers[test.id] || (S.answers[test.id] = {});
+  const arr = (st[si] && st[si].length === 8) ? st[si].slice() : new Array(8).fill(0);
+  if(arr[i] + d < 0 || sectionSum(arr) + d > test.pointsPer) return;
+  arr[i] += d; st[si] = arr; save();
+  render({focus:`[data-action="${d > 0 ? 'bel-inc' : 'bel-dec'}"][data-i="${i}"]`});
+  if(S.autoAdvance && sectionSum(arr) === test.pointsPer && si < test.sections.length - 1){
+    advanceTimer = setTimeout(() => {
+      if(route.name !== 'test' || route.id !== test.id || route.q !== si) return;
+      setBelSec(test, si + 1);
+      render({enter:true, focus:'#q-card'});
+    }, 700);
+  }
 }
 
 /* ---------------- Тест: матрица ---------------- */
@@ -1906,6 +2172,7 @@ function viewBody(){
   if(route.name === 'test'){
     const t = getTest(route.id);
     if(t.kind === 'matrix')     return viewMatrix(t);
+    if(t.kind === 'points')     return viewBelbin(t);
     if(t.kind === 'tournament') return viewTournament(t);
     if(t.kind === 'reflection') return viewReflection(t);
     return viewQuestions(t);
@@ -1935,6 +2202,7 @@ function render(opts = {}){
 function finishTest(test){
   clearAdvance();
   if(!isComplete(test)){
+    if(test.kind === 'points'){ toast('Распределите все 10 баллов в каждом блоке'); return; }
     const i = firstUnanswered(test);
     toast('Осталось ответить на ' + (totalCount(test) - answeredCount(test)));
     if(i >= 0) moveQ(test, i);
@@ -2123,7 +2391,7 @@ function drawShareCard(d){
   x.fillStyle = '#e4e4e7'; x.fillRect(P, H - 110, W - 2 * P, 2);
   x.fillStyle = '#71717a'; x.font = `400 26px ${F}`;
   const u = shareUrl();
-  x.fillText(u ? u.replace(/^https?:\/\//, '') : 'Профориентация · семь коротких тестов', P, H - 60);
+  x.fillText(u ? u.replace(/^https?:\/\//, '') : 'Профориентация · восемь коротких тестов', P, H - 60);
   return c;
 }
 
@@ -2216,6 +2484,12 @@ const actions = {
   next(el, t){ if(t) moveQ(t, route.q + 1); },
   goto(el, t){ if(t) moveQ(t, Number(el.dataset.index)); },
   'goto-missing'(el, t){ if(t){ const i = firstUnanswered(t); if(i >= 0) moveQ(t, i); } },
+  'bel-inc'(el, t){ if(t) belChange(t, Number(el.dataset.i), +1); },
+  'bel-dec'(el, t){ if(t) belChange(t, Number(el.dataset.i), -1); },
+  'bel-goto'(el, t){ if(t){ clearAdvance(); setBelSec(t, Number(el.dataset.index)); render({enter:true, focus:'#q-card'}); } },
+  'bel-prev'(el, t){ if(t){ clearAdvance(); setBelSec(t, route.q - 1); render({enter:true, focus:'#q-card'}); } },
+  'bel-next'(el, t){ if(t){ clearAdvance(); setBelSec(t, route.q + 1); render({enter:true, focus:'#q-card'}); } },
+  'bel-clear'(el, t){ if(t && S.answers[t.id]){ delete S.answers[t.id][route.q]; save(); render({focus:'#q-card'}); } },
   'reset-test'(el, t){ if(t) resetTest(t); },
   finish(el, t){ if(t) finishTest(t); },
 
