@@ -392,14 +392,36 @@ dialog p{margin:0 0 18px;font-size:14.5px}
   .option[aria-pressed="true"],.option[aria-pressed="true"]:hover{background:var(--accent)}
 }
 
-/* ---- Новинка ---- */
+/* ---- Новинка: переливающаяся градиентная обводка и мягкое свечение ---- */
 .test-card.is-new{
+  position:relative;
+  isolation:isolate;
   border:1.5px solid transparent;
   background:linear-gradient(var(--card),var(--card)) padding-box,
-             linear-gradient(135deg,var(--chart-1),var(--chart-2),var(--chart-3)) border-box;
+             linear-gradient(120deg,var(--chart-1),var(--chart-2),var(--chart-3),var(--chart-1)) border-box;
+  background-size:100% 100%,300% 300%;
+  background-position:0 0,0% 50%;
   box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-2) 10%,transparent),
              0 10px 30px -10px color-mix(in srgb,var(--chart-2) 60%,transparent);
-  animation:newGlow 3.2s ease-in-out infinite;
+  animation:newGradientBorder 3.5s linear infinite,newGlow 1.8s ease-in-out infinite;
+}
+.test-card.is-new::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-1px;
+  border-radius:inherit;
+  padding:2px;
+  background:linear-gradient(120deg,var(--chart-1),var(--chart-2),var(--chart-3),var(--chart-1));
+  background-size:300% 300%;
+  background-position:0% 50%;
+  opacity:.8;
+  filter:blur(20px);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  animation:newGradientGlow 3.5s linear infinite,newGlowBehind 1.8s ease-in-out infinite;
 }
 .test-card.is-new:hover{border-color:transparent;transform:translateY(-2px)}
 .test-card.is-new .tc-icon{
@@ -408,9 +430,21 @@ dialog p{margin:0 0 18px;font-size:14.5px}
 }
 .badge-new{background:linear-gradient(135deg,var(--chart-2),var(--chart-3));color:#fff;border-color:transparent;font-weight:600}
 .badge-new .ico{width:12px;height:12px}
+@keyframes newGradientBorder{
+  0%,100%{background-position:0 0,0% 50%}
+  50%{background-position:0 0,100% 50%}
+}
 @keyframes newGlow{
-  0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-2) 8%,transparent),0 8px 24px -10px color-mix(in srgb,var(--chart-2) 45%,transparent)}
-  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--chart-3) 14%,transparent),0 12px 34px -8px color-mix(in srgb,var(--chart-3) 65%,transparent)}
+  0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-2) 18%,transparent),0 8px 30px -6px color-mix(in srgb,var(--chart-2) 60%,transparent)}
+  50%{box-shadow:0 0 12px 6px color-mix(in srgb,var(--chart-3) 24%,transparent),0 0 50px color-mix(in srgb,var(--chart-3) 78%,transparent),0 14px 36px -6px color-mix(in srgb,var(--chart-2) 70%,transparent)}
+}
+@keyframes newGradientGlow{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes newGlowBehind{
+  0%,100%{opacity:.5}
+  50%{opacity:1}
 }
 
 /* ---- Белбин ---- */
@@ -425,7 +459,8 @@ dialog p{margin:0 0 18px;font-size:14.5px}
 .bel-left{display:flex;align-items:center;gap:12px;margin:14px 0 4px;flex-wrap:wrap}
 .bel-left .progress{flex:1;min-width:120px}
 @media(prefers-reduced-motion:reduce){
-  .test-card.is-new{animation:none}
+  .test-card.is-new,.test-card.is-new::before{animation:none}
+  .test-card.is-new::before{opacity:.28}
 }
 </style>
 </head>
