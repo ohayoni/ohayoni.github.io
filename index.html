@@ -327,6 +327,20 @@ dialog p{margin:0 0 18px;font-size:14.5px}
 .accent-block{padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);margin-top:10px}
 .accent-block p{margin:.3em 0 0}
 
+/* расшифровка командных ролей */
+.role-legend{margin:0 0 16px}
+.role-legend>summary{cursor:pointer;font-weight:600;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);display:flex;gap:8px;align-items:center;list-style-position:inside}
+.role-legend>summary::-webkit-details-marker{display:none}
+.role-legend>summary::after{content:"▾";margin-left:auto;color:var(--muted-fg);transition:transform .15s}
+.role-legend[open]>summary::after{transform:rotate(180deg)}
+.role-legend>summary:hover{border-color:var(--ring)}
+.role-legend-body{padding:4px 2px 0}
+.role-explain{padding:12px 0;border-top:1px solid var(--border)}
+.role-explain:first-child{border-top:0}
+.role-explain-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.role-dot{width:10px;height:10px;border-radius:50%;flex:0 0 10px}
+.role-alias{color:var(--muted-fg);margin:2px 0 0}
+
 /* печать */
 /* ---- Окно «Поделиться» ---- */
 #share-dlg{max-width:min(460px,calc(100vw - 32px));width:100%;max-height:calc(100vh - 32px);overflow:auto}
@@ -1037,7 +1051,9 @@ const BELBIN_SECTIONS = [
    Ключи ролей 5–8 взяты из книги; 1–4 и тексты — СВЕРИТЬ с изданием. */
 const BELBIN_ROLES = [
   {key:'CH', name:'Председатель', sub:'координатор', code:'ВГВДГЖБ', color:'var(--chart-1)',
+   alias:'Coordinator · координатор · ведущий',
    desc:'Уверенный и зрелый лидер: ставит цели, распределяет роли и раскрывает сильные стороны каждого.',
+   use:'Вести обсуждение, ставить общую цель и раздавать задачи по сильным сторонам участников.',
    weak:'Может перекладывать свою работу на других.',
    s:['Я умею раскрывать в людях то ценное, что они могут дать общему делу.',
       'Мне трудно настоять на своём: я иногда перекладываю на других то, что мог(ла) бы сделать сам(а).',
@@ -1046,8 +1062,10 @@ const BELBIN_ROLES = [
       'Мне нравится направлять людей к общей цели.',
       'Я распределю роли и поручу каждому то, что у него получится лучше.',
       'Мне нелегко давать жёсткие указания, если я не уверен(а), что люди к этому готовы.']},
-  {key:'SH', name:'Творец', sub:'формирователь', code:'ЗЖЖБАДЖ', color:'var(--chart-2)',
+  {key:'SH', name:'Формирователь', sub:'шейпер', code:'ЗЖЖБАДЖ', color:'var(--chart-2)',
+   alias:'Shaper · шейпер · мотиватор',
    desc:'Энергичный и напористый: задаёт темп, любит вызовы и не даёт группе застояться.',
+   use:'Запускать и разгонять проект: брать задачи с дедлайном, сопротивлением и необходимостью продавить решение.',
    weak:'Бывает нетерпелив и резок, может провоцировать конфликты.',
    s:['Я готов(а) к временной непопулярности, если это приведёт к стоящему результату.',
       'Я нетерпелив(а) и резок(а), когда дело движется слишком медленно.',
@@ -1056,8 +1074,10 @@ const BELBIN_ROLES = [
       'Мне нравится влиять на решения и преодолевать препятствия.',
       'Я возьму инициативу на себя и буду подгонять остальных.',
       'Я могу раздражаться и задевать людей, когда они мешают делу.']},
-  {key:'PL', name:'Генератор идей', sub:'творец идей', code:'ГБАЗЕАА', color:'var(--chart-3)',
+  {key:'PL', name:'Творец', sub:'генератор идей', code:'ГБАЗЕАА', color:'var(--chart-3)',
+   alias:'Plant · генератор идей · мыслитель',
    desc:'Креативный человек с нестандартным взглядом: находит решения там, где другие упираются в стену.',
+   use:'Давать открытые задачи без жёстких рамок: концепции, идеи, поиск решения, когда привычные способы не работают.',
    weak:'Бывает рассеян и болезненно воспринимает критику.',
    s:['Генерировать идеи — моя сильная сторона.',
       'Я так увлекаюсь собственными идеями, что забываю о происходящем вокруг.',
@@ -1067,7 +1087,9 @@ const BELBIN_ROLES = [
       'Я придумаю нестандартный способ справиться с задачей.',
       'Мне трудно общаться с теми, кто не разделяет мои идеи.']},
   {key:'ME', name:'Эксперт', sub:'аналитик', code:'ЕДГВЗВЕ', color:'var(--chart-4)',
+   alias:'Monitor Evaluator · аналитик · оценщик',
    desc:'Трезвый и стратегичный: видит все варианты и точно оценивает их, не поддаваясь эмоциям.',
+   use:'Подключать к оценке вариантов и рисков: проверить план на слабые места и выбрать самый обоснованный.',
    weak:'Может быть слишком критичным и не умеет вдохновлять.',
    s:['Я могу взвешенно обосновать разные варианты действий без предвзятости.',
       'Я слишком осторожен(на) и критичен(на): боюсь пропустить риск и теряю темп.',
@@ -1077,7 +1099,9 @@ const BELBIN_ROLES = [
       'Я сначала всё обдумаю и оценю риски, а потом приму решение.',
       'Мне трудно вдохновлять других: я чаще критикую, чем зажигаю.']},
   {key:'IMP', name:'Исполнитель', sub:'практик-организатор', code:'ЖАЗГБЕД', color:'var(--chart-5)',
+   alias:'Implementer · реализатор · практик',
    desc:'Дисциплинированный и надёжный: превращает идеи и планы в конкретные действия и работающие системы.',
+   use:'Поручать превращать замысел в процессы, регламенты и понятные рабочие шаги.',
    weak:'Негибок и неохотно принимает перемены.',
    s:['Я обычно чувствую, что реалистично и что сработает.',
       'Мне трудно перестраиваться, если дело не вписывается в чёткую схему.',
@@ -1087,7 +1111,9 @@ const BELBIN_ROLES = [
       'Я составлю чёткий рабочий план и сразу начну его выполнять.',
       'Я не люблю менять привычные способы работы.']},
   {key:'TW', name:'Душа команды', sub:'командный игрок', code:'БЕДАВБЗ', color:'var(--chart-6)',
+   alias:'Team Worker · коллективист · дипломат',
    desc:'Мягкий и чуткий дипломат: сглаживает трения, поддерживает людей и держит атмосферу в группе.',
+   use:'Ставить туда, где нужны переговоры, поддержка и сглаживание конфликтов между людьми.',
    weak:'Нерешителен в острых ситуациях и избегает конфликтов.',
    s:['Я хорошо работаю с самыми разными людьми.',
       'Я не обостряю и иногда избегаю неприятных, но нужных разговоров.',
@@ -1097,7 +1123,9 @@ const BELBIN_ROLES = [
       'Я поддержу команду и постараюсь снять напряжение.',
       'Мне трудно настаивать на своём, если это грозит конфликтом.']},
   {key:'RI', name:'Исследователь ресурсов', sub:'разведчик', code:'АВЕЖДЗГ', color:'var(--chart-7)',
+   alias:'Resource Investigator · разведчик · нетворкер',
    desc:'Общительный и любознательный: приносит в группу идеи, контакты и возможности извне.',
+   use:'Отправлять искать контакты, ресурсы, партнёров и новые возможности за пределами команды.',
    weak:'Быстро остывает и бывает чрезмерно оптимистичен.',
    s:['Я быстро замечаю новые возможности и умею ими воспользоваться.',
       'Я быстро теряю интерес, когда новизна проходит.',
@@ -1107,7 +1135,9 @@ const BELBIN_ROLES = [
       'Я быстро найду нужных людей и недостающие ресурсы.',
       'Я многое начинаю, но не всё довожу до конца.']},
   {key:'CF', name:'Финишер', sub:'доводящий дело до конца', code:'ДЗБЕЖГВ', color:'var(--chart-8)',
+   alias:'Completer Finisher · доводчик · контролёр качества',
    desc:'Скрупулёзный и ответственный: ловит ошибки, следит за сроками и не пропускает мелочей.',
+   use:'Подключать на финале: проверка деталей, сроки, качество и доведение работы до готового результата.',
    weak:'Склонен тревожиться и с трудом делегирует.',
    s:['Моя результативность держится на умении доводить дело до конца.',
       'Я не отпускаю дело, пока всё не проверено, и мне трудно передавать работу другим.',
@@ -1296,6 +1326,7 @@ const TESTS = [
   },
   {
     id:'belbin', icon:'users', kind:'points', pointsPer:10,
+    resultType:'belbin',
     title:'Командные роли',
     meta:'7 блоков по 10 баллов · Р. М. Белбин',
     brief:'Какую роль вы играете в команде и что можете ей дать.',
@@ -2232,6 +2263,31 @@ function setBelSec(test, i){
   S.pos[test.id] = route.q;
   save();
 }
+function roleExplain(r, value){
+  const badge = value == null ? '' :
+    `<span class="badge ${value >= 18 ? 'badge-success' : value >= 11 ? 'badge-primary' : 'badge-muted'}">${value} ${plural(value)}</span>`;
+  return `<div class="role-explain">
+    <div class="role-explain-head">
+      <span class="role-dot" style="background:${r.color}" aria-hidden="true"></span>
+      <b>${esc(r.name)}</b>
+      <span class="muted small">— ${esc(r.sub)}</span>
+      <span class="spacer"></span>${badge}
+    </div>
+    <p class="small role-alias">${esc(r.alias)}</p>
+    <p class="small" style="margin-top:6px">${esc(r.desc)}</p>
+    <p class="small muted" style="margin-top:4px"><b>Как использовать:</b> ${esc(r.use)}</p>
+    <p class="small muted" style="margin-top:4px"><b>Допустимая слабость:</b> ${esc(r.weak)}</p>
+  </div>`;
+}
+function roleLegend(test){
+  return `<details class="role-legend no-print">
+    <summary>${ico('users')} Расшифровка ролей: кто есть кто в команде</summary>
+    <div class="role-legend-body">
+      <p class="small muted">Роль — это не должность, а привычный способ приносить пользу команде. Сильных ролей обычно 2–3, остальные функции лучше закрывать партнёрами.</p>
+      ${test.roles.map(r => roleExplain(r)).join('')}
+    </div>
+  </details>`;
+}
 function viewBelbin(test){
   const total = test.sections.length, si = route.q;
   const answers = S.answers[test.id] || {};
@@ -2262,6 +2318,7 @@ function viewBelbin(test){
   else nextBtn = `<button class="btn btn-primary" disabled>Распределите все баллы</button>`;
 
   return `${testHeader(test, lblBtn('btn-ghost', `data-action="reset-test" data-id="${test.id}"`, 'Сбросить', 'rotate-ccw'))}
+    ${roleLegend(test)}
     <div class="q-progress">
       <span class="q-counter">Блок ${si+1} / ${total}</span>
       ${progressBar(done, total)}
@@ -2554,6 +2611,13 @@ function resultBody(test, info){
       </div>
     </div></div>`;
   }
+  const belbinRoles = test.resultType === 'belbin'
+    ? `<div class="result-block">
+        <h3>Расшифровка ролей</h3>
+        <p class="small muted">Что означает каждая роль в команде — от самой сильной у вас к самой слабой.</p>
+        ${info.scales.map(s => roleExplain(test.roles.find(r => r.key === s.key), s.value)).join('')}
+      </div>`
+    : '';
   return `<div class="card"><div class="card-content">
     <div class="lead-box">
       <div class="eyebrow">Главное</div>
@@ -2578,6 +2642,7 @@ function resultBody(test, info){
       <h3>Что это значит</h3>
       <div class="small">${info.summary}</div>
     </div>
+    ${belbinRoles}
   </div></div>`;
 }
 function plural(n){
