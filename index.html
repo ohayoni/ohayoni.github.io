@@ -340,6 +340,8 @@ dialog p{margin:0 0 18px;font-size:14.5px}
 .role-explain-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .role-dot{width:10px;height:10px;border-radius:50%;flex:0 0 10px}
 .role-alias{color:var(--muted-fg);margin:2px 0 0}
+.role-legend--card{margin:0}
+.role-legend--card>summary{padding:0;border:0;background:none;font-size:15px}
 
 /* печать */
 /* ---- Окно «Поделиться» ---- */
@@ -2612,11 +2614,15 @@ function resultBody(test, info){
     </div></div>`;
   }
   const belbinRoles = test.resultType === 'belbin'
-    ? `<div class="result-block">
-        <h3>Расшифровка ролей</h3>
-        <p class="small muted">Что означает каждая роль в команде — от самой сильной у вас к самой слабой.</p>
-        ${info.scales.map(s => roleExplain(test.roles.find(r => r.key === s.key), s.value)).join('')}
-      </div>`
+    ? `<div class="card role-legend-card" style="margin-top:16px"><div class="card-content">
+        <details class="role-legend role-legend--card">
+          <summary>${ico('users')} Расшифровка ролей</summary>
+          <div class="role-legend-body">
+            <p class="small muted">Что означает каждая роль в команде — от самой сильной у вас к самой слабой.</p>
+            ${info.scales.map(s => roleExplain(test.roles.find(r => r.key === s.key), s.value)).join('')}
+          </div>
+        </details>
+      </div></div>`
     : '';
   return `<div class="card"><div class="card-content">
     <div class="lead-box">
@@ -2642,8 +2648,7 @@ function resultBody(test, info){
       <h3>Что это значит</h3>
       <div class="small">${info.summary}</div>
     </div>
-    ${belbinRoles}
-  </div></div>`;
+  </div></div>${belbinRoles}`;
 }
 function plural(n){
   const m10 = n % 10, m100 = n % 100;
