@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Профориентация: интересы, мышление, характер и подходящие профессии. Десять коротких методик.">
+<meta name="description" content="Профориентация: интересы, мышление, характер и профессии. 15 методик, практик и инструментов проверки карьерных гипотез.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-size='18' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%23fafafa'%3E%D0%9F%3C/text%3E%3C/svg%3E">
 <title>Профориентация — диагностический комплекс</title>
@@ -462,10 +462,65 @@ dialog p{margin:0 0 18px;font-size:14.5px}
   .test-card.is-new,.test-card.is-new::before{animation:none}
   .test-card.is-new::before{opacity:.28}
 }
+
+/* ---- Практические упражнения: гибридные навыки, Venn и T-shaped ---- */
+.ws-stack{display:flex;flex-direction:column;gap:14px}
+.ws-intro{color:var(--muted-fg);font-size:13.5px;margin:0 0 18px;max-width:800px}
+.ws-card .card-content{padding-top:16px}
+.ws-tags{margin-top:12px;gap:7px}
+.ws-tags .chip{border-radius:9px;padding:8px 11px;font-size:13px}
+.ws-card .chip.sel{background:var(--primary);color:var(--primary-fg)}
+.ws-note{font-size:12px;color:var(--muted-fg);margin:10px 0 0}
+.ws-fields-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.ws-field{display:flex;flex-direction:column;gap:6px;min-width:0;margin-top:12px;font-size:13px;font-weight:500}
+.ws-fields-2 .ws-field{margin-top:0}
+.ws-input,.ws-textarea{width:100%;min-width:0;border:1px solid var(--input);border-radius:calc(var(--radius) - 2px);background:var(--bg);color:var(--fg);font:inherit;font-size:14px;font-weight:400;padding:9px 11px;outline:none}
+.ws-input{height:40px}
+.ws-textarea{min-height:95px;resize:vertical;line-height:1.5}
+.ws-input:focus,.ws-textarea:focus{outline:2px solid var(--ring);outline-offset:1px}
+.ws-add-row{display:flex;align-items:flex-end;gap:10px;margin-top:12px}
+.ws-add-row .ws-field{flex:1;margin-top:0}
+.ws-preview{border:1px solid var(--border);border-radius:var(--radius);background:var(--muted);padding:16px}
+.ws-preview h3{font-size:16px;margin:6px 0 8px}
+.ws-preview p{font-size:13.5px;margin:8px 0 0;overflow-wrap:anywhere}
+.ws-preview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ws-pitch{font-size:15px!important;line-height:1.65!important;white-space:pre-wrap}
+.ws-save-card{margin-top:16px}
+.ws-save-row{align-items:center}
+.ws-save-row p{margin:5px 0 0}
+.ws-rating-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.ws-rating-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px, 1.2fr);gap:12px;align-items:center;border-top:1px solid var(--border);padding-top:10px;font-size:13.5px}
+.ws-t-shape{display:flex;flex-direction:column;align-items:center;margin:12px auto 4px;max-width:620px}
+.ws-t-bar{width:100%;min-height:44px;padding:12px 16px;text-align:center;border-radius:9px;background:var(--primary);color:var(--primary-fg);font-size:13px;font-weight:600;overflow-wrap:anywhere}
+.ws-t-stem{width:10px;min-height:28px;background:var(--chart-2);border-radius:0 0 5px 5px}
+.ws-t-breadth{width:100%;padding:12px;text-align:center;border:1px solid var(--border);background:var(--card);border-radius:9px;font-size:12.5px;overflow-wrap:anywhere}
+.ws-check-list{display:flex;flex-direction:column;gap:10px}
+.ws-check-row{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--border);border-radius:9px;background:var(--card);font-size:13px;line-height:1.5}
+.ws-check-row input{margin-top:3px;accent-color:var(--primary);flex:none}
+.ws-check-result{align-items:center}
+.ws-check-mark,.ws-check-empty{display:inline-grid;place-items:center;width:22px;height:22px;flex:0 0 22px;border:1px solid var(--border);border-radius:50%;font-size:12px;font-weight:700}
+.ws-check-mark{background:var(--primary);color:var(--primary-fg);border-color:transparent}
+.ws-timeline{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.ws-timeline>div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:13px;line-height:1.5}
+.ws-timeline>div:first-child{border-top:0}
+.ws-timeline>div>b{color:var(--muted-fg);font-size:12px;padding-top:2px}
+.ws-timeline strong{font-weight:600}
+.ws-result-field{padding:10px 0;border-top:1px solid var(--border)}
+.ws-result-field:first-child{border-top:0}
+.ws-result-field p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:620px){
+  .ws-fields-2{grid-template-columns:1fr;gap:0}
+  .ws-add-row{align-items:stretch;flex-direction:column}
+  .ws-add-row .btn{width:100%}
+  .ws-rating-row{grid-template-columns:1fr;gap:6px}
+  .ws-save-row{align-items:stretch;flex-direction:column}
+  .ws-save-row .btn{width:100%}
+  .ws-timeline>div{grid-template-columns:70px minmax(0,1fr);gap:8px}
+}
 </style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Иконки: Lucide (ISC) https://lucide.dev --><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /> <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /> <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /> <path d="M18 18a4 4 0 0 0 2-7.464" /> <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /> <path d="M6 18a4 4 0 0 1-2-7.464" /> <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-drama" viewBox="0 0 24 24"><path d="M10 11h.01" /> <path d="M14 6h.01" /> <path d="M18 6h.01" /> <path d="M6.5 13.1h.01" /> <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" /> <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" /> <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" /> <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol><symbol id="i-hexagon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12" /> <path d="m17 8-5-5-5 5" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol><symbol id="i-trash-2" viewBox="0 0 24 24"><path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2" /> <line x1="8" x2="16" y1="21" y2="21" /> <line x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18" /> <rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /> <path d="M7 3v4a1 1 0 0 0 1 1h7" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /></symbol><symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol><symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1"/></symbol><symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 6c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 12c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 18c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Иконки: Lucide (ISC) https://lucide.dev --><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /> <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /> <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /> <path d="M18 18a4 4 0 0 0 2-7.464" /> <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /> <path d="M6 18a4 4 0 0 1-2-7.464" /> <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-drama" viewBox="0 0 24 24"><path d="M10 11h.01" /> <path d="M14 6h.01" /> <path d="M18 6h.01" /> <path d="M6.5 13.1h.01" /> <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" /> <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" /> <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" /> <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol><symbol id="i-hexagon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12" /> <path d="m17 8-5-5-5 5" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol><symbol id="i-trash-2" viewBox="0 0 24 24"><path d="M10 11v6" /> <path d="M14 11v6" /> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /> <path d="M3 6h18" /> <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2" /> <line x1="8" x2="16" y1="21" y2="21" /> <line x1="12" x2="12" y1="17" y2="21" /></symbol><symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18" /> <rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /> <path d="M7 3v4a1 1 0 0 0 1 1h7" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /></symbol><symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol><symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1"/></symbol><symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 6c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 12c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 18c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></symbol><symbol id="i-git-merge" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v1a8 8 0 0 0 8 8h1"/><path d="M18 9v6"/></symbol><symbol id="i-venn" viewBox="0 0 24 24"><circle cx="9" cy="8" r="5.5"/><circle cx="15" cy="8" r="5.5"/><circle cx="12" cy="15" r="5.5"/></symbol><symbol id="i-t-shape" viewBox="0 0 24 24"><path d="M3 4h18M12 4v16"/><circle cx="5" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/><circle cx="5" cy="18" r="1.4"/><circle cx="19" cy="18" r="1.4"/></symbol><symbol id="i-message-square-text" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-4.6a8.5 8.5 0 1 1 16.1-4.9Z"/><path d="M8 10h8M8 14h5"/></symbol><symbol id="i-flask-conical" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5l-5.7 9.1A1.6 1.6 0 0 0 5.7 21h12.6a1.6 1.6 0 0 0 1.4-2.4L14 9.5V3"/><path d="M8 15h8"/><path d="m9.5 12 5 0"/></symbol></svg>
 <a class="skip-link" href="#main">К содержимому</a>
 <div id="app"></div>
 <dialog id="dlg" aria-labelledby="dlg-msg">
@@ -1075,6 +1130,19 @@ const BELBIN_STMT = BELBIN_SECTIONS.map((_, si) => {
 const topGroup = scales => scales.filter(s => s.value === scales[0].value);
 const lc = s => s.toLowerCase();
 
+const WORKSHOP_SKILLS = [
+  'Дизайн','Аналитика','Исследования','Программирование','Письмо и сторителлинг',
+  'Обучение','Коммуникация','Управление проектами','Маркетинг','Визуализация данных',
+  'Психология и поведение','Продакшн','Работа руками','Наука','Музыка и звук',
+  'Иллюстрация','Разработка игр','Предпринимательство','Комьюнити','Видео и motion',
+  'Фасилитация','Тестирование и QA','Руководство','Систематизация'
+];
+const WORKSHOP_CHECKS = [
+  {key:'market', label:'Проверил спрос: изучил 10 вакансий, задач или предложений рынка'},
+  {key:'interviews', label:'Поговорил минимум с 3 людьми из целевой аудитории или профессии'},
+  {key:'prototype', label:'Сделал небольшой пример работы и получил обратную связь'}
+];
+
 const TESTS = [
   {
     id:'thinking', icon:'brain', kind:'binary',
@@ -1261,7 +1329,7 @@ const TESTS = [
     }
   },
   {
-    id:'emotional-intelligence', icon:'heart-pulse', kind:'binary', isNew:true,
+    id:'emotional-intelligence', icon:'heart-pulse', kind:'binary',
     title:'Эмоциональный интеллект',
     meta:'30 утверждений · опросник EQ Н. Холла',
     brief:'Пять составляющих EQ: самосознание, самоконтроль, самомотивация, эмпатия и навыки взаимодействия.',
@@ -1332,7 +1400,7 @@ const TESTS = [
     }
   },
   {
-    id:'temperament', icon:'waves', kind:'binary', isNew:true, resultType:'temperament',
+    id:'temperament', icon:'waves', kind:'binary', resultType:'temperament',
     title:'Определение темперамента',
     meta:'40 вопросов · Г. Айзенк в модификации Г. Резапкиной',
     brief:'Оцените общительность и эмоциональные реакции, затем посмотрите на сочетание черт четырёх темпераментов.',
@@ -1444,6 +1512,36 @@ const TESTS = [
     title:'Призвание',
     meta:'упражнение на размышление',
     brief:'Спокойно подумайте, что вас по-настоящему зовёт.'
+  },
+  {
+    id:'hybrid-lab', icon:'git-merge', kind:'workshop', workshop:'hybrid', badge:'Практика', isNew:true,
+    title:'Скрещиваем ежа и ужа',
+    meta:'Гибридная профессия из навыков',
+    brief:'Соедините разные интересы, придумайте продукт и сформулируйте ценность сочетания.'
+  },
+  {
+    id:'golden-zone', icon:'venn', kind:'workshop', workshop:'golden-zone', badge:'Практика', isNew:true,
+    title:'Золотая зона: диаграмма Венна',
+    meta:'Интересы × рынок × сильные стороны',
+    brief:'Найдите пересечение того, что нравится, за что платят и что у вас получается.'
+  },
+  {
+    id:'t-shaped', icon:'t-shape', kind:'workshop', workshop:'t-shaped', badge:'Практика', isNew:true,
+    title:'Профиль T-shaped',
+    meta:'Глубина экспертизы и ширина навыков',
+    brief:'Выберите 1–2 глубокие области и набор смежных навыков, которые усиливают друг друга.'
+  },
+  {
+    id:'hybrid-pitch', icon:'message-square-text', kind:'workshop', workshop:'pitch', badge:'Практика', isNew:true,
+    title:'Питч гибридного специалиста',
+    meta:'Представьте сочетание через результат',
+    brief:'Соберите короткое объяснение своей ценности для работодателя на основе проекта и доказательств.'
+  },
+  {
+    id:'career-sprint', icon:'flask-conical', kind:'workshop', workshop:'experiment', badge:'Проверка гипотезы', isNew:true,
+    title:'Карьерный эксперимент на 7 дней',
+    meta:'Проверка идеи небольшими тестами',
+    brief:'Составьте план проверки направления: спрос, разговоры с людьми, прототип и критерий успеха.'
   }
 ];
 const getTest = id => TESTS.find(t => t.id === id);
@@ -1475,14 +1573,120 @@ function countAnswers(test, a){
   if(test.kind === 'tournament') return (a.picks || []).length;
   if(test.kind === 'matrix')     return (a.object && a.activity) ? 1 : 0;
   if(test.kind === 'reflection') return (a.text || '').trim() ? 1 : 0;
+  if(test.kind === 'workshop')   return workshopDraftProgress(test, a);
   if(test.kind === 'points')     return test.sections.filter((_, i) => sectionSum(a[i]) === test.pointsPer).length;
   return Object.values(a).filter(v => v !== undefined && v !== null).length;
 }
 function totalCount(test){
   if(test.kind === 'tournament') return MOTIVES.length - 1;
+  if(test.kind === 'workshop') return workshopTotal(test);
   if(test.kind === 'points') return test.sections.length;
   if(isQuestionTest(test)) return test.questions.length;
   return 1;
+}
+
+/* ---- практические мастерские: прогресс и проверка вводимых данных ---- */
+function workshopTotal(test){
+  return ({hybrid:5, 'golden-zone':3, 't-shaped':4, pitch:4, experiment:4})[test.workshop] || 1;
+}
+function wsTrim(value){ return typeof value === 'string' ? value.trim() : ''; }
+function isWorkshopReady(test, a){
+  a = a || {};
+  switch(test.workshop){
+    case 'hybrid':
+      return Array.isArray(a.skills) && a.skills.length >= 2 &&
+        a.skills.includes(a.skillA) && a.skills.includes(a.skillB) && a.skillA !== a.skillB &&
+        !!wsTrim(a.product) && !!wsTrim(a.audience) && !!wsTrim(a.outcome);
+    case 'golden-zone':
+      return ['likes','paid','strengths'].every(k => Array.isArray(a[k]) && a[k].length > 0);
+    case 't-shaped':
+      return Array.isArray(a.deepAreas) && a.deepAreas.length >= 1 && a.deepAreas.length <= 2 &&
+        a.deepAreas.every(k => Number.isInteger(Number(a.depthRatings && a.depthRatings[k])) && Number(a.depthRatings[k]) >= 1 && Number(a.depthRatings[k]) <= 5) &&
+        Array.isArray(a.breadth) && a.breadth.length >= 2;
+    case 'pitch':
+      return ['role','skill1','skill2','audience','outcome','example','metric'].every(k => !!wsTrim(a[k]));
+    case 'experiment':
+      return ['hypothesis','audience','problem','experiment','metric'].every(k => !!wsTrim(a[k]));
+    default: return false;
+  }
+}
+function workshopDraftProgress(test, a){
+  a = a || {};
+  if(a.done && isWorkshopReady(test, a)) return workshopTotal(test);
+  let n = 0;
+  switch(test.workshop){
+    case 'hybrid':
+      n += Array.isArray(a.skills) && a.skills.length ? 1 : 0;
+      n += a.skillA && a.skillB && a.skillA !== a.skillB && (a.skills || []).includes(a.skillA) && (a.skills || []).includes(a.skillB) ? 1 : 0;
+      n += !!wsTrim(a.product) ? 1 : 0;
+      n += !!wsTrim(a.audience) ? 1 : 0;
+      n += !!wsTrim(a.outcome) ? 1 : 0;
+      break;
+    case 'golden-zone':
+      n += ['likes','paid','strengths'].filter(k => Array.isArray(a[k]) && a[k].length).length;
+      break;
+    case 't-shaped':
+      n += Array.isArray(a.deepAreas) && a.deepAreas.length ? 1 : 0;
+      n += Array.isArray(a.deepAreas) && a.deepAreas.some(k => Number(a.depthRatings && a.depthRatings[k]) >= 1) ? 1 : 0;
+      n += Array.isArray(a.breadth) && a.breadth.length ? 1 : 0;
+      n += Array.isArray(a.breadth) && a.breadth.length >= 3 ? 1 : 0;
+      break;
+    case 'pitch':
+      n += !!wsTrim(a.role) ? 1 : 0;
+      n += !!wsTrim(a.skill1) && !!wsTrim(a.skill2) ? 1 : 0;
+      n += !!wsTrim(a.audience) && !!wsTrim(a.outcome) ? 1 : 0;
+      n += !!wsTrim(a.example) && !!wsTrim(a.metric) ? 1 : 0;
+      break;
+    case 'experiment':
+      n += !!wsTrim(a.hypothesis) ? 1 : 0;
+      n += !!wsTrim(a.audience) && !!wsTrim(a.problem) ? 1 : 0;
+      n += !!wsTrim(a.experiment) ? 1 : 0;
+      n += !!wsTrim(a.metric) ? 1 : 0;
+      break;
+  }
+  // A workshop only becomes a completed result after the user explicitly saves it.
+  return Math.min(Math.max(0, workshopTotal(test) - 1), n);
+}
+function sanitizeWorkshopAnswers(test, raw){
+  raw = raw && typeof raw === 'object' ? raw : {};
+  const out = {};
+  const textFields = {
+    hybrid:['customDraft','skillA','skillB','product','audience','outcome'],
+    'golden-zone':[],
+    't-shaped':[],
+    pitch:['role','skill1','skill2','audience','outcome','example','metric'],
+    experiment:['hypothesis','audience','problem','experiment','metric']
+  }[test.workshop] || [];
+  textFields.forEach(k => { if(typeof raw[k] === 'string') out[k] = raw[k].slice(0, 2000); });
+  const cleanArray = (value, allowCustom = false, max = 30) => {
+    if(!Array.isArray(value)) return [];
+    const seen = new Set(), arr = [];
+    for(const item of value){
+      if(typeof item !== 'string') continue;
+      const v = item.trim().slice(0, 60);
+      if(!v || (!allowCustom && !WORKSHOP_SKILLS.includes(v)) || (allowCustom && !/^[\p{L}\p{N}][\p{L}\p{N}\s+&.,()/#-]{0,59}$/u.test(v)) || seen.has(v)) continue;
+      seen.add(v); arr.push(v);
+      if(arr.length >= max) break;
+    }
+    return arr;
+  };
+  if(test.workshop === 'hybrid') out.skills = cleanArray(raw.skills, true, 30);
+  if(test.workshop === 'golden-zone'){
+    ['likes','paid','strengths'].forEach(k => out[k] = cleanArray(raw[k]));
+  }
+  if(test.workshop === 't-shaped'){
+    out.deepAreas = cleanArray(raw.deepAreas);
+    out.breadth = cleanArray(raw.breadth);
+    out.depthRatings = {};
+    if(raw.depthRatings && typeof raw.depthRatings === 'object'){
+      Object.entries(raw.depthRatings).forEach(([k,v]) => {
+        const n = Number(v);
+        if(out.deepAreas.includes(k) && Number.isInteger(n) && n >= 1 && n <= 5) out.depthRatings[k] = n;
+      });
+    }
+  }
+  if(test.workshop === 'experiment') out.checks = Array.isArray(raw.checks) ? [...new Set(raw.checks.filter(k => WORKSHOP_CHECKS.some(c => c.key === k)))].slice(0,3) : [];
+  return out;
 }
 
 /* ---- очистка данных ---- */
@@ -1524,6 +1728,11 @@ function sanitizeAnswers(test, raw){
     }
     case 'reflection':
       return {text: typeof raw.text === 'string' ? raw.text.trim().slice(0, NOTE_LIMIT) : ''};
+    case 'workshop': {
+      const clean = sanitizeWorkshopAnswers(test, raw);
+      clean.done = raw.done === true && isWorkshopReady(test, clean);
+      return clean;
+    }
   }
   return out;
 }
@@ -1534,6 +1743,7 @@ function sanitizeResult(r){
   let src = r.answers;
   if(t.kind === 'reflection' && !(src && typeof src.text === 'string')) src = {text: r.extra && r.extra.text};
   const answers = sanitizeAnswers(t, src);
+  if(t.kind === 'workshop' && !answers.done) return null;
   if(countAnswers(t, answers) < totalCount(t)) return null;
   const d = new Date(r.date);
   return {
@@ -1615,7 +1825,7 @@ function stateAnswers(test){
   return S.answers[test.id] || {};
 }
 const answeredCount = test => countAnswers(test, stateAnswers(test));
-const isComplete = test => answeredCount(test) >= totalCount(test);
+const isComplete = test => test.kind === 'workshop' ? !!stateAnswers(test).done : answeredCount(test) >= totalCount(test);
 
 function ensureResult(test){
   const answers = sanitizeAnswers(test, stateAnswers(test));
@@ -1636,7 +1846,56 @@ function clearTestAnswers(test){
   save();
 }
 
+function analyzeWorkshop(test, a){
+  a = a || {};
+  if(test.workshop === 'hybrid'){
+    const skills = a.skills || [];
+    const combos = [];
+    for(let i = 0; i < skills.length; i++) for(let j = i + 1; j < skills.length; j++) combos.push([skills[i], skills[j]]);
+    const pitch = `Я делаю ${wsTrim(a.product)} с помощью ${a.skillA} + ${a.skillB} для ${wsTrim(a.audience)}, чтобы ${wsTrim(a.outcome)}.`;
+    return {lead:{name:`${a.skillA} + ${a.skillB}`, value:skills.length, level:'гибридная гипотеза'}, skills, pairCount:combos.length, combos, pitch,
+      product:wsTrim(a.product), audience:wsTrim(a.audience), outcome:wsTrim(a.outcome)};
+  }
+  if(test.workshop === 'golden-zone'){
+    const likes = a.likes || [], paid = a.paid || [], strengths = a.strengths || [];
+    const all = likes.filter(k => paid.includes(k) && strengths.includes(k));
+    const pairLP = likes.filter(k => paid.includes(k));
+    const pairLS = likes.filter(k => strengths.includes(k));
+    const pairPS = paid.filter(k => strengths.includes(k));
+    const count = all.length;
+    return {lead:{name:count ? all.slice(0,3).join(' · ') : 'Золотая зона пока не найдена', value:count, level:count ? 'совпадение трёх кругов' : 'нужна проверка гипотезы'},
+      likes, paid, strengths, all, pairLP, pairLS, pairPS};
+  }
+  if(test.workshop === 't-shaped'){
+    const areas = (a.deepAreas || []).map(name => ({name, value:Number(a.depthRatings && a.depthRatings[name]) || 0}));
+    const breadth = a.breadth || [];
+    const avg = areas.length ? areas.reduce((sum,x) => sum + x.value, 0) / areas.length : 0;
+    let level, advice;
+    if(avg >= 4 && breadth.length >= 4){ level = 'Выраженный T-shaped профиль по самооценке'; advice = 'Подкрепите глубину кейсом с измеримым результатом и покажите, как смежные навыки помогли решить задачу целиком.'; }
+    else if(avg >= 3 && breadth.length >= 2){ level = 'T-shaped профиль формируется'; advice = 'Сохраните выбранную вертикаль, а ширину развивайте через один реальный проект на стыке навыков.'; }
+    else { level = 'Профиль пока в поиске формы'; advice = 'Выберите одну главную область для системной практики и добавляйте смежные навыки через конкретные проекты, а не отдельные поверхностные курсы.'; }
+    return {lead:{name:level, value:Math.round(avg * 10) / 10, level:`глубина ${avg.toFixed(1)}/5`}, areas, breadth, avg, advice};
+  }
+  if(test.workshop === 'pitch'){
+    const text = `Я не просто ${wsTrim(a.role)}. Я использую ${wsTrim(a.skill1)} и ${wsTrim(a.skill2)}, чтобы ${wsTrim(a.outcome)} для ${wsTrim(a.audience)}. Например, ${wsTrim(a.example)}. Результат: ${wsTrim(a.metric)}.`;
+    return {lead:{name:`${wsTrim(a.role)} + ${wsTrim(a.skill1)} + ${wsTrim(a.skill2)}`, value:1, level:'питч готов'}, text, role:wsTrim(a.role), skill1:wsTrim(a.skill1), skill2:wsTrim(a.skill2), audience:wsTrim(a.audience), outcome:wsTrim(a.outcome), example:wsTrim(a.example), metric:wsTrim(a.metric)};
+  }
+  if(test.workshop === 'experiment'){
+    const checks = a.checks || [];
+    return {lead:{name:wsTrim(a.hypothesis), value:checks.length, level:`проверки ${checks.length}/3`}, hypothesis:wsTrim(a.hypothesis), audience:wsTrim(a.audience), problem:wsTrim(a.problem), experiment:wsTrim(a.experiment), metric:wsTrim(a.metric), checks,
+      steps:[
+        {day:'День 1', title:'Уточнить гипотезу', body:`Для кого: ${wsTrim(a.audience)}. Какую задачу решаем: ${wsTrim(a.problem)}.`},
+        {day:'Дни 2–3', title:'Проверить реальность проблемы', body:'Посмотреть вакансии и существующие решения; поговорить с потенциальными пользователями или практиками.'},
+        {day:'Дни 4–5', title:'Сделать минимальный тест', body:wsTrim(a.experiment)},
+        {day:'День 6', title:'Собрать обратную связь', body:'Попросить несколько представителей аудитории оценить результат по одному и тому же критерию.'},
+        {day:'День 7', title:'Принять решение', body:`Критерий успеха: ${wsTrim(a.metric)}. Решение — продолжать, изменить гипотезу или остановить эксперимент.`}
+      ]};
+  }
+  return {lead:{name:'Практика', value:0, level:'нет данных'}};
+}
+
 function analyze(test, answers){
+  if(test.kind === 'workshop') return analyzeWorkshop(test, answers);
   if(test.kind === 'matrix'){
     const profs = (MATRIX[answers.activity] && MATRIX[answers.activity][answers.object]) || [];
     return {lead:{name:`${answers.activity} · ${answers.object}`}, professions:profs};
@@ -1810,7 +2069,7 @@ function viewHome(){
       <div class="row-between">
         <div class="tc-icon" aria-hidden="true">${ico(t.icon)}</div>
         <span class="wrap" style="flex-wrap:nowrap;gap:6px;justify-content:flex-end">
-          ${t.isNew ? `<span class="badge badge-new">Новинка</span>` : ''}${badge}
+          ${t.isNew ? `<span class="badge badge-new">${ico('sparkles')} Новинка</span>` : t.badge ? `<span class="badge">${esc(t.badge)}</span>` : ''}${badge}
         </span>
       </div>
       <div>
@@ -1845,7 +2104,7 @@ function viewHome(){
 
   return `<section class="hero">
       <h1>Какая профессия вам подойдёт?</h1>
-      <p>Десять коротких методик про интересы, мышление, характер и эмоциональные особенности. Ответы сохраняются — можно вернуться в любой момент.</p>
+      <p>15 методик и практик про интересы, мышление, характер и карьерные гипотезы. Новые упражнения помогут соединить навыки, найти свою золотую зону и проверить идею в небольшом эксперименте. Ответы сохраняются в браузере.</p>
     </section>
     <div class="grid-cards">${cards}</div>
     ${profile}
@@ -2198,7 +2457,47 @@ function viewReflection(test){
 }
 
 /* ---------------- Результат ---------------- */
+function workshopResultBody(test, info){
+  const block = (label, value) => `<div class="ws-result-field"><div class="eyebrow">${esc(label)}</div><p>${esc(value || '—')}</p></div>`;
+  const list = arr => arr && arr.length ? `<div class="prof-list">${arr.map(x => `<span class="prof">${esc(x)}</span>`).join('')}</div>` : '<p class="small muted">Пока нет совпадений.</p>';
+  if(test.workshop === 'hybrid'){
+    const combos = info.combos.slice(0, 8).map(pair => pair.join(' + '));
+    return `<div class="card"><div class="card-content"><div class="lead-box"><div class="eyebrow">Гибридная гипотеза</div><h3 style="margin-top:6px">${esc(info.lead.name)}</h3><p class="small muted" style="margin-top:6px">Выбрано навыков: ${info.skills.length}; возможных пар: ${info.pairCount}.</p></div>
+      <div class="result-block" style="margin-top:20px"><h3>Формула профессии</h3><p class="ws-pitch">${esc(info.pitch)}</p></div>
+      <div class="result-block"><h3>Другие возможные пары для исследования</h3>${list(combos)}${info.pairCount > combos.length ? `<p class="small muted" style="margin-top:8px">Показаны первые ${combos.length} сочетаний из ${info.pairCount}.</p>` : ''}</div>
+      <div class="result-block"><h3>Следующий тест</h3><p>Сделайте один небольшой пример продукта и покажите его 3 представителям аудитории. Спросите, какую задачу он решает и стали бы они пользоваться результатом или платить за него.</p></div></div></div>`;
+  }
+  if(test.workshop === 'golden-zone'){
+    const pairs = [
+      ['Нравится и востребовано',info.pairLP],['Нравится и получается',info.pairLS],['Востребовано и получается',info.pairPS]
+    ];
+    return `<div class="card"><div class="card-content"><div class="lead-box"><div class="eyebrow">Точка пересечения трёх кругов</div><h3 style="margin-top:6px">${esc(info.lead.name)}</h3><p class="small muted" style="margin-top:6px">Совпадений во всех трёх списках: ${info.all.length}.</p></div>
+      <div class="result-block" style="margin-top:20px"><h3>Золотая зона</h3>${list(info.all)}${info.all.length ? '<p class="small muted" style="margin-top:8px">Рассматривайте найденные темы как направления для проверки, а не окончательный выбор карьеры.</p>' : '<p class="small muted" style="margin-top:8px">Проверьте, не описываете ли вы одну тему разными словами. Если пересечения действительно нет, начните с наиболее сильного частичного совпадения.</p>'}</div>
+      ${pairs.map(([title,items]) => `<div class="result-block"><h3>${esc(title)}</h3>${list(items)}</div>`).join('')}
+      <div class="result-block"><h3>Что делать дальше</h3><p>Выберите одно частичное или полное пересечение и проверьте его реальным действием: мини-проектом, разговором с практиком или изучением конкретных вакансий.</p></div></div></div>`;
+  }
+  if(test.workshop === 't-shaped'){
+    const ratingRows = info.areas.map(x => `<div class="scale-row"><div class="scale-head"><span class="scale-name">${esc(x.name)}</span><span class="scale-val">${x.value} / 5</span></div><div class="bar"><i style="width:${pct(x.value,5)}%;background:var(--chart-1)"></i></div></div>`).join('');
+    return `<div class="card"><div class="card-content"><div class="lead-box"><div class="eyebrow">Ваш профиль по самооценке</div><h3 style="margin-top:6px">${esc(info.lead.name)}</h3><p class="small muted" style="margin-top:6px">Средняя оценка глубины: ${info.avg.toFixed(1)} / 5 · смежных навыков: ${info.breadth.length}</p></div>
+      <div class="result-block" style="margin-top:20px"><h3>Вертикаль — глубокая экспертиза</h3>${ratingRows || '<p class="muted small">Не выбрана.</p>'}</div>
+      <div class="result-block"><h3>Горизонталь — смежные навыки</h3>${list(info.breadth)}</div>
+      <div class="result-block"><h3>Рекомендация</h3><p>${esc(info.advice)}</p><p class="small muted">Шкала субъективная. Подтверждайте уровень сложностью задач, самостоятельностью, качеством результата и внешней обратной связью.</p></div></div></div>`;
+  }
+  if(test.workshop === 'pitch'){
+    return `<div class="card"><div class="card-content"><div class="lead-box"><div class="eyebrow">Позиционирование</div><h3 style="margin-top:6px">${esc(info.lead.name)}</h3></div>
+      <div class="result-block" style="margin-top:20px"><h3>Собранный питч</h3><p class="ws-pitch">${esc(info.text)}</p><button class="btn btn-outline btn-sm no-print" data-action="copy-workshop-text" data-id="${test.id}" data-rid="${route.rid || ''}">${ico('clipboard-list')} Скопировать питч</button></div>
+      <div class="result-block"><h3>На чём держится аргумент</h3>${block('Аудитория',info.audience)}${block('Результат',info.outcome)}${block('Пример',info.example)}${block('Метрика',info.metric)}</div>
+      <p class="small muted">Пример из презентации с +23% к кликам и +15% к удержанию — иллюстрация формата. Используйте только собственные подтверждённые результаты и цифры.</p></div></div>`;
+  }
+  const checked = WORKSHOP_CHECKS.map(c => `<label class="ws-check-row ws-check-result"><span class="${info.checks.includes(c.key) ? 'ws-check-mark' : 'ws-check-empty'}">${info.checks.includes(c.key) ? '✓' : '—'}</span><span>${esc(c.label)}</span></label>`).join('');
+  return `<div class="card"><div class="card-content"><div class="lead-box"><div class="eyebrow">Проверяемая карьерная гипотеза</div><h3 style="margin-top:6px">${esc(info.hypothesis)}</h3><p class="small muted" style="margin-top:6px">Собрано подтверждений: ${info.checks.length} из 3.</p></div>
+    <div class="result-block" style="margin-top:20px">${block('Аудитория',info.audience)}${block('Проблема',info.problem)}${block('Минимальный эксперимент',info.experiment)}${block('Критерий успеха',info.metric)}</div>
+    <div class="result-block"><h3>План на 7 дней</h3><div class="ws-timeline">${info.steps.map(s => `<div><b>${esc(s.day)}</b><span><strong>${esc(s.title)}</strong><br>${esc(s.body)}</span></div>`).join('')}</div></div>
+    <div class="result-block"><h3>Статус проверок</h3><div class="ws-check-list">${checked}</div></div>
+    <p class="small muted" style="margin-top:16px">Результат эксперимента помогает решить, что делать дальше, но не является гарантией трудоустройства или коммерческого спроса.</p></div></div>`;
+}
 function resultBody(test, info){
+  if(test.kind === 'workshop') return workshopResultBody(test, info);
   if(test.resultType === 'temperament'){
     return `<div class="card"><div class="card-content">
       <div class="lead-box">
@@ -2294,7 +2593,7 @@ function viewResult(){
   return `${testHeader(test, `<span class="badge badge-muted">${fmtDate(res.date)}</span>`)}
     ${resultBody(test, info)}
     <div class="row no-print" style="margin-top:24px;flex-wrap:wrap">
-      ${test.kind === 'reflection' ? '' : `<button class="btn btn-primary" data-action="share" data-id="${test.id}" data-rid="${res.id}">${ico('share')} Поделиться</button>`}
+      ${['reflection','workshop'].includes(test.kind) ? '' : `<button class="btn btn-primary" data-action="share" data-id="${test.id}" data-rid="${res.id}">${ico('share')} Поделиться</button>`}
       <button class="btn btn-outline" data-action="restart" data-id="${test.id}">${ico('rotate-ccw')} Пройти заново</button>
     </div>`;
 }
@@ -2313,7 +2612,7 @@ function viewHistory(){
   const items = S.results.map(r => {
     const t = getTest(r.testId);
     const info = analyze(t, r.answers);
-    const badge = info.lead.level ? `<span class="badge badge-muted">${info.lead.value} · ${esc(info.lead.level)}</span>` : '';
+    const badge = info.lead.level ? `<span class="badge badge-muted">${t.kind === 'workshop' ? esc(info.lead.level) : `${info.lead.value} · ${esc(info.lead.level)}`}</span>` : '';
     return `<div class="hist-item">
       <div class="hi-icon" aria-hidden="true">${ico(t.icon)}</div>
       <div class="hist-main">
@@ -2388,9 +2687,139 @@ function viewSettings(){
         <p><b>Холланд и Климов</b> — шесть профессиональных типов.</p>
         <p><b>Эмоциональный интеллект</b> (опросник EQ Н. Холла) — самосознание, самоконтроль, самомотивация, эмпатия и навыки взаимодействия.</p>
         <p><b>Определение темперамента</b> (опросник Г. Айзенка в модификации Г. Резапкиной) — общительность, эмоциональные реакции и проверка достоверности ответов.</p>
-        <p style="margin-bottom:0">Это ознакомительные методики — они не заменяют консультацию психолога.</p>
+        <p><b>Скрещиваем ежа и ужа</b> — упражнение из презентации: сочетание увлечений и навыков в гипотезу продукта.</p>
+        <p><b>Золотая зона</b> — пересечение интересов, оплачиваемых задач и сильных сторон по модели трёх кругов.</p>
+        <p><b>T-shaped</b> — самооценка одной-двух глубоких областей и набора смежных компетенций.</p>
+        <p><b>Питч гибридного специалиста</b> — конструктор позиционирования через реальный результат и доказательства.</p>
+        <p><b>Карьерный эксперимент на 7 дней</b> — практический план проверки гипотезы через рынок, разговоры и мини-проект.</p>
+        <p style="margin-bottom:0">Пять новых упражнений — авторские практические инструменты по мотивам презентации, а не стандартизированные психометрические тесты. Все результаты служат ориентиром и не заменяют консультацию психолога или проверку рыночного спроса.</p>
       </div>
     </div>`;
+}
+
+/* ---------------- Новые практические мастерские ---------------- */
+function wsInput(test, a, key, label, placeholder = '', type = 'text'){
+  return `<label class="ws-field"><span>${esc(label)}</span><input class="ws-input" type="${type}" data-ws-field="${key}" data-id="${test.id}" value="${esc(a[key] || '')}" placeholder="${esc(placeholder)}" maxlength="${type === 'date' ? 10 : 500}" /></label>`;
+}
+function wsTextarea(test, a, key, label, placeholder = ''){
+  return `<label class="ws-field"><span>${esc(label)}</span><textarea class="ws-textarea" data-ws-field="${key}" data-id="${test.id}" maxlength="2000" placeholder="${esc(placeholder)}">${esc(a[key] || '')}</textarea></label>`;
+}
+function wsTags(test, a, key, options, note = ''){
+  const selected = Array.isArray(a[key]) ? a[key] : [];
+  const all = [...new Set([...(options || []), ...selected])];
+  return `${note ? `<p class="ws-note">${esc(note)}</p>` : ''}<div class="chips ws-tags">${all.map(v => `<button type="button" class="chip ${selected.includes(v) ? 'sel' : ''}" data-action="ws-toggle" data-id="${test.id}" data-key="${key}" data-value="${esc(v)}" aria-pressed="${selected.includes(v)}">${esc(v)}</button>`).join('')}</div>`;
+}
+function wsSelect(test, a, key, label, options, placeholder = 'Выберите вариант'){
+  return `<label class="ws-field"><span>${esc(label)}</span><select class="ws-input" data-ws-field="${key}" data-id="${test.id}"><option value="">${esc(placeholder)}</option>${options.map(v => `<option value="${esc(v)}" ${a[key] === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select></label>`;
+}
+function wsCard(title, description, body){
+  return `<section class="card ws-card"><div class="card-header"><div class="card-title">${title}</div><div class="card-desc">${description}</div></div><div class="card-content">${body}</div></section>`;
+}
+function wsPreview(test, a){
+  if(test.workshop === 'hybrid'){
+    const pair = a.skillA && a.skillB && a.skillA !== a.skillB ? `${a.skillA} + ${a.skillB}` : 'Выберите два разных навыка';
+    const sentence = a.product && a.audience && a.outcome && a.skillA && a.skillB && a.skillA !== a.skillB
+      ? `Я делаю ${a.product} с помощью ${a.skillA} + ${a.skillB} для ${a.audience}, чтобы ${a.outcome}.`
+      : 'Здесь появится формула гибридной профессии, когда вы заполните поля ниже.';
+    return `<div class="ws-preview-head"><span class="eyebrow">Черновик результата</span><span class="badge">${(a.skills || []).length} навыков · ${Math.max(0, (a.skills || []).length * ((a.skills || []).length - 1) / 2)} пар</span></div><h3>${esc(pair)}</h3><p>${esc(sentence)}</p>`;
+  }
+  if(test.workshop === 'golden-zone'){
+    const likes = a.likes || [], paid = a.paid || [], strengths = a.strengths || [];
+    const all = likes.filter(k => paid.includes(k) && strengths.includes(k));
+    const overlap = (x,y) => x.filter(k => y.includes(k));
+    const pairCount = overlap(likes,paid).length + overlap(likes,strengths).length + overlap(paid,strengths).length;
+    return `<div class="ws-preview-head"><span class="eyebrow">Пересечение кругов</span><span class="badge">${all.length} в золотой зоне</span></div>
+      ${all.length ? `<div class="prof-list">${all.map(v => `<span class="prof">${esc(v)}</span>`).join('')}</div><p>Это первые гипотезы для проверки, а не автоматический выбор профессии.</p>` : `<p>${pairCount ? 'Есть частичные пересечения. Попробуйте проверить направление, которое одновременно нравится и востребовано, либо востребовано и опирается на ваши сильные стороны.' : 'Пока пересечения не появились. Отметьте хотя бы по одному пункту в каждом круге и используйте одинаковые формулировки для совпадающих навыков.'}</p>`}`;
+  }
+  if(test.workshop === 't-shaped'){
+    const deep = a.deepAreas || [], breadth = a.breadth || [];
+    const values = deep.map(k => Number(a.depthRatings && a.depthRatings[k]) || 0).filter(Boolean);
+    const avg = values.length ? values.reduce((x,y) => x + y, 0) / values.length : 0;
+    return `<div class="ws-preview-head"><span class="eyebrow">Эскиз профиля</span><span class="badge">${deep.length} области глубины · ${breadth.length} смежных навыка</span></div>
+      <div class="ws-t-shape" aria-label="Схема T-shaped"><div class="ws-t-bar">${deep.length ? deep.map(esc).join(' / ') : 'Глубокая область'}</div><div class="ws-t-stem"></div><div class="ws-t-breadth">${breadth.length ? breadth.map(esc).join(' · ') : 'Смежные навыки'}</div></div>
+      <p>Самооценка глубины: ${avg ? avg.toFixed(1) + ' из 5' : 'оцените выбранную область'}.</p>`;
+  }
+  if(test.workshop === 'pitch'){
+    const filled = a.role && a.skill1 && a.skill2 && a.audience && a.outcome && a.example && a.metric;
+    const sentence = filled
+      ? `Я не просто ${a.role}. Я использую ${a.skill1} и ${a.skill2}, чтобы ${a.outcome} для ${a.audience}. Например, ${a.example}. Результат: ${a.metric}.`
+      : 'Заполните форму: питч соберётся здесь автоматически. Используйте реальные проекты и метрики — не придумывайте цифры.';
+    return `<div class="ws-preview-head"><span class="eyebrow">Ваш питч</span><span class="badge">${filled ? 'Черновик готов' : 'Заполняется автоматически'}</span></div><p class="ws-pitch">${esc(sentence)}</p>`;
+  }
+  if(test.workshop === 'experiment'){
+    const done = a.checks || [];
+    return `<div class="ws-preview-head"><span class="eyebrow">План проверки</span><span class="badge">Подтверждено ${done.length} из 3</span></div>
+      <div class="ws-timeline"><div><b>День 1</b><span>Уточнить аудиторию и проблему</span></div><div><b>Дни 2–3</b><span>Проверить спрос и поговорить с людьми</span></div><div><b>Дни 4–5</b><span>Создать минимальный пример работы</span></div><div><b>День 6</b><span>Собрать обратную связь</span></div><div><b>День 7</b><span>Сравнить результаты с критерием успеха</span></div></div>
+      ${a.metric ? `<p><b>Критерий успеха:</b> ${esc(a.metric)}</p>` : '<p>Определите измеримый критерий успеха — без него трудно понять, сработала ли идея.</p>'}`;
+  }
+  return '<p>Заполните упражнение, чтобы увидеть результат.</p>';
+}
+function refreshWorkshopPreview(test){
+  const target = $('#ws-live-preview');
+  if(!target || !test || test.kind !== 'workshop') return;
+  const a = S.answers[test.id] || {};
+  target.innerHTML = wsPreview(test, a);
+  const status = $('#ws-readiness');
+  if(status){
+    status.textContent = isWorkshopReady(test, a)
+      ? 'Обязательные поля заполнены — можно сохранить результат.'
+      : `Заполнено этапов: ${answeredCount(test)} из ${totalCount(test)}. Результат сохранится после заполнения обязательных полей.`;
+  }
+}
+function wsSavePanel(test, a){
+  return `<div class="card ws-save-card"><div class="card-content"><div class="row-between ws-save-row"><div><b>Зафиксировать результат</b><p id="ws-readiness" class="small muted">${isWorkshopReady(test,a) ? 'Обязательные поля заполнены — можно сохранить результат.' : `Заполнено этапов: ${workshopDraftProgress(test,a)} из ${totalCount(test)}. Ответы сохраняются в этом браузере.`}</p></div><button class="btn btn-primary" data-action="ws-save" data-id="${test.id}">${ico('save')} Сохранить результат</button></div></div></div>`;
+}
+function viewWorkshop(test){
+  const a = S.answers[test.id] || {};
+  let body = '';
+  if(test.workshop === 'hybrid'){
+    const selected = a.skills || [];
+    const options = [...new Set([...WORKSHOP_SKILLS, ...selected])];
+    body = `${wsCard('1. Соберите набор навыков','В презентации предлагается выписать 7–10 увлечений и навыков. Для упражнения можно начать с двух, но широкая подборка даст больше сочетаний.',
+      `${wsTags(test,a,'skills',WORKSHOP_SKILLS)}
+       <div class="ws-add-row">${wsInput(test,a,'customDraft','Свой навык','Например, музыкальный продакшн')}<button class="btn btn-outline" data-action="ws-add-skill" data-id="${test.id}">Добавить</button></div>
+       <p class="ws-note">Выбрано: ${selected.length}. Возможных пар: ${selected.length * (selected.length - 1) / 2}.</p>`)}
+      ${wsCard('2. Выберите два навыка','Подбирайте сочетание, которое кажется неожиданным, но может дать практическую ценность.',
+        `<div class="ws-fields-2">${wsSelect(test,a,'skillA','Навык № 1',selected,'Выберите навык')}${wsSelect(test,a,'skillB','Навык № 2',selected,'Выберите другой навык')}</div>
+        <div class="ws-fields-2">${wsInput(test,a,'product','Что вы создаёте?','Продукт, сервис или решение')}${wsInput(test,a,'audience','Для кого?','Конкретная аудитория')}</div>
+        ${wsInput(test,a,'outcome','Какой результат получает аудитория?','Что станет лучше, быстрее или проще')}`)}
+      ${wsCard('3. Черновик гибридной профессии','Формула из презентации: продукт + сочетание навыков + аудитория + результат.',`<div id="ws-live-preview" class="ws-preview">${wsPreview(test,a)}</div>`)}`;
+  } else if(test.workshop === 'golden-zone'){
+    body = `${wsCard('1. Что вам нравится?','Выберите занятия, к которым хочется возвращаться даже без внешнего давления.',wsTags(test,a,'likes',WORKSHOP_SKILLS))}
+      ${wsCard('2. За что платят?','Отметьте направления, где вы видите реальные задачи, роли или продукты, за которые платят.',wsTags(test,a,'paid',WORKSHOP_SKILLS))}
+      ${wsCard('3. В чём вы хороши?','Отметьте способности, которые уже проявляются в работе, учёбе, личных проектах или обратной связи.',wsTags(test,a,'strengths',WORKSHOP_SKILLS))}
+      ${wsCard('4. Пересечение','Совпадение считается по одинаковым выбранным формулировкам. Если полного пересечения пока нет, это не провал — это повод проверить близкие сочетания.',`<div id="ws-live-preview" class="ws-preview">${wsPreview(test,a)}</div>`)}`;
+  } else if(test.workshop === 't-shaped'){
+    const ratings = a.depthRatings || {};
+    const deep = a.deepAreas || [];
+    const ratingHTML = deep.length ? `<div class="ws-rating-list">${deep.map(k => `<label class="ws-rating-row"><span>${esc(k)}</span><select class="ws-input" data-ws-nested="depthRatings" data-ws-nested-key="${esc(k)}" data-id="${test.id}" aria-label="Глубина навыка ${esc(k)}">${[1,2,3,4,5].map(n => `<option value="${n}" ${Number(ratings[k] || 3) === n ? 'selected' : ''}>${n} — ${['первое знакомство','базовые задачи','самостоятельная работа','уверенный уровень','экспертная глубина'][n-1]}</option>`).join('')}</select></label>`).join('')}</div>` : '<p class="ws-note">После выбора области здесь появится оценка глубины.</p>';
+    body = `${wsCard('1. Вертикаль — глубина','Выберите не более двух областей, в которых хотите стать специалистом. Оцените текущую глубину по шкале от 1 до 5.',`${wsTags(test,a,'deepAreas',WORKSHOP_SKILLS,'Максимум две области — это фокус, а не запрет развивать другие навыки.')}${ratingHTML}`)}
+      ${wsCard('2. Горизонталь — смежные навыки','Выберите навыки, которые помогают видеть связи и интегрировать работу разных областей. Для T-shaped профиля стоит указать минимум два.',wsTags(test,a,'breadth',WORKSHOP_SKILLS))}
+      ${wsCard('3. Визуализация профиля','Схема обновляется по мере заполнения. Оценка субъективная: подтверждайте глубину реальными кейсами и обратной связью.',`<div id="ws-live-preview" class="ws-preview">${wsPreview(test,a)}</div>`)}`;
+  } else if(test.workshop === 'pitch'){
+    body = `${wsCard('1. Назовите профессиональную основу','Не перечисляйте все свои навыки — начните с понятной роли, затем покажите, чем её усиливает сочетание дисциплин.',
+      `${wsInput(test,a,'role','Основная роль','Например, дизайнер')}
+       <div class="ws-fields-2">${wsInput(test,a,'skill1','Дисциплина или навык № 1','Например, социологические исследования')}${wsInput(test,a,'skill2','Дисциплина или навык № 2','Например, маркетинговая аналитика')}</div>
+       <div class="ws-fields-2">${wsInput(test,a,'audience','Для кого работаете?','Аудитория, команда или бизнес')}${wsInput(test,a,'outcome','Какой результат создаёте?','Результат, а не набор компетенций')}</div>`)}
+      ${wsCard('2. Докажите ценность','В презентации гибридность предлагается продавать через результат. Используйте настоящий проект; если цифры ещё нет, укажите измерение, которое предстоит провести.',
+      `${wsTextarea(test,a,'example','Пример работы','В проекте я проанализировал…, сравнил…, протестировал…')}${wsInput(test,a,'metric','Эффект или метрика','Например, конверсия выросла на X% — только если это подтверждено')}`)}
+      ${wsCard('3. Черновик питча','Текст можно отредактировать после генерации. Не используйте неподтверждённые цифры или результаты.',`<div id="ws-live-preview" class="ws-preview">${wsPreview(test,a)}</div>`)}`;
+  } else if(test.workshop === 'experiment'){
+    const checked = a.checks || [];
+    body = `${wsCard('1. Что именно хотите проверить?','Сформулируйте гипотезу узко: конкретная роль, тип задач или сочетание навыков.',
+      `${wsInput(test,a,'hypothesis','Гипотеза','Например, сочетание аналитики и дизайна подходит для задач продуктовых исследований')}
+       <div class="ws-fields-2">${wsInput(test,a,'audience','С кем проверяете?','Люди из профессии или потенциальные пользователи')}${wsInput(test,a,'problem','Какая проблема или задача?','Что у аудитории не получается сейчас')}</div>`)}
+      ${wsCard('2. Минимальный тест','Выберите действие, которое можно выполнить без долгого обучения, крупных вложений или увольнения.',
+      `${wsTextarea(test,a,'experiment','Эксперимент','Например, сделать один мини-кейс и показать его трём представителям аудитории')}${wsInput(test,a,'metric','Критерий успеха','Что должно произойти, чтобы вы продолжили? Укажите число или наблюдаемое действие')}`)}
+      ${wsCard('3. Какие доказательства уже есть?','Отмечайте только выполненные проверки. Это счётчик собранных доказательств, а не оценка вашей пригодности к профессии.',
+      `<div class="ws-check-list">${WORKSHOP_CHECKS.map(c => `<label class="ws-check-row"><input type="checkbox" data-action="ws-toggle-check" data-id="${test.id}" data-value="${c.key}" ${checked.includes(c.key) ? 'checked' : ''}><span>${esc(c.label)}</span></label>`).join('')}</div>
+       <div id="ws-live-preview" class="ws-preview" style="margin-top:18px">${wsPreview(test,a)}</div>`)}
+      <p class="ws-note">План на 7 дней — практическое дополнение к презентации, а не научно валидированный карьерный тест.</p>`;
+  }
+  return `${testHeader(test, '<span class="badge">Практическое упражнение</span>')}
+    <p class="ws-intro">${esc(test.brief)} Заполненные поля автоматически сохраняются на этом устройстве. Практики помогают сформулировать гипотезы, но сами по себе не подтверждают профессиональную пригодность или рыночный спрос.</p>
+    <div class="ws-stack">${body}</div>
+    ${wsSavePanel(test,a)}`;
 }
 
 /* ---------------- Общий рендер ---------------- */
@@ -2401,6 +2830,7 @@ function viewBody(){
     if(t.kind === 'points')     return viewBelbin(t);
     if(t.kind === 'tournament') return viewTournament(t);
     if(t.kind === 'reflection') return viewReflection(t);
+    if(t.kind === 'workshop') return viewWorkshop(t);
     return viewQuestions(t);
   }
   if(route.name === 'result')   return viewResult();
@@ -2689,6 +3119,77 @@ const actions = {
 
   'set-theme'(el){ S.theme = el.dataset.value; save(); render(); },
 
+  'ws-toggle'(el, test){
+    if(!test || test.kind !== 'workshop') return;
+    const a = S.answers[test.id] || (S.answers[test.id] = {});
+    const key = el.dataset.key, value = el.dataset.value;
+    if(!key || !value) return;
+    const arr = Array.isArray(a[key]) ? [...a[key]] : [];
+    if(arr.includes(value)){
+      a[key] = arr.filter(x => x !== value);
+      if(key === 'skills'){
+        if(a.skillA === value) a.skillA = '';
+        if(a.skillB === value) a.skillB = '';
+      }
+      if(key === 'deepAreas'){
+        if(a.depthRatings) delete a.depthRatings[value];
+        if(Array.isArray(a.breadth) && a.breadth.includes(value)) a.breadth = a.breadth.filter(x => x !== value);
+      }
+    } else {
+      if(key === 'deepAreas' && arr.length >= 2){ toast('Для вертикали выберите не больше двух областей'); return; }
+      if(key === 'breadth' && Array.isArray(a.deepAreas) && a.deepAreas.includes(value)){ toast('Эта область уже выбрана в глубину. Для горизонтали выберите смежный навык.'); return; }
+      arr.push(value); a[key] = arr;
+      if(key === 'deepAreas'){
+        a.depthRatings = a.depthRatings || {};
+        if(!a.depthRatings[value]) a.depthRatings[value] = 3;
+        if(Array.isArray(a.breadth) && a.breadth.includes(value)) a.breadth = a.breadth.filter(x => x !== value);
+      }
+    }
+    a.done = false; save(); render();
+  },
+  'ws-add-skill'(el, test){
+    if(!test || test.workshop !== 'hybrid') return;
+    const a = S.answers[test.id] || (S.answers[test.id] = {});
+    const value = wsTrim(a.customDraft).slice(0,60);
+    if(!value){ toast('Введите свой навык'); return; }
+    if((a.skills || []).some(x => x.toLowerCase() === value.toLowerCase())){ toast('Такой навык уже добавлен'); return; }
+    a.skills = [...(a.skills || []), value].slice(0,30);
+    a.customDraft = ''; a.done = false; save(); render();
+  },
+  'ws-toggle-check'(el, test){
+    if(!test || test.workshop !== 'experiment') return;
+    const a = S.answers[test.id] || (S.answers[test.id] = {});
+    const key = el.dataset.value;
+    if(!WORKSHOP_CHECKS.some(c => c.key === key)) return;
+    const checks = new Set(a.checks || []);
+    if(checks.has(key)) checks.delete(key); else checks.add(key);
+    a.checks = [...checks]; a.done = false; save(); render();
+  },
+  'ws-save'(el, test){
+    if(!test || test.kind !== 'workshop') return;
+    const a = S.answers[test.id] || (S.answers[test.id] = {});
+    if(!isWorkshopReady(test,a)){
+      const missing = {
+        hybrid:'Выберите минимум два навыка, пару, продукт, аудиторию и результат.',
+        'golden-zone':'Отметьте хотя бы один пункт в каждом из трёх кругов.',
+        't-shaped':'Выберите 1–2 области глубины, оцените их и добавьте минимум два смежных навыка.',
+        pitch:'Заполните роль, два навыка, аудиторию, результат, пример проекта и метрику.',
+        experiment:'Заполните гипотезу, аудиторию, проблему, эксперимент и критерий успеха.'
+      }[test.workshop] || 'Заполните обязательные поля.';
+      toast(missing); return;
+    }
+    a.done = true; save();
+    const res = ensureResult(test);
+    go({name:'result', id:test.id, rid:res.id});
+  },
+  'copy-workshop-text'(el, test){
+    if(!test || test.workshop !== 'pitch') return;
+    const res = el.dataset.rid ? S.results.find(r => r.id === el.dataset.rid) : lastResult(test.id);
+    const answers = res ? res.answers : (S.answers[test.id] || {});
+    const info = analyzeWorkshop(test, answers);
+    navigator.clipboard && navigator.clipboard.writeText(info.text).then(() => toast('Питч скопирован')).catch(() => toast('Не удалось скопировать текст'));
+  },
+
   'open-test'(el, t){ if(t) go({name:'test', id:t.id}); },
   'open-result'(el, t){
     if(!t) return;
@@ -2807,7 +3308,19 @@ document.addEventListener('click', e => {
 });
 
 document.addEventListener('input', e => {
-  const ta = e.target.closest && e.target.closest('textarea[data-note]');
+  const target = e.target;
+  const ws = target.closest && target.closest('[data-ws-field]');
+  if(ws){
+    const test = getTest(ws.dataset.id);
+    if(test && test.kind === 'workshop'){
+      const a = S.answers[test.id] || (S.answers[test.id] = {});
+      a[ws.dataset.wsField] = String(ws.value || '').slice(0, 2000);
+      if(a.done) a.done = false;
+      saveSoon(); refreshWorkshopPreview(test);
+    }
+    return;
+  }
+  const ta = target.closest && target.closest('textarea[data-note]');
   if(!ta) return;
   S.notes[ta.dataset.note] = ta.value.slice(0, NOTE_LIMIT);
   saveSoon();
@@ -2817,6 +3330,22 @@ document.addEventListener('input', e => {
 
 document.addEventListener('change', e => {
   const t = e.target;
+  const ws = t.closest && t.closest('[data-ws-field], [data-ws-nested]');
+  if(ws){
+    const test = getTest(ws.dataset.id);
+    if(test && test.kind === 'workshop'){
+      const a = S.answers[test.id] || (S.answers[test.id] = {});
+      if(ws.dataset.wsNested){
+        a[ws.dataset.wsNested] = a[ws.dataset.wsNested] || {};
+        a[ws.dataset.wsNested][ws.dataset.wsNestedKey] = Number(ws.value);
+      } else {
+        a[ws.dataset.wsField] = String(ws.value || '').slice(0, 2000);
+      }
+      if(a.done) a.done = false;
+      save(); refreshWorkshopPreview(test);
+    }
+    return;
+  }
   if(t.matches && t.matches('input[data-setting="autoAdvance"]')){
     S.autoAdvance = t.checked; save();
     return;
